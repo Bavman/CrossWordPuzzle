@@ -189,7 +189,7 @@ namespace CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[18];
+            _typeNameTable = new string[17];
             _typeNameTable[0] = "CrossWordPuzzle.ViewModel.MainPageData";
             _typeNameTable[1] = "Object";
             _typeNameTable[2] = "System.Collections.ObjectModel.ObservableCollection`1<System.Collections.ObjectModel.ObservableCollection`1<CrossWordPuzzle.ViewModel.Cell>>";
@@ -200,16 +200,15 @@ namespace CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo
             _typeNameTable[7] = "Char";
             _typeNameTable[8] = "System.ValueType";
             _typeNameTable[9] = "Int32";
-            _typeNameTable[10] = "CrossWordPuzzle.ViewModel.ArrayConverter";
-            _typeNameTable[11] = "CrossWordPuzzle.MainPage";
-            _typeNameTable[12] = "Windows.UI.Xaml.Controls.Page";
-            _typeNameTable[13] = "Windows.UI.Xaml.Controls.UserControl";
-            _typeNameTable[14] = "System.Collections.ObjectModel.ObservableCollection`1<CrossWordPuzzle.ViewModel.Words>";
-            _typeNameTable[15] = "System.Collections.ObjectModel.Collection`1<CrossWordPuzzle.ViewModel.Words>";
-            _typeNameTable[16] = "CrossWordPuzzle.ViewModel.Words";
-            _typeNameTable[17] = "String";
+            _typeNameTable[10] = "CrossWordPuzzle.MainPage";
+            _typeNameTable[11] = "Windows.UI.Xaml.Controls.Page";
+            _typeNameTable[12] = "Windows.UI.Xaml.Controls.UserControl";
+            _typeNameTable[13] = "System.Collections.ObjectModel.ObservableCollection`1<CrossWordPuzzle.ViewModel.Words>";
+            _typeNameTable[14] = "System.Collections.ObjectModel.Collection`1<CrossWordPuzzle.ViewModel.Words>";
+            _typeNameTable[15] = "CrossWordPuzzle.ViewModel.Words";
+            _typeNameTable[16] = "String";
 
-            _typeTable = new global::System.Type[18];
+            _typeTable = new global::System.Type[17];
             _typeTable[0] = typeof(global::CrossWordPuzzle.ViewModel.MainPageData);
             _typeTable[1] = typeof(global::System.Object);
             _typeTable[2] = typeof(global::System.Collections.ObjectModel.ObservableCollection<global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.ViewModel.Cell>>);
@@ -220,14 +219,13 @@ namespace CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo
             _typeTable[7] = typeof(global::System.Char);
             _typeTable[8] = typeof(global::System.ValueType);
             _typeTable[9] = typeof(global::System.Int32);
-            _typeTable[10] = typeof(global::CrossWordPuzzle.ViewModel.ArrayConverter);
-            _typeTable[11] = typeof(global::CrossWordPuzzle.MainPage);
-            _typeTable[12] = typeof(global::Windows.UI.Xaml.Controls.Page);
-            _typeTable[13] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
-            _typeTable[14] = typeof(global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.ViewModel.Words>);
-            _typeTable[15] = typeof(global::System.Collections.ObjectModel.Collection<global::CrossWordPuzzle.ViewModel.Words>);
-            _typeTable[16] = typeof(global::CrossWordPuzzle.ViewModel.Words);
-            _typeTable[17] = typeof(global::System.String);
+            _typeTable[10] = typeof(global::CrossWordPuzzle.MainPage);
+            _typeTable[11] = typeof(global::Windows.UI.Xaml.Controls.Page);
+            _typeTable[12] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
+            _typeTable[13] = typeof(global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.ViewModel.Words>);
+            _typeTable[14] = typeof(global::System.Collections.ObjectModel.Collection<global::CrossWordPuzzle.ViewModel.Words>);
+            _typeTable[15] = typeof(global::CrossWordPuzzle.ViewModel.Words);
+            _typeTable[16] = typeof(global::System.String);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -268,11 +266,10 @@ namespace CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo
         private object Activate_4_ObservableCollection() { return new global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.ViewModel.Cell>(); }
         private object Activate_5_Collection() { return new global::System.Collections.ObjectModel.Collection<global::CrossWordPuzzle.ViewModel.Cell>(); }
         private object Activate_6_Cell() { return new global::CrossWordPuzzle.ViewModel.Cell(); }
-        private object Activate_10_ArrayConverter() { return new global::CrossWordPuzzle.ViewModel.ArrayConverter(); }
-        private object Activate_11_MainPage() { return new global::CrossWordPuzzle.MainPage(); }
-        private object Activate_14_ObservableCollection() { return new global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.ViewModel.Words>(); }
-        private object Activate_15_Collection() { return new global::System.Collections.ObjectModel.Collection<global::CrossWordPuzzle.ViewModel.Words>(); }
-        private object Activate_16_Words() { return new global::CrossWordPuzzle.ViewModel.Words(); }
+        private object Activate_10_MainPage() { return new global::CrossWordPuzzle.MainPage(); }
+        private object Activate_13_ObservableCollection() { return new global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.ViewModel.Words>(); }
+        private object Activate_14_Collection() { return new global::System.Collections.ObjectModel.Collection<global::CrossWordPuzzle.ViewModel.Words>(); }
+        private object Activate_15_Words() { return new global::CrossWordPuzzle.ViewModel.Words(); }
         private void VectorAdd_2_ObservableCollection(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.ViewModel.Cell>>)instance;
@@ -297,13 +294,13 @@ namespace CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo
             var newItem = (global::CrossWordPuzzle.ViewModel.Cell)item;
             collection.Add(newItem);
         }
-        private void VectorAdd_14_ObservableCollection(object instance, object item)
+        private void VectorAdd_13_ObservableCollection(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::CrossWordPuzzle.ViewModel.Words>)instance;
             var newItem = (global::CrossWordPuzzle.ViewModel.Words)item;
             collection.Add(newItem);
         }
-        private void VectorAdd_15_Collection(object instance, object item)
+        private void VectorAdd_14_Collection(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::CrossWordPuzzle.ViewModel.Words>)instance;
             var newItem = (global::CrossWordPuzzle.ViewModel.Words)item;
@@ -385,52 +382,45 @@ namespace CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo
                 xamlType = new global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 10:   //  CrossWordPuzzle.ViewModel.ArrayConverter
-                userType = new global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.Activator = Activate_10_ArrayConverter;
-                userType.SetIsLocalType();
-                xamlType = userType;
-                break;
-
-            case 11:   //  CrossWordPuzzle.MainPage
+            case 10:   //  CrossWordPuzzle.MainPage
                 userType = new global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_11_MainPage;
+                userType.Activator = Activate_10_MainPage;
                 userType.AddMemberName("MyStringList");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 12:   //  Windows.UI.Xaml.Controls.Page
+            case 11:   //  Windows.UI.Xaml.Controls.Page
                 xamlType = new global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 13:   //  Windows.UI.Xaml.Controls.UserControl
+            case 12:   //  Windows.UI.Xaml.Controls.UserControl
                 xamlType = new global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 14:   //  System.Collections.ObjectModel.ObservableCollection`1<CrossWordPuzzle.ViewModel.Words>
+            case 13:   //  System.Collections.ObjectModel.ObservableCollection`1<CrossWordPuzzle.ViewModel.Words>
                 userType = new global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Collections.ObjectModel.Collection`1<CrossWordPuzzle.ViewModel.Words>"));
-                userType.CollectionAdd = VectorAdd_14_ObservableCollection;
+                userType.CollectionAdd = VectorAdd_13_ObservableCollection;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 15:   //  System.Collections.ObjectModel.Collection`1<CrossWordPuzzle.ViewModel.Words>
+            case 14:   //  System.Collections.ObjectModel.Collection`1<CrossWordPuzzle.ViewModel.Words>
                 userType = new global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.Activator = Activate_15_Collection;
-                userType.CollectionAdd = VectorAdd_15_Collection;
+                userType.Activator = Activate_14_Collection;
+                userType.CollectionAdd = VectorAdd_14_Collection;
                 xamlType = userType;
                 break;
 
-            case 16:   //  CrossWordPuzzle.ViewModel.Words
+            case 15:   //  CrossWordPuzzle.ViewModel.Words
                 userType = new global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.Activator = Activate_16_Words;
+                userType.Activator = Activate_15_Words;
                 userType.AddMemberName("Word");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 17:   //  String
+            case 16:   //  String
                 xamlType = new global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
             }

@@ -13,8 +13,12 @@
 
     <Page.Resources>
 
+        <Style x:Key="MyItem" TargetType="GridViewItem">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="Padding" Value="0"/>
+        </Style>
 
-        <local:ArrayConverter x:Key="ArrayConverter"/>
 
         <DataTemplate x:Key="Cell">
 
@@ -25,8 +29,8 @@
                          RenderTransformOrigin="0.5,0.5" 
                          Height="32" Width="32" 
                          TextAlignment="Center" 
-                         MinWidth="32"
-                         MinHeight="32"/>
+                         MinWidth="0"
+                         MinHeight="0" />
             </Border>
 
         </DataTemplate>
@@ -41,20 +45,25 @@
                          Height="32" Width="32" 
                          TextAlignment="Center" 
                          MinWidth="32"
-                         MinHeight="32"/>
+                         MinHeight="32" />
             </Border>
 
         </DataTemplate>
-        
-        <DataTemplate x:Key="column">
-            <ItemsControl ItemsSource="{Binding Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemTemplate="{StaticResource Cell}">
+
+        <DataTemplate x:Key="Column">
+            <ItemsControl 
+                ItemsSource="{Binding Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                ItemTemplate="{StaticResource Cell}"
+                >
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <StackPanel Orientation="Horizontal" />
+                        <StackPanel Orientation="Horizontal" Background="Blue" UseLayoutRounding="True"
+                                    />
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
             </ItemsControl>
         </DataTemplate>
+
 
 
     </Page.Resources>
@@ -76,26 +85,34 @@
             </Grid.ColumnDefinitions>
 
 
+            <Grid Grid.Column="1" Grid.Row="1" Width="300" Height="300" >
 
-            <Grid Grid.Column="1" Grid.Row="1">
 
+                <ItemsControl
+                    
+                    UseLayoutRounding="False"
+                    ItemsSource="{Binding Board, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    ItemTemplate="{StaticResource Column}" 
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                    RenderTransformOrigin="0.5,0.5"
+                    >
 
-                <GridView ItemsSource="{Binding Board, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                          ItemTemplate="{StaticResource column}" 
-                          HorizontalAlignment="Center" VerticalAlignment="Center" AllowDrop="True"
-                          >
-
-                </GridView>
+                </ItemsControl>
 
             </Grid>
             <Button x:Name="ButtonPrintList" Content="Print Cross List" Grid.Column="2" HorizontalAlignment="Left" Margin="61,80,0,0" Grid.Row="1" VerticalAlignment="Top" Click="ButtonPrintList_Click"/>
 
             <Button x:Name="ButtonPrintList2" Content="Print List" Grid.Column="2" HorizontalAlignment="Left" Margin="61,180,0,0" Grid.Row="1" VerticalAlignment="Top" Click="ButtonPrintList2_Click"/>
             <Button x:Name="ButtonModifyList2" Content="Modify List" Grid.Column="2" HorizontalAlignment="Left" Margin="61,220,0,0" Grid.Row="1" VerticalAlignment="Top" Click="ButtonModifyList2_Click"/>
-            
+
             <ListView 
                 ItemsSource="{x:Bind Path=_mainPageData.MyTestList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 ItemTemplate="{StaticResource Cell}" Grid.Column="2" Margin="199,80,320,235" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+            <ListView 
+                ItemsSource="{Binding MyTestList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                ItemTemplate="{StaticResource Cell}" Grid.Column="2" Margin="325,80,194,235" Grid.Row="1"/>
 
         </Grid>
     </Grid>
