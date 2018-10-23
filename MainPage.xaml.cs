@@ -32,32 +32,8 @@ namespace CrossWordPuzzle
 
         Board _board;
         BoardLayout _boardLayout = new BoardLayout();
-
         MainPageData _mainPageData = new MainPageData();
 
-        private ObservableCollection<Words> _myStringList = new ObservableCollection<Words>()
-        {
-            new Words { Word="Hey" },
-            new Words { Word="You" },
-            new Words { Word="Are" },
-            new Words { Word="Awesome" },
-        };
-
-        public ObservableCollection<Words> MyStringList
-        {
-            get
-            {
-                return _myStringList;
-            }
-            set
-            {
-
-                Debug.WriteLine("List Return Value: " + _myStringList);
-                _myStringList = value;
-
-            }
-
-        }
 
         public MainPage()
         {
@@ -81,7 +57,7 @@ namespace CrossWordPuzzle
             //var convertedBoardMultdimensionalArrays = _board.ConvertBoardToMultidimensionalArray(mainPageData.Board);
 
             _board.DisplayBoard(_board.CrossWordboard);
-            //MainPageData.Board = mainPageData.ArrayMultidimensionalToIObservableCollection(_board.CrossWordboard);
+            _mainPageData.Board = _mainPageData.GameBoardLettersToDisplayBoard(_board.CrossWordboard);
         }
 
 

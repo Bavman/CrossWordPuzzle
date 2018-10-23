@@ -23,7 +23,6 @@ namespace CrossWordPuzzle.ViewModel
             new char[] { ' ', 'E', ' ', ' ', ' ', ' ' }
         };
 
-
         private ObservableCollection<ObservableCollection<Cell>> _board = new ObservableCollection<ObservableCollection<Cell>>
         {
             new ObservableCollection<Cell> { new Cell { Letter = ' ' }, new Cell { Letter = 'N' }, new Cell { Letter = 'O' }, new Cell { Letter = 'T' }, new Cell { Letter = 'E' }, new Cell { Letter = ' ' } },
@@ -37,16 +36,34 @@ namespace CrossWordPuzzle.ViewModel
             get
             {
                 return _board;
-
             }
             set
             {
-                
                 _board = value;
-
             }
         }
 
+
+        public ObservableCollection<ObservableCollection<Cell>> GameBoardLettersToDisplayBoard(char[,] board)
+        {
+            var returnBoard = new ObservableCollection<ObservableCollection<Cell>>();
+
+            for (var i = 0; i < board.GetLength(0); i++)
+            {
+
+                var newRow = new ObservableCollection<Cell>();
+
+                for (var j = 0; j < board.GetLength(1); j++)
+                {
+                    newRow.Add(new Cell { Letter = board[i, j] });
+                }
+
+                returnBoard.Add(newRow);
+            }
+
+            return returnBoard;
+
+        }
 
         private ObservableCollection<Cell> _testList = new ObservableCollection<Cell>
         {
@@ -65,8 +82,6 @@ namespace CrossWordPuzzle.ViewModel
             set { _testList = value; }
 
         }
-
-
 
 
         public void DisplayBoard(ObservableCollection<ObservableCollection<char>> board)
