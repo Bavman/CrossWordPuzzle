@@ -29,15 +29,6 @@ namespace CrossWordPuzzle.Game
 
         public List<string> Words = new List<string>()
         {
-            "LORD", //
-            "HOLY", // 4
-            "BIBLE", // 5
-            "JESUS", // 5
-            "CHRIST", // 6
-            "HEAVEN", // 6
-            "KINGDOM", // 7
-            "MATTHEW", // 7
-            "HEBREWS", // 7
             "ABASE",
             "ABATED",
             "ABBA",
@@ -1512,14 +1503,5 @@ namespace CrossWordPuzzle.Game
         };
 
     }
-
-    public class WordAndDefinition
-    {
-
-        public string Word;
-        public string Definition;
-
-    }
-
 
 }

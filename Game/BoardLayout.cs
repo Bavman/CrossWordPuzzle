@@ -14,6 +14,9 @@ namespace CrossWordPuzzle.Game
 
         public List<PlacedWord> PlacedWords = new List<PlacedWord>();
 
+        public List<WordAndDefinition> HorizontalWordAndDefinitionList = new List<WordAndDefinition>();
+        public List<WordAndDefinition> VerticalWordAndDefinitionList = new List<WordAndDefinition>();
+
         private int[] _wordSizes = new int[] { 9, 9, 8, 8, 7, 7, 7, 6, 6, 5, 5, 5, 4, 4, 4, 4, 3, 3, 3, 3, 3 }; // 10 words
 
         private List<string> _usedWords = new List<string>();
@@ -60,13 +63,14 @@ namespace CrossWordPuzzle.Game
         {
 
             PlacedWords.Clear();
-
+            HorizontalWordAndDefinitionList.Clear();
+            VerticalWordAndDefinitionList.Clear();
             _wordsPlaced = 0;
             var solved = false;
 
             while (solved == false)
             {
-                for (int i = 0; i < 3; i++)
+                for (var i = 0; i < 3; i++)
                 {
 
                     if (_wordsPlaced >= _minWordsPlaced)
@@ -125,7 +129,7 @@ namespace CrossWordPuzzle.Game
 
                     word = wordAndPosList.Word;
 
-                    List<int> usedCharsIndex = new List<int> { };
+                    var usedCharsIndex = new List<int> { };
 
                     if (startPositions.Count > 0)
                     {
@@ -221,10 +225,11 @@ namespace CrossWordPuzzle.Game
                 return null;
             }
 
-            var wordAndPosList = new WordAndStartPositions();
-
-            wordAndPosList.StartPosList = new List<Tuple<int,int>>(starPosList);
-            wordAndPosList.Word = word;
+            var wordAndPosList = new WordAndStartPositions
+            {
+                StartPosList = new List<Tuple<int, int>>(starPosList),
+                Word = word
+            };
 
 
             return wordAndPosList;
@@ -239,7 +244,7 @@ namespace CrossWordPuzzle.Game
             var availableInts = sequenceArray.Except(usedCharsIndex).ToArray();
 
 
-            Random random = new Random();
+            var random = new Random();
 
             var result = availableInts[random.Next(0, availableInts.Length)];
             
@@ -247,14 +252,24 @@ namespace CrossWordPuzzle.Game
         }
 
 
-        private List<WordAndDefinition> SortPlacedWords(List<PlacedWord> placedWords)
+        public List<PlacedWord> SortPlacedWords(List<PlacedWord> placedWords, WordDirection direction)
         {
-            var wordDefinitions = new List<WordAndDefinition>();
+            
+            var placedWordsSorted = new List<PlacedWord>();
             // Sorted Horizontal or vertical
+            if (direction == WordDirection.Horizontal)
+            {
+                placedWordsSorted = placedWords.Where(w => w.Direction == direction)
+                    .OrderBy(w => w.StartPos.Item1).ToList();
+            }
+            if (direction == WordDirection.Vertical)
+            {
+                placedWordsSorted = placedWords.Where(w => w.Direction == direction)
+                    .OrderBy(w => w.StartPos.Item2).ToList();
+            }
 
             // Sort in ascending
-
-            return wordDefinitions;
+            return placedWordsSorted;
         }
 
     }
@@ -265,13 +280,6 @@ namespace CrossWordPuzzle.Game
         public List<Tuple<int, int>> StartPosList;
         public string Word;
         
-    }
-
-    public class PlacedWord
-    {
-        public Tuple<int, int> StartPos;
-        public string Word;
-        public WordDirection Direction;
     }
 
 }

@@ -100,6 +100,8 @@
     <Compile Include="Game\BoardConfig.cs" />
     <Compile Include="Game\BoardLayout.cs" />
     <Compile Include="Game\Enums.cs" />
+    <Compile Include="Game\PlacedWord.cs" />
+    <Compile Include="Game\WordAndDefinition.cs" />
     <Compile Include="Game\WordList.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
