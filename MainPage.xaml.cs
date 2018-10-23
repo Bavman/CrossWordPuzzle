@@ -39,11 +39,8 @@ namespace CrossWordPuzzle
         {
             this.InitializeComponent();
 
-            //DataContext = this;
-
             _board = Board.Instance();
             _board.InitializeBoard();
-            //_board.ForcePlaceWord();
 
             _boardLayout.PlaceAllWords();
 
@@ -57,7 +54,7 @@ namespace CrossWordPuzzle
             //var convertedBoardMultdimensionalArrays = _board.ConvertBoardToMultidimensionalArray(mainPageData.Board);
 
             _board.DisplayBoard(_board.CrossWordboard);
-            _mainPageData.Board = _mainPageData.GameBoardLettersToDisplayBoard(_board.CrossWordboard);
+            _mainPageData.DisplayBoard = _mainPageData.GameBoardLettersToDisplayBoard(_board.CrossWordboard);
         }
 
 
@@ -68,36 +65,10 @@ namespace CrossWordPuzzle
         }
 
 
-
-        private void DisplayTupleList(List<Tuple<int, int>> tuppleList)
-        {
-
-            for (int i = 0; i < tuppleList.Count; i++)
-            {
-
-                Debug.WriteLine("TuppleList {0}, {1} ", tuppleList[i].Item1, tuppleList[i].Item2);
-
-            }
-
-        }
-
-
         private void ButtonPrintList_Click(object sender, RoutedEventArgs e)
         {
-            _mainPageData.PrintBoard(_mainPageData.Board);
+            _mainPageData.PrintBoard(_mainPageData.DisplayBoard);
         }
 
-        private void ButtonPrintList2_Click(object sender, RoutedEventArgs e)
-        {
-            _mainPageData.PrintList(_mainPageData.MyTestList);
-        }
-
-        private void ButtonModifyList2_Click(object sender, RoutedEventArgs e)
-        {
-
-            _mainPageData.ModifyList();
-
-
-        }
     }
 }

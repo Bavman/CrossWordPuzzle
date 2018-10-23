@@ -33,7 +33,7 @@ namespace CrossWordPuzzle.Game
 
         public char[,] CrossWordboard { get; set; } // Array 1 is Row, Array 2 is Column
 
-        private char _emptyChar = ' ';
+        public char _emptyChar = ' ';
 
         private int _horizontalCount = 12;
         private int _verticalCount = 12;

@@ -8,13 +8,15 @@ using System.Diagnostics;
 using System.ComponentModel;
 using System.Collections.Specialized;
 using System.Collections.ObjectModel;
+using Windows.UI.Xaml.Media;
+using CrossWordPuzzle.Game;
+using Windows.UI;
 
 namespace CrossWordPuzzle.ViewModel
 {
-    public class MainPageData : INotifyPropertyChanged
+    public class MainPageData
     {
 
-        
         public char[][] _testBoard = new char[][]
         {
             new char[] { ' ', 'N', 'O', 'T', 'E', ' ' },
@@ -23,7 +25,7 @@ namespace CrossWordPuzzle.ViewModel
             new char[] { ' ', 'E', ' ', ' ', ' ', ' ' }
         };
 
-        private ObservableCollection<ObservableCollection<Cell>> _board = new ObservableCollection<ObservableCollection<Cell>>
+        private ObservableCollection<ObservableCollection<Cell>> _displayBoard = new ObservableCollection<ObservableCollection<Cell>>
         {
             new ObservableCollection<Cell> { new Cell { Letter = ' ' }, new Cell { Letter = 'N' }, new Cell { Letter = 'O' }, new Cell { Letter = 'T' }, new Cell { Letter = 'E' }, new Cell { Letter = ' ' } },
             new ObservableCollection<Cell> { new Cell { Letter = 'X' }, new Cell { Letter = 'I' }, new Cell { Letter = ' ' }, new Cell { Letter = ' ' }, new Cell { Letter = 'G' }, new Cell { Letter = ' ' } },
@@ -31,15 +33,15 @@ namespace CrossWordPuzzle.ViewModel
             new ObservableCollection<Cell> { new Cell { Letter = ' ' }, new Cell { Letter = 'E' }, new Cell { Letter = ' ' }, new Cell { Letter = ' ' }, new Cell { Letter = ' ' }, new Cell { Letter = ' ' } },
         };
 
-        public ObservableCollection<ObservableCollection<Cell>> Board
+        public ObservableCollection<ObservableCollection<Cell>> DisplayBoard
         {
             get
             {
-                return _board;
+                return _displayBoard;
             }
             set
             {
-                _board = value;
+                _displayBoard = value;
             }
         }
 
@@ -55,7 +57,18 @@ namespace CrossWordPuzzle.ViewModel
 
                 for (var j = 0; j < board.GetLength(1); j++)
                 {
-                    newRow.Add(new Cell { Letter = board[i, j] });
+                    var cell = new Cell { Letter = board[i, j] };
+
+                    if (board[i, j] == Board.Instance()._emptyChar)
+                    {
+                        cell.Colour = new SolidColorBrush(Color.FromArgb(255, 120, 165, 240));
+                    }
+                    else
+                    {
+                        cell.Colour = new SolidColorBrush(Color.FromArgb(255, 240, 240, 240));
+                    }
+
+                    newRow.Add(cell);
                 }
 
                 returnBoard.Add(newRow);
@@ -84,7 +97,7 @@ namespace CrossWordPuzzle.ViewModel
         }
 
 
-        public void DisplayBoard(ObservableCollection<ObservableCollection<char>> board)
+        public void PrintBoard(ObservableCollection<ObservableCollection<char>> board)
         {
             for (var i = 0; i < board.Count; i++)
             {
@@ -98,72 +111,6 @@ namespace CrossWordPuzzle.ViewModel
                 Debug.WriteLine(row);
             }
         }
-
-        public  ObservableCollection<ObservableCollection<char>> Array2DToIObservableCollection(char[][] board2D)
-        {
-            var returnBoard = new ObservableCollection<ObservableCollection<char>>();
-
-            for (int i = 0; i < board2D.Length; i++)
-            {
-
-                var newRow = new ObservableCollection<char>();
-
-                for (int j = 0; j < board2D[i].Length; j++)
-                {
-                    newRow.Add(board2D[i][j]);
-                }
-
-                returnBoard.Add(newRow);
-            }
-
-            return returnBoard;
-
-        }
-
-        public ObservableCollection<ObservableCollection<char>> ArrayMultidimensionalToIObservableCollection(char[,] board2D)
-        {
-            var returnBoard = new ObservableCollection<ObservableCollection<char>>();
-
-            for (int i = 0; i < board2D.GetLength(0); i++)
-            {
-
-                var newRow = new ObservableCollection<char>();
-
-                for (int j = 0; j < board2D.GetLength(1); j++)
-                {
-                    newRow.Add(board2D[i,j]);
-                }
-
-                returnBoard.Add(newRow);
-            }
-
-            return returnBoard;
-
-        }
-
-        public char[][] IObservableCollectionTo2DArray(ObservableCollection<ObservableCollection<char>> boardIObservalbe)
-        {
-
-            char[][] returnBoard = new char[boardIObservalbe.Count][];
-
-            for (int i = 0; i < boardIObservalbe.Count; i++)
-            {
-
-                var newRow = new char[boardIObservalbe[i].Count];
-
-                for (int j = 0; j < boardIObservalbe[i].Count; j++)
-                {
-                    newRow[j] = (boardIObservalbe[i][j]);
-                }
-
-                returnBoard[i] = newRow;
-            }
-
-            return returnBoard;
-        }
-
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
 
         public void PrintBoard(ObservableCollection<ObservableCollection<Cell>> board)
@@ -232,6 +179,23 @@ namespace CrossWordPuzzle.ViewModel
 
                 PropChangedHandler("Letter");
             }
+        }
+
+        private SolidColorBrush _colour;
+
+        public SolidColorBrush Colour
+        {
+            get
+            {
+                return _colour;
+            }
+
+            set
+            {
+                _colour = value;
+                PropChangedHandler("Colour");
+            }
+
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
