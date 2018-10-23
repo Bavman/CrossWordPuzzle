@@ -19,7 +19,7 @@
         <DataTemplate x:Key="row">
 
             <Border BorderBrush="Black" BorderThickness="1">
-                <TextBox x:Name="LetterCell" Text="{Binding Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                <TextBox x:Name="LetterCell" Text="{Binding Cell, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                          FontSize="16" 
                          HorizontalAlignment="Center" VerticalAlignment="Center" 
                          RenderTransformOrigin="0.5,0.5" 
@@ -32,7 +32,7 @@
         </DataTemplate>
 
         <DataTemplate x:Key="column">
-            <ItemsControl ItemsSource="{Binding}" ItemTemplate="{StaticResource row}">
+            <ItemsControl ItemsSource="{Binding }" ItemTemplate="{StaticResource row}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel Orientation="Horizontal" />
@@ -65,14 +65,15 @@
             <Grid Grid.Column="1" Grid.Row="1">
 
 
-                <GridView x:ConnectionId='4' ItemsSource="{Binding Board, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                <GridView ItemsSource="{Binding Board, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                           ItemTemplate="{StaticResource column}" 
-                                                                       HorizontalAlignment="Center" VerticalAlignment="Center" AllowDrop="True"
+                          HorizontalAlignment="Center" VerticalAlignment="Center" AllowDrop="True"
                           >
 
                 </GridView>
 
             </Grid>
+            <Button x:ConnectionId='4' x:Name="ButtonPrintList" Content="Print List" Grid.Column="2" HorizontalAlignment="Left" Margin="239,197,0,0" Grid.Row="1" VerticalAlignment="Top"                              />
 
 
         </Grid>

@@ -29,15 +29,11 @@ namespace CrossWordPuzzle
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        public int WordLength { get; set; } = 4;
-        public int HorizontalCellPos { get; set; } = 2;
-        public int VerticalCellPos { get; set; } = 2;
-        public string TestWord { get; set; } = "";
-        public int TestWordIndex { get; set; } = 0;
 
         Board _board;
         BoardLayout _boardLayout = new BoardLayout();
 
+        MainPageData _mainPageData = new MainPageData();
 
         private ObservableCollection<Words> _myStringList = new ObservableCollection<Words>()
         {
@@ -60,7 +56,6 @@ namespace CrossWordPuzzle
 
                 Debug.WriteLine("List Return Value: " + _myStringList);
                 _myStringList = value;
-
 
             }
 
@@ -112,17 +107,10 @@ namespace CrossWordPuzzle
 
         }
 
-        private void GridView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+
+        private void ButtonPrintList_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-
-        public class Words
-        {
-            public string Word { get; set; }
-
-
+            _mainPageData.PrintBoard(_mainPageData.Board);
         }
     }
 }

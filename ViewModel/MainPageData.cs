@@ -24,15 +24,15 @@ namespace CrossWordPuzzle.ViewModel
         };
 
 
-        private ObservableCollection<ObservableCollection<char>> _board = new ObservableCollection<ObservableCollection<char>>
+        private ObservableCollection<ObservableCollection<Cell>> _board = new ObservableCollection<ObservableCollection<Cell>>
         {
-            new ObservableCollection<char> { ' ', 'N', 'O', 'T', 'E', ' ' },
-            new ObservableCollection<char> { 'X', 'I', ' ', ' ', 'G', ' ' },
-            new ObservableCollection<char> { ' ', 'C', ' ', 'E', 'G', 'O' },
-            new ObservableCollection<char> { ' ', 'E', ' ', ' ', ' ', ' ' }
+            new ObservableCollection<Cell> { new Cell { Letter = ' ' }, new Cell { Letter = 'N' }, new Cell { Letter = 'O' }, new Cell { Letter = 'T' }, new Cell { Letter = 'E' }, new Cell { Letter = ' ' } },
+            new ObservableCollection<Cell> { new Cell { Letter = 'X' }, new Cell { Letter = 'I' }, new Cell { Letter = ' ' }, new Cell { Letter = ' ' }, new Cell { Letter = 'G' }, new Cell { Letter = ' ' } },
+            new ObservableCollection<Cell> { new Cell { Letter = ' ' }, new Cell { Letter = 'C' }, new Cell { Letter = ' ' }, new Cell { Letter = 'E' }, new Cell { Letter = 'G' }, new Cell { Letter = 'O' } },
+            new ObservableCollection<Cell> { new Cell { Letter = ' ' }, new Cell { Letter = 'E' }, new Cell { Letter = ' ' }, new Cell { Letter = ' ' }, new Cell { Letter = ' ' }, new Cell { Letter = ' ' } },
         };
 
-        public ObservableCollection<ObservableCollection<char>> Board
+        public ObservableCollection<ObservableCollection<Cell>> Board
         {
             get
             {
@@ -46,6 +46,7 @@ namespace CrossWordPuzzle.ViewModel
 
             }
         }
+
 
 
         public void DisplayBoard(ObservableCollection<ObservableCollection<char>> board)
@@ -130,6 +131,20 @@ namespace CrossWordPuzzle.ViewModel
         public event PropertyChangedEventHandler PropertyChanged;
 
 
+        public void PrintBoard(ObservableCollection<ObservableCollection<Cell>> board)
+        {
+            for (var i = 0; i < board.Count; i++)
+            {
+                var row = String.Empty;
+
+                for (var j = 0; j < board[i].Count; j++)
+                {
+                    row += board[i][j].Letter + " ";
+                }
+                Debug.WriteLine(row);
+            }
+        }
+
     }
 
     public class ArrayConverter : IValueConverter
@@ -150,10 +165,37 @@ namespace CrossWordPuzzle.ViewModel
     }
 
 
+
+    public class Cell : INotifyPropertyChanged
+    {
+        private char _letter;
+
+        public char Letter
+        {
+            get
+            {
+                return _letter;
+            }
+
+            set
+            {
+                _letter = value;
+
+                PropChangedHandler("Letter");
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void PropChangedHandler (string propName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
+        }
+    }
+
     public class Words
     {
         public string Word { get; set; }
-
 
     }
 
