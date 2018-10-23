@@ -41,8 +41,6 @@ namespace CrossWordPuzzle
             new Words { Word="You" },
             new Words { Word="Are" },
             new Words { Word="Awesome" },
-
-
         };
 
         public ObservableCollection<Words> MyStringList
@@ -111,6 +109,19 @@ namespace CrossWordPuzzle
         private void ButtonPrintList_Click(object sender, RoutedEventArgs e)
         {
             _mainPageData.PrintBoard(_mainPageData.Board);
+        }
+
+        private void ButtonPrintList2_Click(object sender, RoutedEventArgs e)
+        {
+            _mainPageData.PrintList(_mainPageData.MyTestList);
+        }
+
+        private void ButtonModifyList2_Click(object sender, RoutedEventArgs e)
+        {
+
+            _mainPageData.ModifyList();
+
+
         }
     }
 }

@@ -16,10 +16,10 @@
 
         <local:ArrayConverter x:Key="ArrayConverter"/>
 
-        <DataTemplate x:Key="row">
+        <DataTemplate x:Key="Cell">
 
             <Border BorderBrush="Black" BorderThickness="1">
-                <TextBox x:Name="LetterCell" Text="{Binding Cell, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                <TextBox x:Name="LetterCell" Text="{Binding Letter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                          FontSize="16" 
                          HorizontalAlignment="Center" VerticalAlignment="Center" 
                          RenderTransformOrigin="0.5,0.5" 
@@ -31,8 +31,23 @@
 
         </DataTemplate>
 
+        <DataTemplate x:Key="Cell2">
+
+            <Border BorderBrush="Black" BorderThickness="1">
+                <TextBox x:Name="LetterCell" Text="{Binding Letter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                         FontSize="16" 
+                         HorizontalAlignment="Center" VerticalAlignment="Center" 
+                         RenderTransformOrigin="0.5,0.5" 
+                         Height="32" Width="32" 
+                         TextAlignment="Center" 
+                         MinWidth="32"
+                         MinHeight="32"/>
+            </Border>
+
+        </DataTemplate>
+        
         <DataTemplate x:Key="column">
-            <ItemsControl ItemsSource="{Binding }" ItemTemplate="{StaticResource row}">
+            <ItemsControl ItemsSource="{Binding Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemTemplate="{StaticResource Cell}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel Orientation="Horizontal" />
@@ -73,10 +88,16 @@
                 </GridView>
 
             </Grid>
-            <Button x:Name="ButtonPrintList" Content="Print List" Grid.Column="2" HorizontalAlignment="Left" Margin="239,197,0,0" Grid.Row="1" VerticalAlignment="Top" Click="ButtonPrintList_Click"/>
+            <Button x:Name="ButtonPrintList" Content="Print Cross List" Grid.Column="2" HorizontalAlignment="Left" Margin="61,80,0,0" Grid.Row="1" VerticalAlignment="Top" Click="ButtonPrintList_Click"/>
 
+            <Button x:Name="ButtonPrintList2" Content="Print List" Grid.Column="2" HorizontalAlignment="Left" Margin="61,180,0,0" Grid.Row="1" VerticalAlignment="Top" Click="ButtonPrintList2_Click"/>
+            <Button x:Name="ButtonModifyList2" Content="Modify List" Grid.Column="2" HorizontalAlignment="Left" Margin="61,220,0,0" Grid.Row="1" VerticalAlignment="Top" Click="ButtonModifyList2_Click"/>
+            
+            <ListView 
+                ItemsSource="{x:Bind Path=_mainPageData.MyTestList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                ItemTemplate="{StaticResource Cell}" Grid.Column="2" Margin="199,80,320,235" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
 
         </Grid>
     </Grid>
-    
+
 </Page>
