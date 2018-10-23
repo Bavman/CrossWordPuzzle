@@ -1,0 +1,82 @@
+﻿<Page
+    x:Class="CrossWordPuzzle.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CrossWordPuzzle.ViewModel"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.DataContext>
+        <local:MainPageData/>
+    </Page.DataContext>
+
+    <Page.Resources>
+
+
+        <local:ArrayConverter x:Key="ArrayConverter"/>
+
+        <DataTemplate x:Key="row">
+
+            <Border BorderBrush="Black" BorderThickness="1">
+                <TextBox x:Name="LetterCell" Text="{Binding Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                         FontSize="16" 
+                         HorizontalAlignment="Center" VerticalAlignment="Center" 
+                         RenderTransformOrigin="0.5,0.5" 
+                         Height="32" Width="32" 
+                         TextAlignment="Center" 
+                         MinWidth="32"
+                         MinHeight="32"/>
+            </Border>
+
+        </DataTemplate>
+
+        <DataTemplate x:Key="column">
+            <ItemsControl ItemsSource="{Binding}" ItemTemplate="{StaticResource row}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+        </DataTemplate>
+
+
+    </Page.Resources>
+
+
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <Grid Margin="28,0,-28,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="6*"/>
+                <RowDefinition Height="50*"/>
+                <RowDefinition Height="6*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="11*"/>
+                <ColumnDefinition Width="12*"/>
+            </Grid.ColumnDefinitions>
+
+
+
+            <Grid Grid.Column="1" Grid.Row="1">
+
+
+                <GridView x:ConnectionId='4' ItemsSource="{Binding Board, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                          ItemTemplate="{StaticResource column}" 
+                                                                       HorizontalAlignment="Center" VerticalAlignment="Center" AllowDrop="True"
+                          >
+
+                </GridView>
+
+            </Grid>
+
+
+        </Grid>
+    </Grid>
+    
+</Page>
+
