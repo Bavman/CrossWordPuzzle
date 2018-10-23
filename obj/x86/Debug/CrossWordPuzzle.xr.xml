@@ -3,6 +3,7 @@
   <Roots.PropertyPathNames>
     <RootPropertyPathName Name="Letter" />
     <RootPropertyPathName Name="Colour" />
+    <RootPropertyPathName Name="ReadOnly" />
   </Roots.PropertyPathNames>
   <Roots.RootTypes>
     <RootType FullName="Windows.UI.Xaml.Application" />
@@ -12,14 +13,6 @@
       <RootProperty Name="Content" />
     </RootType>
     <RootType FullName="CrossWordPuzzle.ViewModel.MainPageData" />
-    <RootType FullName="Windows.UI.Xaml.Controls.GridViewItem" />
-    <RootType FullName="Windows.UI.Xaml.Controls.Control">
-      <RootProperty Name="BorderThickness" />
-      <RootProperty Name="Padding" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.FrameworkElement">
-      <RootProperty Name="Margin" />
-    </RootType>
     <RootType FullName="Windows.UI.Xaml.DataTemplate">
       <RootProperty Name="Template" />
     </RootType>
@@ -53,6 +46,7 @@
     <RootType FullName="Windows.UI.Xaml.Controls.TextBox">
       <RootProperty Name="Text" />
       <RootProperty Name="Background" />
+      <RootProperty Name="IsReadOnly" />
       <RootProperty Name="FontSize" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="VerticalAlignment" />
@@ -63,10 +57,8 @@
       <RootProperty Name="MinWidth" />
       <RootProperty Name="MinHeight" />
       <RootProperty Name="Padding" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Setter">
-      <RootProperty Name="Property" />
-      <RootProperty Name="Value" />
+      <RootProperty Name="BorderThickness" />
+      <RootProperty Name="Margin" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Grid">
       <RootProperty Name="Background" />

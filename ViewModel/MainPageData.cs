@@ -62,10 +62,12 @@ namespace CrossWordPuzzle.ViewModel
                     if (board[i, j] == Board.Instance()._emptyChar)
                     {
                         cell.Colour = new SolidColorBrush(Color.FromArgb(255, 120, 165, 240));
+                        cell.ReadOnly = true;
                     }
                     else
                     {
                         cell.Colour = new SolidColorBrush(Color.FromArgb(255, 240, 240, 240));
+                        cell.ReadOnly = false;
                     }
 
                     newRow.Add(cell);
@@ -168,10 +170,7 @@ namespace CrossWordPuzzle.ViewModel
 
         public char Letter
         {
-            get
-            {
-                return _letter;
-            }
+            get { return _letter; }
 
             set
             {
@@ -185,10 +184,7 @@ namespace CrossWordPuzzle.ViewModel
 
         public SolidColorBrush Colour
         {
-            get
-            {
-                return _colour;
-            }
+            get { return _colour; }
 
             set
             {
@@ -197,6 +193,19 @@ namespace CrossWordPuzzle.ViewModel
             }
 
         }
+
+        private bool _readOnly;
+
+        public bool ReadOnly
+        {
+            get { return _readOnly; }
+            set
+            {
+                _readOnly = value;
+                PropChangedHandler("ReadOnly");
+            }
+        }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 
