@@ -49,20 +49,12 @@ namespace CrossWordPuzzle
 
             var mainPageData = new MainPageData();
 
-            //mainPageData.Board = convertedBoard2Arrays;
 
-            //var convertedBoardMultdimensionalArrays = _board.ConvertBoardToMultidimensionalArray(mainPageData.Board);
 
             _board.DisplayBoard(_board.CrossWordboard);
             _mainPageData.DisplayBoard = _mainPageData.GameBoardLettersToDisplayBoard(_board.CrossWordboard);
         }
 
-
-        private void Button_UpdateUI_Click(object sender, RoutedEventArgs e)
-        {
-            var mainPageData = new MainPageData();
-            //MainPageData.Board = mainPageData.ArrayMultidimensionalToIObservableCollection(_board.CrossWordboard);
-        }
 
 
         private void ButtonPrintList_Click(object sender, RoutedEventArgs e)

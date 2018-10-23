@@ -29,6 +29,8 @@
                          MinHeight="0" 
                          Padding="0"
                          BorderThickness="1"/>
+                
+
             </Border>
 
         </DataTemplate>
@@ -51,7 +53,6 @@
 
 
     </Page.Resources>
-
 
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -86,7 +87,7 @@
 
             </Grid>
             <Button x:Name="ButtonPrintList" Content="Print Cross List" Grid.Column="2" HorizontalAlignment="Left" Margin="61,80,0,0" Grid.Row="1" VerticalAlignment="Top" Click="ButtonPrintList_Click"/>
-            <TextBox Grid.Column="2" HorizontalAlignment="Left" Margin="376,152,0,0" Grid.Row="1" Text="TextBox" VerticalAlignment="Top"/>
+            <TextBox Grid.Column="2" HorizontalAlignment="Left" Margin="376,152,0,0" Grid.Row="1" Text="TextBox" VerticalAlignment="Top" Header="he"/>
 
         </Grid>
     </Grid>

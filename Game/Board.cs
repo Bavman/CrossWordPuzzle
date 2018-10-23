@@ -57,38 +57,19 @@ namespace CrossWordPuzzle.Game
                     row[j] = _emptyChar;
                 }
 
-                //_board[i] = row;
-
             }
 
         }
 
-        public void ForcePlaceWord()
-        {
-            var word1 = "BASE";
-            var word2 = "ABJECTS";
-            var word3 = "EVEN";
-            var word4 = "ADMIRATION";
-
-            ForcePlaceWordLoop(word1, new Tuple<int, int>(1, 0), WordDirection.Vertical);
-            ForcePlaceWordLoop(word2, new Tuple<int, int>(0, 0), WordDirection.Horizontal);
-            ForcePlaceWordLoop(word3, new Tuple<int, int>(3, 0), WordDirection.Vertical);
-            ForcePlaceWordLoop(word4, new Tuple<int, int>(1, 7), WordDirection.Horizontal);
-            //PlaceWord(word1, new Tuple<int, int>(0, 0), WordDirection.Vertical);
-            //PlaceWord(word2, new Tuple<int, int>(0, 0), WordDirection.Horizontal);
-            //PlaceWord(word3, new Tuple<int, int>(2, 0), WordDirection.Vertical);
-        }
-
-        public void ForcePlaceWordLoop(string word, Tuple<int, int> startPos, WordDirection direction)
+        // Is used to place word in grid arrays after checks have been done
+        public void ForcePlaceWord(string word, Tuple<int, int> startPos, WordDirection direction)
         {
             var horizontalStart = startPos.Item1;
             var verticalStart = startPos.Item2;
 
-
-
             if (direction == WordDirection.Horizontal)
             {
-                for (int i = horizontalStart; i < horizontalStart + word.Length; i++)
+                for (var i = horizontalStart; i < horizontalStart + word.Length; i++)
                 {
                     CrossWordboard[startPos.Item2,i] = word[i - horizontalStart];
                 }
@@ -96,12 +77,11 @@ namespace CrossWordPuzzle.Game
 
             if (direction == WordDirection.Vertical)
             {
-                for (int i = verticalStart; i < verticalStart + word.Length; i++)
+                for (var i = verticalStart; i < verticalStart + word.Length; i++)
                 {
                     CrossWordboard[i,startPos.Item1] = word[i - verticalStart];
                 }
             }
-
         }
 
 
@@ -121,10 +101,10 @@ namespace CrossWordPuzzle.Game
             
 
             // Scan whole board
-            for (int i = 0; i < CrossWordboard.GetLength(0); i++)
+            for (var i = 0; i < CrossWordboard.GetLength(0); i++)
             {
 
-                for (int j = 0; j < CrossWordboard.GetLength(1); j++)
+                for (var j = 0; j < CrossWordboard.GetLength(1); j++)
                 {
 
                     // Find matching char (letter)
@@ -160,30 +140,25 @@ namespace CrossWordPuzzle.Game
 
         }
 
-
-        public bool PlaceWord(string word, Tuple<int, int> startPos, WordDirection direction)
+        // If word can be placed, it is
+        public PlacedWord PlaceWord(string word, Tuple<int, int> startPos, WordDirection direction)
         {
-
-            //var tempIntersectPoas = new Tuple<int, int>(-2, -2);
             var tempIntersectPoas = new Tuple<int, int>(startPos.Item1 + 2, startPos.Item2);
 
-
             var canPlaceWord = CanWordBePlaced(word, startPos, direction);
+
             if (!canPlaceWord)
             {
-                //Debug.WriteLine("Word Hit");
-                return false;
+                return null;
             }
             else
             {
-
-                ForcePlaceWordLoop(word, startPos, direction);
-                return true;
+                ForcePlaceWord(word, startPos, direction);
+                return new PlacedWord { Word = word, StartPos = startPos, Direction = direction };
             }
-            
         }
 
-
+        // Check if word can be placed by doing horizontal and vertical 
         public bool CanWordBePlaced(string word, Tuple<int, int> startPos, WordDirection direction)
         {
 
@@ -238,7 +213,7 @@ namespace CrossWordPuzzle.Game
             var start = startPos.Item1;
             var end = start + length;
 
-            for (int i = start; i < end; i++)
+            for (var i = start; i < end; i++)
             {
                 // Ignore if scan hits out of range cells
                 if (i >= 0 && i < _horizontalCount) 
@@ -262,7 +237,7 @@ namespace CrossWordPuzzle.Game
             var start = startPos.Item2;
             var end = start + length;
 
-            for (int i = start; i < end; i++)
+            for (var i = start; i < end; i++)
             {
 
                 // Ignore if scan hits out of range cells
@@ -442,9 +417,9 @@ namespace CrossWordPuzzle.Game
             Tuple<int, int> rowStart = null;
 
             // Horizontal Spaces
-            for (int i = 0; i < CrossWordboard.GetLength(0); i++)
+            for (var i = 0; i < CrossWordboard.GetLength(0); i++)
             {
-                for (int j = 0; j < CrossWordboard.GetLength(1); j++)
+                for (var j = 0; j < CrossWordboard.GetLength(1); j++)
                 {
 
                     if (vacantRowCount >= 3)
@@ -469,7 +444,7 @@ namespace CrossWordPuzzle.Game
 
                             var rowEnd = new Tuple<int, int>(j, i);
 
-                            vacantRows.Add(new VacantSpace() { vacantStart = rowStart, vacantEnd = rowEnd });
+                            vacantRows.Add(new VacantSpace() { VacantStart = rowStart, VacantEnd = rowEnd });
 
                             rowStart = null;
 
@@ -496,7 +471,7 @@ namespace CrossWordPuzzle.Game
 
                             var rowEnd = new Tuple<int, int>(j, i);
 
-                            vacantRows.Add(new VacantSpace() { vacantStart = rowStart, vacantEnd = rowEnd });
+                            vacantRows.Add(new VacantSpace() { VacantStart = rowStart, VacantEnd = rowEnd });
 
                             rowStart = null;
 
@@ -510,19 +485,18 @@ namespace CrossWordPuzzle.Game
 
             var vacantArray = new int[0];
 
-            for (int i = 0; i < vacantRows.Count; i++)
+            for (var i = 0; i < vacantRows.Count; i++)
             {
 
 
             }
-            //var arr1 = Enumerable.Range(vacantRows[0].vacantStart.Item1, vacantRows[0].vacantEnd.Item1).ToArray();
-            //var arr2 = Enumerable.Range(vacantRows[0].vacantStart.Item1, vacantRows[0].vacantEnd.Item1).ToArray();
+
             var arr1 = new int[] { 1, 2, 3, 4, 5};
             var arr2 = new int[] { 2, 3, 4};
 
             vacantArray = CompareIntArrays(arr1, arr2);
 
-            for (int i = 0; i < vacantArray.Length; i++)
+            for (var i = 0; i < vacantArray.Length; i++)
             {
                 Debug.WriteLine(vacantArray[i]);
             }
@@ -533,11 +507,11 @@ namespace CrossWordPuzzle.Game
         {
             var returnArray = new List<int>();
 
-            for (int i = 0; i < intArray1.Length; i++)
+            for (var i = 0; i < intArray1.Length; i++)
             {
                 var num = intArray1[i];
 
-                for (int j = 0; j < intArray2.Length; j++)
+                for (var j = 0; j < intArray2.Length; j++)
                 {
                     if (num == intArray2[j])
                     {
@@ -561,7 +535,7 @@ namespace CrossWordPuzzle.Game
 
                 var rowString = String.Empty;
 
-                for (int j = 0; j < board.GetLength(1); j++)
+                for (var j = 0; j < board.GetLength(1); j++)
                 {
                     rowString += board[i, j] + " ";
                 }
@@ -592,7 +566,7 @@ namespace CrossWordPuzzle.Game
             {
                 returnBoard[i] = new char[_horizontalCount];
 
-                for (int j = 0; j < board.GetLength(1); j++)
+                for (var j = 0; j < board.GetLength(1); j++)
                 {
                     returnBoard[i][j] = board[i, j];
                 }
@@ -611,7 +585,7 @@ namespace CrossWordPuzzle.Game
             for (var i = 0; i < board.Length; i++)
             {
 
-                for (int j = 0; j < board[i].Length; j++)
+                for (var j = 0; j < board[i].Length; j++)
                 {
                     returnBoard[i,j] = board[i][j];
                 }
@@ -626,11 +600,9 @@ namespace CrossWordPuzzle.Game
 
     public class VacantSpace
     {
-        public Tuple<int, int> vacantStart { get; set; }
-        public Tuple<int, int> vacantEnd { get; set; }
+        public Tuple<int, int> VacantStart { get; set; }
+        public Tuple<int, int> VacantEnd { get; set; }
     }
-
-
 
 }
 

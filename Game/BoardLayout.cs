@@ -11,7 +11,10 @@ namespace CrossWordPuzzle.Game
 {
     public class BoardLayout
     {
-        private int[] wordSizes = new int[] { 9, 9, 8, 8, 7, 7, 7, 6, 6, 5, 5, 5, 4, 4, 4, 4, 3, 3, 3, 3, 3 }; // 10 words
+
+        public List<PlacedWord> PlacedWords = new List<PlacedWord>();
+
+        private int[] _wordSizes = new int[] { 9, 9, 8, 8, 7, 7, 7, 6, 6, 5, 5, 5, 4, 4, 4, 4, 3, 3, 3, 3, 3 }; // 10 words
 
         private List<string> _usedWords = new List<string>();
 
@@ -55,6 +58,9 @@ namespace CrossWordPuzzle.Game
 
         public void PlaceAllWords()
         {
+
+            PlacedWords.Clear();
+
             _wordsPlaced = 0;
             var solved = false;
 
@@ -70,8 +76,8 @@ namespace CrossWordPuzzle.Game
                         break;
 
                     }
+
                     PlaceWords();
-                    //
                 }
 
                 // Reset the board and start again if min word count in not met
@@ -90,13 +96,16 @@ namespace CrossWordPuzzle.Game
         {
 
             // First Word
-            var word = RetrieveWord(new List<string> { }, wordSizes[0]);
+            var word = RetrieveWord(new List<string> { }, _wordSizes[0]);
             var random = new Random();
             var horizontalPos = random.Next(0, 2);
             var vertiacalPos = random.Next(4, 6);
             var randomStartPos = new Tuple<int, int>(horizontalPos, vertiacalPos);
 
-            Board.Instance().PlaceWord(word, randomStartPos, WordDirection.Horizontal);
+            // Place first word
+            var placedWord = Board.Instance().PlaceWord(word, randomStartPos, WordDirection.Horizontal);
+
+            PlacedWords.Add(placedWord);
 
             _usedWords.Add(word);
 
@@ -104,10 +113,10 @@ namespace CrossWordPuzzle.Game
             var direction = WordDirection.Vertical;
 
             // Sequence through word size array
-            for (int i = 1; i < wordSizes.Length; i++)
+            for (var i = 1; i < _wordSizes.Length; i++)
             {
 
-                var wordAndPosList = FindWordAndPositions(wordSizes[i], direction);
+                var wordAndPosList = FindWordAndPositions(_wordSizes[i], direction);
 
                 if (wordAndPosList != null)
                 {
@@ -121,7 +130,7 @@ namespace CrossWordPuzzle.Game
                     if (startPositions.Count > 0)
                     {
 
-                        var isWordPlaced = false;
+                        
                         var whileCount = 0;
 
                         // Try start positions until word placement is found
@@ -133,13 +142,14 @@ namespace CrossWordPuzzle.Game
 
                             var startPos = startPositions[listIndex];
 
-                            isWordPlaced = Board.Instance().PlaceWord(word, startPos, direction);
+                            placedWord = Board.Instance().PlaceWord(word, startPos, direction);
 
-                            if (isWordPlaced)
+                            if (placedWord != null)
                             {
-                                _wordsPlaced++;
 
                                 _usedWords.Add(word);
+
+                                PlacedWords.Add(placedWord);
 
                                 if (direction == WordDirection.Horizontal)
                                 {
@@ -149,6 +159,8 @@ namespace CrossWordPuzzle.Game
                                 {
                                     direction = WordDirection.Horizontal;
                                 }
+
+                                _wordsPlaced++;
 
                                 break;
                             }
@@ -234,6 +246,17 @@ namespace CrossWordPuzzle.Game
             return result;
         }
 
+
+        private List<WordAndDefinition> SortPlacedWords(List<PlacedWord> placedWords)
+        {
+            var wordDefinitions = new List<WordAndDefinition>();
+            // Sorted Horizontal or vertical
+
+            // Sort in ascending
+
+            return wordDefinitions;
+        }
+
     }
 
     public class WordAndStartPositions
@@ -242,6 +265,13 @@ namespace CrossWordPuzzle.Game
         public List<Tuple<int, int>> StartPosList;
         public string Word;
         
+    }
+
+    public class PlacedWord
+    {
+        public Tuple<int, int> StartPos;
+        public string Word;
+        public WordDirection Direction;
     }
 
 }

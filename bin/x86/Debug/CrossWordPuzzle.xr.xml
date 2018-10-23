@@ -59,6 +59,7 @@
       <RootProperty Name="Padding" />
       <RootProperty Name="BorderThickness" />
       <RootProperty Name="Margin" />
+      <RootProperty Name="Header" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Grid">
       <RootProperty Name="Background" />
