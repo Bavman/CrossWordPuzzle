@@ -47,6 +47,15 @@ namespace CrossWordPuzzle.ViewModel
         }
 
 
+        private ObservableCollection<Definition> _definitions;
+
+        public ObservableCollection<Definition> Definitions
+        {
+            get { return _definitions; }
+            set { _definitions = value; }
+        }
+
+
         public ObservableCollection<ObservableCollection<Cell>> GameBoardLettersToDisplayBoard(char[,] board)
         {
             var returnBoard = new ObservableCollection<ObservableCollection<Cell>>();

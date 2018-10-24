@@ -10,7 +10,5 @@ namespace CrossWordPuzzle.Game
     {
         public string Word;
         public string Definition;
-        public WordDirection Direction;
-        public int StartIndex;
     }
 }

@@ -21,10 +21,9 @@ namespace CrossWordPuzzle.Game
         private int _wordsPlaced;
         private int _minWordsPlaced = 13;
 
-
+        // Keeps trying to solve board until the _minWordsPlaced count is reached 
         public void StartPlaceAllWords()
         {
-
             PlacedWords.Clear();
             _wordsPlaced = 0;
             var solved = false;
@@ -36,10 +35,8 @@ namespace CrossWordPuzzle.Game
 
                     if (_wordsPlaced >= _minWordsPlaced)
                     {
-
                         solved = true;
                         break;
-
                     }
 
                     PlaceWords();
@@ -56,34 +53,39 @@ namespace CrossWordPuzzle.Game
             }
 
             // Sort and find definition of placed words
-
-            Debug.WriteLine("PlacedWords Cound " + PlacedWords.Count);
-
-            //PrepAndJoinWordDefinitionLists();
+            PrepAndJoinWordDefinitionLists();
 
             Debug.WriteLine("Words Placed " + _wordsPlaced);
         }
 
         // Sort and find definition of placed words
-        public List<WordAndDefinition> PrepAndJoinWordDefinitionLists()
+        public List<string> PrepAndJoinWordDefinitionLists()
         {
             var sortedHorizontalPlacedWords = SortPlacedWords(PlacedWords, WordDirection.Horizontal);
             var sortedVerticalPlacedWords = SortPlacedWords(PlacedWords, WordDirection.Vertical);
 
-            var HorizontalWordAndDefinitionList = new List<WordAndDefinition>();
-            var VerticalWordAndDefinitionList = new List<WordAndDefinition>();
+            var HorizontalWordAndDefinitionList = new List<PlacedWord>();
+            var VerticalWordAndDefinitionList = new List<PlacedWord>();
 
-            HorizontalWordAndDefinitionList.Add(new WordAndDefinition { Definition = "ACROSS" });
-
+            HorizontalWordAndDefinitionList.Add(new PlacedWord { Definition = "ACROSS" });
             HorizontalWordAndDefinitionList = FindDefinitions(sortedHorizontalPlacedWords);
 
-            VerticalWordAndDefinitionList.Add(new WordAndDefinition { Definition = "DOWN" });
+            VerticalWordAndDefinitionList.Add(new PlacedWord { Definition = "DOWN" });
+            VerticalWordAndDefinitionList = FindDefinitions(sortedVerticalPlacedWords);
 
-            VerticalWordAndDefinitionList = FindDefinitions(sortedHorizontalPlacedWords);
 
-            return HorizontalWordAndDefinitionList.Concat(VerticalWordAndDefinitionList).ToList();
+            var joinedLists = HorizontalWordAndDefinitionList.Concat(VerticalWordAndDefinitionList).ToList();
+
+            var definitions = joinedLists.Select(d => d.Definition).ToList();
+            for (var i = 0; i < definitions.Count; i++)
+            {
+                Debug.WriteLine(definitions[i]);
+            }
+
+            return definitions;
         }
 
+        // Get new word from WordList Words
         public string RetrieveWord(List<string> usedWords, int letterCount)
         {
 
@@ -121,18 +123,25 @@ namespace CrossWordPuzzle.Game
 
         private void PlaceWords()
         {
-
+            PlacedWords.Clear();
             // First Word
             var word = RetrieveWord(new List<string> { }, _wordSizes[0]);
             var random = new Random();
-            var horizontalPos = random.Next(0, 2);
+            var horizontalPos = random.Next(0, 1);
             var vertiacalPos = random.Next(4, 6);
             var randomStartPos = new Tuple<int, int>(horizontalPos, vertiacalPos);
 
             // Place first word
             var placedWord = Board.Instance().PlaceWord(word, randomStartPos, WordDirection.Horizontal);
-
-            PlacedWords.Add(placedWord);
+            if (placedWord == null)
+            {
+                Debug.WriteLine("IsNull");
+            }
+            else
+            {
+                PlacedWords.Add(placedWord);
+            }
+            
 
             _usedWords.Add(word);
 
@@ -157,14 +166,13 @@ namespace CrossWordPuzzle.Game
                     if (startPositions.Count > 0)
                     {
 
-                        
                         var whileCount = 0;
 
                         // Try start positions until word placement is found
                         while (whileCount < startPositions.Count)
                         {
+                            // Randomly itterate through start positions
                             var listIndex = ReturnRandomNumberExcludingArrayInts(startPositions.Count, usedCharsIndex);
-
                             usedCharsIndex.Add(listIndex);
 
                             var startPos = startPositions[listIndex];
@@ -176,8 +184,6 @@ namespace CrossWordPuzzle.Game
 
                                 _usedWords.Add(word);
 
-                                
-
                                 if (direction == WordDirection.Horizontal)
                                 {
                                     direction = WordDirection.Vertical;
@@ -187,9 +193,8 @@ namespace CrossWordPuzzle.Game
                                     direction = WordDirection.Horizontal;
                                 }
 
-                                Debug.WriteLine(word);
                                 PlacedWords.Add(placedWord);
-
+                                
                                 _wordsPlaced++;
 
                                 break;
@@ -298,9 +303,9 @@ namespace CrossWordPuzzle.Game
             return placedWordsSorted;
         }
 
-        public List<WordAndDefinition> FindDefinitions (List<PlacedWord> placedWords)
+        public List<PlacedWord> FindDefinitions (List<PlacedWord> placedWords)
         {
-            var wordAndDefinitions = new List<WordAndDefinition>();
+            var wordAndDefinitions = new List<PlacedWord>();
 
             for (var i = 0; i < placedWords.Count; i++)
             {
@@ -312,12 +317,12 @@ namespace CrossWordPuzzle.Game
                 }
                 var definition = definitionArray[0].Definition;
 
-                wordAndDefinitions.Add(new WordAndDefinition
+                wordAndDefinitions.Add(new PlacedWord
                 {
                     Word = placedWords[i].Word,
-                    Definition = i + "  " + definition,
-                    StartIndex = i,
-                    Direction = placedWords[i].Direction
+                    StartPos = placedWords[i].StartPos,
+                    Direction = placedWords[i].Direction,
+                    Definition = i+1 + "  " + definition,
                 });
             }
 
