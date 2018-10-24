@@ -57,9 +57,9 @@ namespace CrossWordPuzzle.Game
 
             // Sort and find definition of placed words
 
+            Debug.WriteLine("PlacedWords Cound " + PlacedWords.Count);
 
-
-            PrepAndJoinWordDefinitionLists();
+            //PrepAndJoinWordDefinitionLists();
 
             Debug.WriteLine("Words Placed " + _wordsPlaced);
         }
@@ -176,7 +176,7 @@ namespace CrossWordPuzzle.Game
 
                                 _usedWords.Add(word);
 
-                                PlacedWords.Add(placedWord);
+                                
 
                                 if (direction == WordDirection.Horizontal)
                                 {
@@ -186,6 +186,9 @@ namespace CrossWordPuzzle.Game
                                 {
                                     direction = WordDirection.Horizontal;
                                 }
+
+                                Debug.WriteLine(word);
+                                PlacedWords.Add(placedWord);
 
                                 _wordsPlaced++;
 

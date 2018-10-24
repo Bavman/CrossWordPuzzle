@@ -9,7 +9,7 @@ using System.ComponentModel;
 using System.Collections.Specialized;
 using System.Collections.ObjectModel;
 using Windows.UI.Xaml.Media;
-using CrossWordPuzzle.Game;
+
 using Windows.UI;
 using System.Runtime.CompilerServices;
 
@@ -60,7 +60,7 @@ namespace CrossWordPuzzle.ViewModel
                 {
                     var cell = new Cell { Letter = board[i, j] };
 
-                    if (board[i, j] == Board.Instance()._emptyChar)
+                    if (board[i, j] == ' ')
                     {
                         cell.Colour = new SolidColorBrush(Color.FromArgb(255, 120, 165, 240));
                         cell.ReadOnly = true;
@@ -217,16 +217,16 @@ namespace CrossWordPuzzle.ViewModel
     }
 
 
-    public class WordDefinition : INotifyPropertyChanged
+    public class Definition : INotifyPropertyChanged
     {
-        private string _definition;
+        private string _phrase;
 
-        public string Definition
+        public string Phase
         {
-            get { return _definition; }
+            get { return _phrase; }
             set
             {
-                _definition = value;
+                _phrase = value;
                 PropChangedHandler();
             }
         }
