@@ -42,7 +42,7 @@ namespace CrossWordPuzzle
             _board = Board.Instance();
             _board.InitializeBoard();
 
-            _boardLayout.PlaceAllWords();
+            _boardLayout.StartPlaceAllWords();
 
 
             var convertedBoard2Arrays = _board.ConvertBoardTo2Arrays(_board.CrossWordboard);

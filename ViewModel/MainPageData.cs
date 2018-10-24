@@ -11,6 +11,7 @@ using System.Collections.ObjectModel;
 using Windows.UI.Xaml.Media;
 using CrossWordPuzzle.Game;
 using Windows.UI;
+using System.Runtime.CompilerServices;
 
 namespace CrossWordPuzzle.ViewModel
 {
@@ -215,16 +216,26 @@ namespace CrossWordPuzzle.ViewModel
         }
     }
 
-    public class Words
+
+    public class WordDefinition : INotifyPropertyChanged
     {
-        public string Word { get; set; }
+        private string _definition;
 
-    }
+        public string Definition
+        {
+            get { return _definition; }
+            set
+            {
+                _definition = value;
+                PropChangedHandler();
+            }
+        }
 
-    public class BoardRow
-    {
-        //public List<char> row { get; set; } = new List<char>();
-        public ObservableCollection<char> Row { get; set; } = new ObservableCollection<char> { };
+        public event PropertyChangedEventHandler PropertyChanged;
 
+        private void PropChangedHandler([CallerMemberName] String propName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
+        }
     }
 }
