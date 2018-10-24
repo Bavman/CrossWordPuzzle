@@ -32,6 +32,7 @@ namespace CrossWordPuzzle.Game
             {
                 for (var i = 0; i < 3; i++)
                 {
+                    PlaceWords();
 
                     if (_wordsPlaced >= _minWordsPlaced)
                     {
@@ -39,7 +40,6 @@ namespace CrossWordPuzzle.Game
                         break;
                     }
 
-                    PlaceWords();
                 }
 
                 // Reset the board and start again if min word count in not met
@@ -120,9 +120,11 @@ namespace CrossWordPuzzle.Game
         }
 
 
+        int count;
 
         private void PlaceWords()
         {
+            count++;
             PlacedWords.Clear();
             // First Word
             var word = RetrieveWord(new List<string> { }, _wordSizes[0]);
@@ -130,6 +132,8 @@ namespace CrossWordPuzzle.Game
             var horizontalPos = random.Next(0, 1);
             var vertiacalPos = random.Next(4, 6);
             var randomStartPos = new Tuple<int, int>(horizontalPos, vertiacalPos);
+
+            Debug.WriteLine("Deets word {0}, pos {1},{2}, count{3}", word, randomStartPos.Item1, randomStartPos.Item2, count);
 
             // Place first word
             var placedWord = Board.Instance().PlaceWord(word, randomStartPos, WordDirection.Horizontal);
@@ -142,7 +146,6 @@ namespace CrossWordPuzzle.Game
                 PlacedWords.Add(placedWord);
             }
             
-
             _usedWords.Add(word);
 
             // Rest of board
