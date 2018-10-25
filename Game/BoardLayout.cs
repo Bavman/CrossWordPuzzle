@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Windows.UI.Popups;
 using CrossWordPuzzle.Core;
 using System.Diagnostics;
+using CrossWordPuzzle.ViewModel;
 
 namespace CrossWordPuzzle.Game
 {
@@ -13,10 +14,11 @@ namespace CrossWordPuzzle.Game
     {
 
         public List<PlacedWord> PlacedWords = new List<PlacedWord>();
+        public List<string> Definitions = new List<string>();
 
         private int[] _wordSizes = 
         {
-            9, 9, 8, 8, 7, 7, 7, 6, 6, 5, 5, 5, 4, 4, 4, 4, 3, 3, 3, 3, 3,
+            10, 9, 8, 8, 7, 7, 7, 6, 6, 5, 5, 5, 4, 4, 4, 4, 3, 3, 3, 3, 3,
             9, 9, 8, 8, 7, 7, 7, 6, 6, 5, 5, 5, 4, 4, 4, 4, 3, 3, 3, 3, 3
         };
 
@@ -53,7 +55,7 @@ namespace CrossWordPuzzle.Game
             }
 
             // Sort and find definition of placed words
-            PrepAndJoinWordDefinitionLists();
+            Definitions = PrepAndJoinWordDefinitionLists();
 
             Debug.WriteLine("Words Placed " + _wordsPlaced);
         }
@@ -67,20 +69,17 @@ namespace CrossWordPuzzle.Game
             var HorizontalWordAndDefinitionList = new List<PlacedWord>();
             var VerticalWordAndDefinitionList = new List<PlacedWord>();
 
-            HorizontalWordAndDefinitionList.Add(new PlacedWord { Definition = "ACROSS" });
+            
+
             HorizontalWordAndDefinitionList = FindDefinitions(sortedHorizontalPlacedWords);
+            HorizontalWordAndDefinitionList.Insert(0, (new PlacedWord { Definition = "ACROSS" }));
 
-            VerticalWordAndDefinitionList.Add(new PlacedWord { Definition = "DOWN" });
             VerticalWordAndDefinitionList = FindDefinitions(sortedVerticalPlacedWords);
-
+            VerticalWordAndDefinitionList.Insert (0 , (new PlacedWord { Definition = "DOWN" }));
 
             var joinedLists = HorizontalWordAndDefinitionList.Concat(VerticalWordAndDefinitionList).ToList();
 
             var definitions = joinedLists.Select(d => d.Definition).ToList();
-            for (var i = 0; i < definitions.Count; i++)
-            {
-                Debug.WriteLine(definitions[i]);
-            }
 
             return definitions;
         }
@@ -120,30 +119,31 @@ namespace CrossWordPuzzle.Game
         }
 
 
-        int count;
+        int _count;
 
         private void PlaceWords()
         {
-            count++;
+            _count++;
             PlacedWords.Clear();
             // First Word
             var word = RetrieveWord(new List<string> { }, _wordSizes[0]);
+           
             var random = new Random();
             var horizontalPos = random.Next(0, 1);
             var vertiacalPos = random.Next(4, 6);
             var randomStartPos = new Tuple<int, int>(horizontalPos, vertiacalPos);
 
-            Debug.WriteLine("Deets word {0}, pos {1},{2}, count{3}", word, randomStartPos.Item1, randomStartPos.Item2, count);
+            Debug.WriteLine("Deets word {0}, pos {1},{2}, count{3}", word, randomStartPos.Item1, randomStartPos.Item2, _count);
 
             // Place first word
             var placedWord = Board.Instance().PlaceWord(word, randomStartPos, WordDirection.Horizontal);
-            if (placedWord == null)
+            if (placedWord != null)
             {
-                Debug.WriteLine("IsNull");
+                PlacedWords.Add(placedWord);
             }
             else
             {
-                PlacedWords.Add(placedWord);
+                Debug.WriteLine("IsNull");
             }
             
             _usedWords.Add(word);
@@ -205,6 +205,7 @@ namespace CrossWordPuzzle.Game
                                 {
                                     break;
                                 }
+
                                 break;
                             }
 

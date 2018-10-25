@@ -30,7 +30,6 @@ namespace CrossWordPuzzle
     public sealed partial class MainPage : Page
     {
 
-        Board _board;
         BoardLayout _boardLayout = new BoardLayout();
         MainPageData _mainPageData = new MainPageData();
 
@@ -39,20 +38,18 @@ namespace CrossWordPuzzle
         {
             this.InitializeComponent();
 
-            _board = Board.Instance();
-            _board.InitializeBoard();
+            Board.Instance().InitializeBoard();
 
             _boardLayout.StartPlaceAllWords();
 
+            Board.Instance().DisplayBoard(Board.Instance().CrossWordboard);
+            _mainPageData.DisplayBoard = _mainPageData.GameBoardLettersToDisplayBoard(Board.Instance().CrossWordboard);
 
-            var convertedBoard2Arrays = _board.ConvertBoardTo2Arrays(_board.CrossWordboard);
+            for (var i = 0; i < _boardLayout.Definitions.Count; i++)
+            {
+                _mainPageData.Definitions.Add( new Definition { Phrase = _boardLayout.Definitions[i] });
+            }
 
-            var mainPageData = new MainPageData();
-
-
-
-            _board.DisplayBoard(_board.CrossWordboard);
-            _mainPageData.DisplayBoard = _mainPageData.GameBoardLettersToDisplayBoard(_board.CrossWordboard);
         }
 
 

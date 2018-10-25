@@ -18,14 +18,6 @@ namespace CrossWordPuzzle.ViewModel
     public class MainPageData
     {
 
-        public char[][] _testBoard = new char[][]
-        {
-            new char[] { ' ', 'N', 'O', 'T', 'E', ' ' },
-            new char[] { 'X', 'I', ' ', ' ', 'G', ' ' },
-            new char[] { ' ', 'C', ' ', 'E', 'G', 'O' },
-            new char[] { ' ', 'E', ' ', ' ', ' ', ' ' }
-        };
-
         private ObservableCollection<ObservableCollection<Cell>> _displayBoard = new ObservableCollection<ObservableCollection<Cell>>
         {
             new ObservableCollection<Cell> { new Cell { Letter = ' ' }, new Cell { Letter = 'N' }, new Cell { Letter = 'O' }, new Cell { Letter = 'T' }, new Cell { Letter = 'E' }, new Cell { Letter = ' ' } },
@@ -46,8 +38,7 @@ namespace CrossWordPuzzle.ViewModel
             }
         }
 
-
-        private ObservableCollection<Definition> _definitions;
+        private ObservableCollection<Definition> _definitions = new ObservableCollection<Definition>();
 
         public ObservableCollection<Definition> Definitions
         {
@@ -230,7 +221,7 @@ namespace CrossWordPuzzle.ViewModel
     {
         private string _phrase;
 
-        public string Phase
+        public string Phrase
         {
             get { return _phrase; }
             set

@@ -52,7 +52,6 @@ namespace CrossWordPuzzle.Game
 
                 for (var j = 0; j < _horizontalCount; j++)
                 {
-
                     CrossWordboard[i, j] = _emptyChar;
                     row[j] = _emptyChar;
                 }

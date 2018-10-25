@@ -414,7 +414,7 @@ namespace CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo
             case 14:   //  CrossWordPuzzle.ViewModel.Definition
                 userType = new global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 userType.Activator = Activate_14_Definition;
-                userType.AddMemberName("Phase");
+                userType.AddMemberName("Phrase");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -497,15 +497,15 @@ namespace CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo
             var that = (global::CrossWordPuzzle.ViewModel.MainPageData)instance;
             that.Definitions = (global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.ViewModel.Definition>)Value;
         }
-        private object get_6_Definition_Phase(object instance)
+        private object get_6_Definition_Phrase(object instance)
         {
             var that = (global::CrossWordPuzzle.ViewModel.Definition)instance;
-            return that.Phase;
+            return that.Phrase;
         }
-        private void set_6_Definition_Phase(object instance, object Value)
+        private void set_6_Definition_Phrase(object instance, object Value)
         {
             var that = (global::CrossWordPuzzle.ViewModel.Definition)instance;
-            that.Phase = (global::System.String)Value;
+            that.Phrase = (global::System.String)Value;
         }
         private object get_7_MainPageData_MyTestList(object instance)
         {
@@ -561,11 +561,11 @@ namespace CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo
                 xamlMember.Getter = get_5_MainPageData_Definitions;
                 xamlMember.Setter = set_5_MainPageData_Definitions;
                 break;
-            case "CrossWordPuzzle.ViewModel.Definition.Phase":
+            case "CrossWordPuzzle.ViewModel.Definition.Phrase":
                 userType = (global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlUserType)GetXamlTypeByName("CrossWordPuzzle.ViewModel.Definition");
-                xamlMember = new global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlMember(this, "Phase", "String");
-                xamlMember.Getter = get_6_Definition_Phase;
-                xamlMember.Setter = set_6_Definition_Phase;
+                xamlMember = new global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlMember(this, "Phrase", "String");
+                xamlMember.Getter = get_6_Definition_Phrase;
+                xamlMember.Setter = set_6_Definition_Phrase;
                 break;
             case "CrossWordPuzzle.ViewModel.MainPageData.MyTestList":
                 userType = (global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlUserType)GetXamlTypeByName("CrossWordPuzzle.ViewModel.MainPageData");

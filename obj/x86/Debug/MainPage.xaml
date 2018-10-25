@@ -29,16 +29,32 @@
                          MinHeight="0" 
                          Padding="0"
                          BorderThickness="1"/>
-                
+
 
             </Border>
 
         </DataTemplate>
+        <DataTemplate x:Key="Definition">
 
+            <TextBlock
+                        Text="{Binding Phrase, Mode=TwoWay}" 
+                        FontSize="14" 
+                        HorizontalAlignment="Left" VerticalAlignment="Top" 
+                        RenderTransformOrigin="0.5,0.5" 
+                        Width="350" 
+                        TextAlignment="Left"
+                        TextWrapping="Wrap"
+                        MinWidth="0"
+                        MinHeight="0" 
+                        Padding="0"
+                        
+                        />
+
+        </DataTemplate>
 
         <DataTemplate x:Key="Column">
             <ItemsControl 
-                ItemsSource="{Binding Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                ItemsSource="{Binding Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" 
                 ItemTemplate="{StaticResource Cell}"
                 >
                 <ItemsControl.ItemsPanel>
@@ -72,8 +88,7 @@
 
             <Grid Grid.Column="1" Grid.Row="1" Width="420" Height="420" >
 
-
-                <ItemsControl x:ConnectionId='5'
+                <ItemsControl x:ConnectionId='7'
                     
                     UseLayoutRounding="False"
                                                                                                                             
@@ -85,9 +100,16 @@
 
                 </ItemsControl>
 
+
             </Grid>
-            <Button x:ConnectionId='4' x:Name="ButtonPrintList" Content="Print Cross List" Grid.Column="2" HorizontalAlignment="Left" Margin="61,80,0,0" Grid.Row="1" VerticalAlignment="Top"                              />
-            <TextBox Grid.Column="2" HorizontalAlignment="Left" Margin="376,152,0,0" Grid.Row="1" Text="TextBox" VerticalAlignment="Top" Header="he"/>
+
+            <ItemsControl x:ConnectionId='5'
+                Grid.Column="2" Grid.Row="1"  
+                Width="350"
+                                                                                   HorizontalAlignment="Left" Margin="10,26,0,124"
+                ItemTemplate="{StaticResource Definition}" Grid.RowSpan="2"
+                />
+            <Button x:ConnectionId='6' x:Name="ButtonPrintList" Content="Print Cross List" Grid.Column="2" HorizontalAlignment="Left" Margin="380,4,0,0" Grid.Row="1" VerticalAlignment="Top"                              />
 
         </Grid>
     </Grid>
