@@ -14,7 +14,11 @@ namespace CrossWordPuzzle.Game
 
         public List<PlacedWord> PlacedWords = new List<PlacedWord>();
 
-        private int[] _wordSizes = new int[] { 9, 9, 8, 8, 7, 7, 7, 6, 6, 5, 5, 5, 4, 4, 4, 4, 3, 3, 3, 3, 3 }; // 10 words
+        private int[] _wordSizes = 
+        {
+            9, 9, 8, 8, 7, 7, 7, 6, 6, 5, 5, 5, 4, 4, 4, 4, 3, 3, 3, 3, 3,
+            9, 9, 8, 8, 7, 7, 7, 6, 6, 5, 5, 5, 4, 4, 4, 4, 3, 3, 3, 3, 3
+        };
 
         private List<string> _usedWords = new List<string>();
 
@@ -30,16 +34,12 @@ namespace CrossWordPuzzle.Game
 
             while (solved == false)
             {
-                for (var i = 0; i < 3; i++)
+                PlaceWords();
+
+                if (_wordsPlaced >= _minWordsPlaced)
                 {
-                    PlaceWords();
-
-                    if (_wordsPlaced >= _minWordsPlaced)
-                    {
-                        solved = true;
-                        break;
-                    }
-
+                    solved = true;
+                    break;
                 }
 
                 // Reset the board and start again if min word count in not met
@@ -200,6 +200,11 @@ namespace CrossWordPuzzle.Game
                                 
                                 _wordsPlaced++;
 
+                                // Break from while if wordcount reached
+                                if (_wordsPlaced >= _minWordsPlaced)
+                                {
+                                    break;
+                                }
                                 break;
                             }
 
