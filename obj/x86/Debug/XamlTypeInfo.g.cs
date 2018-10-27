@@ -326,7 +326,6 @@ namespace CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo
                 userType.Activator = Activate_0_MainPageData;
                 userType.AddMemberName("DisplayBoard");
                 userType.AddMemberName("Definitions");
-                userType.AddMemberName("MyTestList");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -415,6 +414,7 @@ namespace CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo
                 userType = new global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 userType.Activator = Activate_14_Definition;
                 userType.AddMemberName("Phrase");
+                userType.AddMemberName("FontWeight");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -507,15 +507,15 @@ namespace CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo
             var that = (global::CrossWordPuzzle.ViewModel.Definition)instance;
             that.Phrase = (global::System.String)Value;
         }
-        private object get_7_MainPageData_MyTestList(object instance)
+        private object get_7_Definition_FontWeight(object instance)
         {
-            var that = (global::CrossWordPuzzle.ViewModel.MainPageData)instance;
-            return that.MyTestList;
+            var that = (global::CrossWordPuzzle.ViewModel.Definition)instance;
+            return that.FontWeight;
         }
-        private void set_7_MainPageData_MyTestList(object instance, object Value)
+        private void set_7_Definition_FontWeight(object instance, object Value)
         {
-            var that = (global::CrossWordPuzzle.ViewModel.MainPageData)instance;
-            that.MyTestList = (global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.ViewModel.Cell>)Value;
+            var that = (global::CrossWordPuzzle.ViewModel.Definition)instance;
+            that.FontWeight = (global::System.String)Value;
         }
 
         private global::Windows.UI.Xaml.Markup.IXamlMember CreateXamlMember(string longMemberName)
@@ -567,11 +567,11 @@ namespace CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo
                 xamlMember.Getter = get_6_Definition_Phrase;
                 xamlMember.Setter = set_6_Definition_Phrase;
                 break;
-            case "CrossWordPuzzle.ViewModel.MainPageData.MyTestList":
-                userType = (global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlUserType)GetXamlTypeByName("CrossWordPuzzle.ViewModel.MainPageData");
-                xamlMember = new global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlMember(this, "MyTestList", "System.Collections.ObjectModel.ObservableCollection`1<CrossWordPuzzle.ViewModel.Cell>");
-                xamlMember.Getter = get_7_MainPageData_MyTestList;
-                xamlMember.Setter = set_7_MainPageData_MyTestList;
+            case "CrossWordPuzzle.ViewModel.Definition.FontWeight":
+                userType = (global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlUserType)GetXamlTypeByName("CrossWordPuzzle.ViewModel.Definition");
+                xamlMember = new global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlMember(this, "FontWeight", "String");
+                xamlMember.Getter = get_7_Definition_FontWeight;
+                xamlMember.Setter = set_7_Definition_FontWeight;
                 break;
             }
             return xamlMember;

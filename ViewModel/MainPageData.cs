@@ -81,24 +81,6 @@ namespace CrossWordPuzzle.ViewModel
 
         }
 
-        private ObservableCollection<Cell> _testList = new ObservableCollection<Cell>
-        {
-            new Cell { Letter = ' ' },
-            new Cell { Letter = 'N' },
-            new Cell { Letter = 'O' },
-            new Cell { Letter = 'T' },
-            new Cell { Letter = 'E' },
-            new Cell { Letter = ' ' }
-        };
-
-        public ObservableCollection<Cell> MyTestList
-        {
-            get { return _testList; }
-
-            set { _testList = value; }
-
-        }
-
 
         public void PrintBoard(ObservableCollection<ObservableCollection<char>> board)
         {
@@ -136,15 +118,6 @@ namespace CrossWordPuzzle.ViewModel
             {
                 Debug.WriteLine(list[i].Letter);
             }
-        }
-
-        public void ModifyList()
-        {
-            MyTestList[0].Letter = 'N';
-            MyTestList[1].Letter = 'E';
-            MyTestList[2].Letter = 'W';
-            MyTestList[3].Letter = 'L';
-            MyTestList[4].Letter = 'I';
         }
 
     }
@@ -229,6 +202,19 @@ namespace CrossWordPuzzle.ViewModel
                 _phrase = value;
                 PropChangedHandler();
             }
+        }
+
+        private string _fontWeight;
+
+        public string FontWeight
+        {
+            get { return _fontWeight; }
+            set
+            {
+                _fontWeight = value;
+                PropChangedHandler();
+            }
+
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

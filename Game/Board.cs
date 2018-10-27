@@ -38,7 +38,6 @@ namespace CrossWordPuzzle.Game
         private int _horizontalCount = 12;
         private int _verticalCount = 12;
 
-
         public void InitializeBoard()
         {
             var rowLetters = new string(_emptyChar, _horizontalCount);
@@ -82,7 +81,6 @@ namespace CrossWordPuzzle.Game
                 }
             }
         }
-
 
         public List<Tuple<int,int>> ReturnWordStartPositions(string word, int charIndex, WordDirection direction)
         {

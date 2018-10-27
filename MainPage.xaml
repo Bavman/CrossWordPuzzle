@@ -10,15 +10,19 @@
     <Page.DataContext>
         <local:MainPageData/>
     </Page.DataContext>
-
+    
     <Page.Resources>
-
+        <Style x:Name="TextBoxStyle" TargetType="TextBox" >
+            
+            
+        </Style>
         <DataTemplate x:Key="Cell">
 
-            <Border BorderBrush="Black" BorderThickness="0">
+            <Border BorderBrush="Black" BorderThickness="2">
                 <TextBox x:Name="LetterCell" 
                          Text="{Binding Letter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                          Background="{Binding Colour, Mode=OneWay}"
+                         
                          IsReadOnly="{Binding ReadOnly, Mode=OneWay}"
                          FontSize="16" 
                          HorizontalAlignment="Center" VerticalAlignment="Center" 
@@ -37,7 +41,7 @@
         <DataTemplate x:Key="Definition">
 
             <TextBlock
-                        Text="{Binding Phrase, Mode=TwoWay}" 
+                        Text="{Binding Phrase, Mode=OneWay}" 
                         FontSize="14" 
                         HorizontalAlignment="Left" VerticalAlignment="Top" 
                         RenderTransformOrigin="0.5,0.5" 
@@ -46,7 +50,8 @@
                         TextWrapping="Wrap"
                         MinWidth="0"
                         MinHeight="0" 
-                        Padding="0"
+                        Padding="0" 
+                        FontWeight="{Binding FontWeight, Mode=OneWay}" 
                         
                         />
 

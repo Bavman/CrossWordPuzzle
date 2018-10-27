@@ -47,7 +47,16 @@ namespace CrossWordPuzzle
 
             for (var i = 0; i < _boardLayout.Definitions.Count; i++)
             {
-                _mainPageData.Definitions.Add( new Definition { Phrase = _boardLayout.Definitions[i] });
+
+                if (_boardLayout.Definitions[i] == "ACROSS" || _boardLayout.Definitions[i] == "DOWN")
+                {
+                    _mainPageData.Definitions.Add(new Definition { Phrase = _boardLayout.Definitions[i], FontWeight = "Bold"});
+                }
+                else
+                {
+                    _mainPageData.Definitions.Add(new Definition { Phrase = _boardLayout.Definitions[i], FontWeight = "Normal" });
+                }
+                
             }
 
         }

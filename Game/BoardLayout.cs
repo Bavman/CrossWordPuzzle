@@ -276,12 +276,12 @@ namespace CrossWordPuzzle.Game
 
         }
 
-
-        public int ReturnRandomNumberExcludingArrayInts(int length, List<int> usedCharsIndex)
+        // Returns a random number from a int List considering the used numbers
+        public int ReturnRandomNumberExcludingArrayInts(int length, List<int> usedNumbers)
         {
             var sequenceArray = Enumerable.Range(0, length).ToArray();
 
-            var availableInts = sequenceArray.Except(usedCharsIndex).ToArray();
+            var availableInts = sequenceArray.Except(usedNumbers).ToArray();
 
 
             var random = new Random();
@@ -291,7 +291,6 @@ namespace CrossWordPuzzle.Game
             return result;
         }
 
-
         public List<PlacedWord> SortPlacedWords(List<PlacedWord> placedWords, WordDirection direction)
         {
             
@@ -300,12 +299,12 @@ namespace CrossWordPuzzle.Game
             if (direction == WordDirection.Horizontal)
             {
                 placedWordsSorted = placedWords.Where(w => w.Direction == direction)
-                    .OrderBy(w => w.StartPos.Item1).ToList();
+                    .OrderBy(w => w.StartPos.Item2).ThenBy(w => w.StartPos.Item1).ToList();
             }
             if (direction == WordDirection.Vertical)
             {
                 placedWordsSorted = placedWords.Where(w => w.Direction == direction)
-                    .OrderBy(w => w.StartPos.Item2).ToList();
+                    .OrderBy(w => w.StartPos.Item1).ThenBy(w => w.StartPos.Item2).ToList();
             }
 
             // Sort in ascending
@@ -337,8 +336,6 @@ namespace CrossWordPuzzle.Game
 
             return wordAndDefinitions;
         }
-
-        
 
     }
 

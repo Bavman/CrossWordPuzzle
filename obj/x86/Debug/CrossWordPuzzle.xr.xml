@@ -2,8 +2,8 @@
 <Roots >
   <Roots.PropertyPathNames>
     <RootPropertyPathName Name="Phrase" />
+    <RootPropertyPathName Name="FontWeight" />
     <RootPropertyPathName Name="Letter" />
-    <RootPropertyPathName Name="Colour" />
     <RootPropertyPathName Name="ReadOnly" />
   </Roots.PropertyPathNames>
   <Roots.RootTypes>
@@ -14,6 +14,22 @@
       <RootProperty Name="Content" />
     </RootType>
     <RootType FullName="CrossWordPuzzle.ViewModel.MainPageData" />
+    <RootType FullName="Windows.UI.Xaml.Controls.TextBox">
+      <RootProperty Name="Text" />
+      <RootProperty Name="Background" />
+      <RootProperty Name="IsReadOnly" />
+      <RootProperty Name="FontSize" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="RenderTransformOrigin" />
+      <RootProperty Name="Height" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="TextAlignment" />
+      <RootProperty Name="MinWidth" />
+      <RootProperty Name="MinHeight" />
+      <RootProperty Name="Padding" />
+      <RootProperty Name="BorderThickness" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.DataTemplate">
       <RootProperty Name="Template" />
     </RootType>
@@ -53,27 +69,12 @@
       <RootProperty Name="MinWidth" />
       <RootProperty Name="MinHeight" />
       <RootProperty Name="Padding" />
+      <RootProperty Name="FontWeight" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Border">
       <RootProperty Name="BorderBrush" />
       <RootProperty Name="BorderThickness" />
       <RootProperty Name="Child" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.TextBox">
-      <RootProperty Name="Text" />
-      <RootProperty Name="Background" />
-      <RootProperty Name="IsReadOnly" />
-      <RootProperty Name="FontSize" />
-      <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="RenderTransformOrigin" />
-      <RootProperty Name="Height" />
-      <RootProperty Name="Width" />
-      <RootProperty Name="TextAlignment" />
-      <RootProperty Name="MinWidth" />
-      <RootProperty Name="MinHeight" />
-      <RootProperty Name="Padding" />
-      <RootProperty Name="BorderThickness" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Grid">
       <RootProperty Name="Background" />
