@@ -18,24 +18,24 @@
         </Style>
         <DataTemplate x:Key="Cell">
 
-            <Border BorderBrush="Black" BorderThickness="2">
-                <TextBox x:Name="LetterCell" 
-                         Text="{Binding Letter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                         Background="{Binding Colour, Mode=OneWay}"
+            <TextBox 
+                x:Name="LetterCell" 
+                Text="{Binding Letter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                Background="{Binding Colour, Mode=OneWay}"
                          
-                         IsReadOnly="{Binding ReadOnly, Mode=OneWay}"
-                         FontSize="16" 
-                         HorizontalAlignment="Center" VerticalAlignment="Center" 
-                         RenderTransformOrigin="0.5,0.5" 
-                         Height="32" Width="32" 
-                         TextAlignment="Center" 
-                         MinWidth="0"
-                         MinHeight="0" 
-                         Padding="0"
-                         BorderThickness="1"/>
-
-
-            </Border>
+                IsReadOnly="{Binding ReadOnly, Mode=OneWay}"
+                FontSize="16" 
+                HorizontalAlignment="Center" VerticalAlignment="Center" 
+                RenderTransformOrigin="0.5,0.5" 
+                Height="32" Width="32" 
+                TextAlignment="Center" 
+                MinWidth="0"
+                MinHeight="0" 
+                Padding="0"
+                BorderThickness="1"
+                Tapped="LetterCell_Tapped"
+                PointerEntered="LetterCell_PointerEntered"
+                />
 
         </DataTemplate>
         <DataTemplate x:Key="Definition">
@@ -76,9 +76,9 @@
     </Page.Resources>
 
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid x:Name="RootGrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-        <Grid Margin="28,0,-28,0">
+        <Grid x:Name="LayoutGrid" Margin="28,0,-28,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="6*"/>
                 <RowDefinition Height="420"/>
@@ -91,9 +91,9 @@
             </Grid.ColumnDefinitions>
 
 
-            <Grid Grid.Column="1" Grid.Row="1" Width="420" Height="420" >
+            <Grid x:Name ="CrossWordGrid" Grid.Column="1" Grid.Row="1" Width="420" Height="420" >
 
-                <ItemsControl
+                <ItemsControl x:Name="CrossWordItemsControl"
                     
                     UseLayoutRounding="False"
                     ItemsSource="{x:Bind Path=_mainPageData.DisplayBoard, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"

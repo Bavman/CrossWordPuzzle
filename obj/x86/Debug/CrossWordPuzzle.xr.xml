@@ -4,6 +4,7 @@
     <RootPropertyPathName Name="Phrase" />
     <RootPropertyPathName Name="FontWeight" />
     <RootPropertyPathName Name="Letter" />
+    <RootPropertyPathName Name="Colour" />
     <RootPropertyPathName Name="ReadOnly" />
   </Roots.PropertyPathNames>
   <Roots.RootTypes>
@@ -29,6 +30,8 @@
       <RootProperty Name="MinHeight" />
       <RootProperty Name="Padding" />
       <RootProperty Name="BorderThickness" />
+      <RootEvent Name="Tapped" />
+      <RootEvent Name="PointerEntered" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.DataTemplate">
       <RootProperty Name="Template" />
@@ -70,11 +73,6 @@
       <RootProperty Name="MinHeight" />
       <RootProperty Name="Padding" />
       <RootProperty Name="FontWeight" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.Border">
-      <RootProperty Name="BorderBrush" />
-      <RootProperty Name="BorderThickness" />
-      <RootProperty Name="Child" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Grid">
       <RootProperty Name="Background" />

@@ -19,6 +19,7 @@ using System.Diagnostics;
 using CrossWordPuzzle.ViewModel;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
+using System.Reflection;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -38,6 +39,9 @@ namespace CrossWordPuzzle
         {
             this.InitializeComponent();
 
+
+            //LetterCell.AddHandler(TappedEvent, new TappedEventHandler(LetterCell_Tapped), true);
+            
             Board.Instance().InitializeBoard();
 
             _boardLayout.StartPlaceAllWords();
@@ -58,9 +62,32 @@ namespace CrossWordPuzzle
                 }
                 
             }
+            var TextBoxList = new List<TextBox>();
 
+            //FindChildren<TextBox>(TextBoxList, this.CrossWordItemsControl);
+            //Debug.WriteLine(TextBoxList.Count);
+            //Debug.WriteLine(TextBoxList[0].Name);
+            var test = VisualTreeHelper.GetChildrenCount(this.CrossWordItemsControl);
+            Debug.WriteLine("t "+test);
         }
 
+
+        internal static void FindChildren<T>(List<T> results, DependencyObject startNode)
+          where T : DependencyObject
+        {
+            int count = VisualTreeHelper.GetChildrenCount(startNode);
+            Debug.WriteLine("count " + count);
+            for (int i = 0; i < count; i++)
+            {
+                DependencyObject current = VisualTreeHelper.GetChild(startNode, i);
+                if ((current.GetType()).Equals(typeof(T)) || (current.GetType().GetTypeInfo().IsSubclassOf(typeof(T))))
+                {
+                    T asType = (T)current;
+                    results.Add(asType);
+                }
+                FindChildren<T>(results, current);
+            }
+        }
 
 
         private void ButtonPrintList_Click(object sender, RoutedEventArgs e)
@@ -68,5 +95,17 @@ namespace CrossWordPuzzle
             _mainPageData.PrintBoard(_mainPageData.DisplayBoard);
         }
 
+        private void LetterCell_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            Debug.WriteLine(e.OriginalSource);
+            Debug.WriteLine("TEST");
+        }
+
+        private void LetterCell_PointerEntered(object sender, PointerRoutedEventArgs e)
+        {
+            var originalSource = e.Pointer;
+            Debug.WriteLine(originalSource);
+
+        }
     }
 }
