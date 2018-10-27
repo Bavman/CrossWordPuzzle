@@ -20,7 +20,7 @@ using CrossWordPuzzle.ViewModel;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
 using System.Reflection;
-
+using CrossWordPuzzle.Model;
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
 namespace CrossWordPuzzle
@@ -67,8 +67,8 @@ namespace CrossWordPuzzle
             //FindChildren<TextBox>(TextBoxList, this.CrossWordItemsControl);
             //Debug.WriteLine(TextBoxList.Count);
             //Debug.WriteLine(TextBoxList[0].Name);
-            var test = VisualTreeHelper.GetChildrenCount(this.CrossWordItemsControl);
-            Debug.WriteLine("t "+test);
+            //var test = VisualTreeHelper.GetChildrenCount(this.CrossWordItemsControl);
+            //Debug.WriteLine("t "+test);
         }
 
 

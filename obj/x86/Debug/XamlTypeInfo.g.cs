@@ -192,19 +192,19 @@ namespace CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo
             _typeNameTable = new string[19];
             _typeNameTable[0] = "CrossWordPuzzle.ViewModel.MainPageData";
             _typeNameTable[1] = "Object";
-            _typeNameTable[2] = "System.Collections.ObjectModel.ObservableCollection`1<System.Collections.ObjectModel.ObservableCollection`1<CrossWordPuzzle.ViewModel.Cell>>";
-            _typeNameTable[3] = "System.Collections.ObjectModel.Collection`1<System.Collections.ObjectModel.ObservableCollection`1<CrossWordPuzzle.ViewModel.Cell>>";
-            _typeNameTable[4] = "System.Collections.ObjectModel.ObservableCollection`1<CrossWordPuzzle.ViewModel.Cell>";
-            _typeNameTable[5] = "System.Collections.ObjectModel.Collection`1<CrossWordPuzzle.ViewModel.Cell>";
-            _typeNameTable[6] = "CrossWordPuzzle.ViewModel.Cell";
+            _typeNameTable[2] = "System.Collections.ObjectModel.ObservableCollection`1<System.Collections.ObjectModel.ObservableCollection`1<CrossWordPuzzle.Model.Cell>>";
+            _typeNameTable[3] = "System.Collections.ObjectModel.Collection`1<System.Collections.ObjectModel.ObservableCollection`1<CrossWordPuzzle.Model.Cell>>";
+            _typeNameTable[4] = "System.Collections.ObjectModel.ObservableCollection`1<CrossWordPuzzle.Model.Cell>";
+            _typeNameTable[5] = "System.Collections.ObjectModel.Collection`1<CrossWordPuzzle.Model.Cell>";
+            _typeNameTable[6] = "CrossWordPuzzle.Model.Cell";
             _typeNameTable[7] = "Char";
             _typeNameTable[8] = "System.ValueType";
             _typeNameTable[9] = "Windows.UI.Xaml.Media.SolidColorBrush";
             _typeNameTable[10] = "Boolean";
             _typeNameTable[11] = "Int32";
-            _typeNameTable[12] = "System.Collections.ObjectModel.ObservableCollection`1<CrossWordPuzzle.ViewModel.Definition>";
-            _typeNameTable[13] = "System.Collections.ObjectModel.Collection`1<CrossWordPuzzle.ViewModel.Definition>";
-            _typeNameTable[14] = "CrossWordPuzzle.ViewModel.Definition";
+            _typeNameTable[12] = "System.Collections.ObjectModel.ObservableCollection`1<CrossWordPuzzle.Model.Definition>";
+            _typeNameTable[13] = "System.Collections.ObjectModel.Collection`1<CrossWordPuzzle.Model.Definition>";
+            _typeNameTable[14] = "CrossWordPuzzle.Model.Definition";
             _typeNameTable[15] = "String";
             _typeNameTable[16] = "CrossWordPuzzle.MainPage";
             _typeNameTable[17] = "Windows.UI.Xaml.Controls.Page";
@@ -213,19 +213,19 @@ namespace CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo
             _typeTable = new global::System.Type[19];
             _typeTable[0] = typeof(global::CrossWordPuzzle.ViewModel.MainPageData);
             _typeTable[1] = typeof(global::System.Object);
-            _typeTable[2] = typeof(global::System.Collections.ObjectModel.ObservableCollection<global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.ViewModel.Cell>>);
-            _typeTable[3] = typeof(global::System.Collections.ObjectModel.Collection<global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.ViewModel.Cell>>);
-            _typeTable[4] = typeof(global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.ViewModel.Cell>);
-            _typeTable[5] = typeof(global::System.Collections.ObjectModel.Collection<global::CrossWordPuzzle.ViewModel.Cell>);
-            _typeTable[6] = typeof(global::CrossWordPuzzle.ViewModel.Cell);
+            _typeTable[2] = typeof(global::System.Collections.ObjectModel.ObservableCollection<global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.Model.Cell>>);
+            _typeTable[3] = typeof(global::System.Collections.ObjectModel.Collection<global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.Model.Cell>>);
+            _typeTable[4] = typeof(global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.Model.Cell>);
+            _typeTable[5] = typeof(global::System.Collections.ObjectModel.Collection<global::CrossWordPuzzle.Model.Cell>);
+            _typeTable[6] = typeof(global::CrossWordPuzzle.Model.Cell);
             _typeTable[7] = typeof(global::System.Char);
             _typeTable[8] = typeof(global::System.ValueType);
             _typeTable[9] = typeof(global::Windows.UI.Xaml.Media.SolidColorBrush);
             _typeTable[10] = typeof(global::System.Boolean);
             _typeTable[11] = typeof(global::System.Int32);
-            _typeTable[12] = typeof(global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.ViewModel.Definition>);
-            _typeTable[13] = typeof(global::System.Collections.ObjectModel.Collection<global::CrossWordPuzzle.ViewModel.Definition>);
-            _typeTable[14] = typeof(global::CrossWordPuzzle.ViewModel.Definition);
+            _typeTable[12] = typeof(global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.Model.Definition>);
+            _typeTable[13] = typeof(global::System.Collections.ObjectModel.Collection<global::CrossWordPuzzle.Model.Definition>);
+            _typeTable[14] = typeof(global::CrossWordPuzzle.Model.Definition);
             _typeTable[15] = typeof(global::System.String);
             _typeTable[16] = typeof(global::CrossWordPuzzle.MainPage);
             _typeTable[17] = typeof(global::Windows.UI.Xaml.Controls.Page);
@@ -265,49 +265,49 @@ namespace CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo
         }
 
         private object Activate_0_MainPageData() { return new global::CrossWordPuzzle.ViewModel.MainPageData(); }
-        private object Activate_2_ObservableCollection() { return new global::System.Collections.ObjectModel.ObservableCollection<global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.ViewModel.Cell>>(); }
-        private object Activate_3_Collection() { return new global::System.Collections.ObjectModel.Collection<global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.ViewModel.Cell>>(); }
-        private object Activate_4_ObservableCollection() { return new global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.ViewModel.Cell>(); }
-        private object Activate_5_Collection() { return new global::System.Collections.ObjectModel.Collection<global::CrossWordPuzzle.ViewModel.Cell>(); }
-        private object Activate_6_Cell() { return new global::CrossWordPuzzle.ViewModel.Cell(); }
-        private object Activate_12_ObservableCollection() { return new global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.ViewModel.Definition>(); }
-        private object Activate_13_Collection() { return new global::System.Collections.ObjectModel.Collection<global::CrossWordPuzzle.ViewModel.Definition>(); }
-        private object Activate_14_Definition() { return new global::CrossWordPuzzle.ViewModel.Definition(); }
+        private object Activate_2_ObservableCollection() { return new global::System.Collections.ObjectModel.ObservableCollection<global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.Model.Cell>>(); }
+        private object Activate_3_Collection() { return new global::System.Collections.ObjectModel.Collection<global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.Model.Cell>>(); }
+        private object Activate_4_ObservableCollection() { return new global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.Model.Cell>(); }
+        private object Activate_5_Collection() { return new global::System.Collections.ObjectModel.Collection<global::CrossWordPuzzle.Model.Cell>(); }
+        private object Activate_6_Cell() { return new global::CrossWordPuzzle.Model.Cell(); }
+        private object Activate_12_ObservableCollection() { return new global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.Model.Definition>(); }
+        private object Activate_13_Collection() { return new global::System.Collections.ObjectModel.Collection<global::CrossWordPuzzle.Model.Definition>(); }
+        private object Activate_14_Definition() { return new global::CrossWordPuzzle.Model.Definition(); }
         private object Activate_16_MainPage() { return new global::CrossWordPuzzle.MainPage(); }
         private void VectorAdd_2_ObservableCollection(object instance, object item)
         {
-            var collection = (global::System.Collections.Generic.ICollection<global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.ViewModel.Cell>>)instance;
-            var newItem = (global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.ViewModel.Cell>)item;
+            var collection = (global::System.Collections.Generic.ICollection<global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.Model.Cell>>)instance;
+            var newItem = (global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.Model.Cell>)item;
             collection.Add(newItem);
         }
         private void VectorAdd_3_Collection(object instance, object item)
         {
-            var collection = (global::System.Collections.Generic.ICollection<global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.ViewModel.Cell>>)instance;
-            var newItem = (global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.ViewModel.Cell>)item;
+            var collection = (global::System.Collections.Generic.ICollection<global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.Model.Cell>>)instance;
+            var newItem = (global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.Model.Cell>)item;
             collection.Add(newItem);
         }
         private void VectorAdd_4_ObservableCollection(object instance, object item)
         {
-            var collection = (global::System.Collections.Generic.ICollection<global::CrossWordPuzzle.ViewModel.Cell>)instance;
-            var newItem = (global::CrossWordPuzzle.ViewModel.Cell)item;
+            var collection = (global::System.Collections.Generic.ICollection<global::CrossWordPuzzle.Model.Cell>)instance;
+            var newItem = (global::CrossWordPuzzle.Model.Cell)item;
             collection.Add(newItem);
         }
         private void VectorAdd_5_Collection(object instance, object item)
         {
-            var collection = (global::System.Collections.Generic.ICollection<global::CrossWordPuzzle.ViewModel.Cell>)instance;
-            var newItem = (global::CrossWordPuzzle.ViewModel.Cell)item;
+            var collection = (global::System.Collections.Generic.ICollection<global::CrossWordPuzzle.Model.Cell>)instance;
+            var newItem = (global::CrossWordPuzzle.Model.Cell)item;
             collection.Add(newItem);
         }
         private void VectorAdd_12_ObservableCollection(object instance, object item)
         {
-            var collection = (global::System.Collections.Generic.ICollection<global::CrossWordPuzzle.ViewModel.Definition>)instance;
-            var newItem = (global::CrossWordPuzzle.ViewModel.Definition)item;
+            var collection = (global::System.Collections.Generic.ICollection<global::CrossWordPuzzle.Model.Definition>)instance;
+            var newItem = (global::CrossWordPuzzle.Model.Definition)item;
             collection.Add(newItem);
         }
         private void VectorAdd_13_Collection(object instance, object item)
         {
-            var collection = (global::System.Collections.Generic.ICollection<global::CrossWordPuzzle.ViewModel.Definition>)instance;
-            var newItem = (global::CrossWordPuzzle.ViewModel.Definition)item;
+            var collection = (global::System.Collections.Generic.ICollection<global::CrossWordPuzzle.Model.Definition>)instance;
+            var newItem = (global::CrossWordPuzzle.Model.Definition)item;
             collection.Add(newItem);
         }
 
@@ -334,28 +334,28 @@ namespace CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo
                 xamlType = new global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 2:   //  System.Collections.ObjectModel.ObservableCollection`1<System.Collections.ObjectModel.ObservableCollection`1<CrossWordPuzzle.ViewModel.Cell>>
-                userType = new global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Collections.ObjectModel.Collection`1<System.Collections.ObjectModel.ObservableCollection`1<CrossWordPuzzle.ViewModel.Cell>>"));
+            case 2:   //  System.Collections.ObjectModel.ObservableCollection`1<System.Collections.ObjectModel.ObservableCollection`1<CrossWordPuzzle.Model.Cell>>
+                userType = new global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Collections.ObjectModel.Collection`1<System.Collections.ObjectModel.ObservableCollection`1<CrossWordPuzzle.Model.Cell>>"));
                 userType.CollectionAdd = VectorAdd_2_ObservableCollection;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 3:   //  System.Collections.ObjectModel.Collection`1<System.Collections.ObjectModel.ObservableCollection`1<CrossWordPuzzle.ViewModel.Cell>>
+            case 3:   //  System.Collections.ObjectModel.Collection`1<System.Collections.ObjectModel.ObservableCollection`1<CrossWordPuzzle.Model.Cell>>
                 userType = new global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 userType.Activator = Activate_3_Collection;
                 userType.CollectionAdd = VectorAdd_3_Collection;
                 xamlType = userType;
                 break;
 
-            case 4:   //  System.Collections.ObjectModel.ObservableCollection`1<CrossWordPuzzle.ViewModel.Cell>
-                userType = new global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Collections.ObjectModel.Collection`1<CrossWordPuzzle.ViewModel.Cell>"));
+            case 4:   //  System.Collections.ObjectModel.ObservableCollection`1<CrossWordPuzzle.Model.Cell>
+                userType = new global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Collections.ObjectModel.Collection`1<CrossWordPuzzle.Model.Cell>"));
                 userType.Activator = Activate_4_ObservableCollection;
                 userType.CollectionAdd = VectorAdd_4_ObservableCollection;
                 xamlType = userType;
                 break;
 
-            case 5:   //  System.Collections.ObjectModel.Collection`1<CrossWordPuzzle.ViewModel.Cell>
+            case 5:   //  System.Collections.ObjectModel.Collection`1<CrossWordPuzzle.Model.Cell>
                 userType = new global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 userType.Activator = Activate_5_Collection;
                 userType.CollectionAdd = VectorAdd_5_Collection;
@@ -363,7 +363,7 @@ namespace CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 6:   //  CrossWordPuzzle.ViewModel.Cell
+            case 6:   //  CrossWordPuzzle.Model.Cell
                 userType = new global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 userType.Activator = Activate_6_Cell;
                 userType.AddMemberName("Letter");
@@ -396,21 +396,21 @@ namespace CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo
                 xamlType = new global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 12:   //  System.Collections.ObjectModel.ObservableCollection`1<CrossWordPuzzle.ViewModel.Definition>
-                userType = new global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Collections.ObjectModel.Collection`1<CrossWordPuzzle.ViewModel.Definition>"));
+            case 12:   //  System.Collections.ObjectModel.ObservableCollection`1<CrossWordPuzzle.Model.Definition>
+                userType = new global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Collections.ObjectModel.Collection`1<CrossWordPuzzle.Model.Definition>"));
                 userType.CollectionAdd = VectorAdd_12_ObservableCollection;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 13:   //  System.Collections.ObjectModel.Collection`1<CrossWordPuzzle.ViewModel.Definition>
+            case 13:   //  System.Collections.ObjectModel.Collection`1<CrossWordPuzzle.Model.Definition>
                 userType = new global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 userType.Activator = Activate_13_Collection;
                 userType.CollectionAdd = VectorAdd_13_Collection;
                 xamlType = userType;
                 break;
 
-            case 14:   //  CrossWordPuzzle.ViewModel.Definition
+            case 14:   //  CrossWordPuzzle.Model.Definition
                 userType = new global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 userType.Activator = Activate_14_Definition;
                 userType.AddMemberName("Phrase");
@@ -450,41 +450,41 @@ namespace CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo
         private void set_0_MainPageData_DisplayBoard(object instance, object Value)
         {
             var that = (global::CrossWordPuzzle.ViewModel.MainPageData)instance;
-            that.DisplayBoard = (global::System.Collections.ObjectModel.ObservableCollection<global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.ViewModel.Cell>>)Value;
+            that.DisplayBoard = (global::System.Collections.ObjectModel.ObservableCollection<global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.Model.Cell>>)Value;
         }
         private object get_1_Cell_Letter(object instance)
         {
-            var that = (global::CrossWordPuzzle.ViewModel.Cell)instance;
+            var that = (global::CrossWordPuzzle.Model.Cell)instance;
             return that.Letter;
         }
         private void set_1_Cell_Letter(object instance, object Value)
         {
-            var that = (global::CrossWordPuzzle.ViewModel.Cell)instance;
+            var that = (global::CrossWordPuzzle.Model.Cell)instance;
             that.Letter = (global::System.Char)Value;
         }
         private object get_2_Cell_Colour(object instance)
         {
-            var that = (global::CrossWordPuzzle.ViewModel.Cell)instance;
+            var that = (global::CrossWordPuzzle.Model.Cell)instance;
             return that.Colour;
         }
         private void set_2_Cell_Colour(object instance, object Value)
         {
-            var that = (global::CrossWordPuzzle.ViewModel.Cell)instance;
+            var that = (global::CrossWordPuzzle.Model.Cell)instance;
             that.Colour = (global::Windows.UI.Xaml.Media.SolidColorBrush)Value;
         }
         private object get_3_Cell_ReadOnly(object instance)
         {
-            var that = (global::CrossWordPuzzle.ViewModel.Cell)instance;
+            var that = (global::CrossWordPuzzle.Model.Cell)instance;
             return that.ReadOnly;
         }
         private void set_3_Cell_ReadOnly(object instance, object Value)
         {
-            var that = (global::CrossWordPuzzle.ViewModel.Cell)instance;
+            var that = (global::CrossWordPuzzle.Model.Cell)instance;
             that.ReadOnly = (global::System.Boolean)Value;
         }
         private object get_4_Collection_Count(object instance)
         {
-            var that = (global::System.Collections.ObjectModel.Collection<global::CrossWordPuzzle.ViewModel.Cell>)instance;
+            var that = (global::System.Collections.ObjectModel.Collection<global::CrossWordPuzzle.Model.Cell>)instance;
             return that.Count;
         }
         private object get_5_MainPageData_Definitions(object instance)
@@ -495,26 +495,26 @@ namespace CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo
         private void set_5_MainPageData_Definitions(object instance, object Value)
         {
             var that = (global::CrossWordPuzzle.ViewModel.MainPageData)instance;
-            that.Definitions = (global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.ViewModel.Definition>)Value;
+            that.Definitions = (global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.Model.Definition>)Value;
         }
         private object get_6_Definition_Phrase(object instance)
         {
-            var that = (global::CrossWordPuzzle.ViewModel.Definition)instance;
+            var that = (global::CrossWordPuzzle.Model.Definition)instance;
             return that.Phrase;
         }
         private void set_6_Definition_Phrase(object instance, object Value)
         {
-            var that = (global::CrossWordPuzzle.ViewModel.Definition)instance;
+            var that = (global::CrossWordPuzzle.Model.Definition)instance;
             that.Phrase = (global::System.String)Value;
         }
         private object get_7_Definition_FontWeight(object instance)
         {
-            var that = (global::CrossWordPuzzle.ViewModel.Definition)instance;
+            var that = (global::CrossWordPuzzle.Model.Definition)instance;
             return that.FontWeight;
         }
         private void set_7_Definition_FontWeight(object instance, object Value)
         {
-            var that = (global::CrossWordPuzzle.ViewModel.Definition)instance;
+            var that = (global::CrossWordPuzzle.Model.Definition)instance;
             that.FontWeight = (global::System.String)Value;
         }
 
@@ -527,48 +527,48 @@ namespace CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo
             {
             case "CrossWordPuzzle.ViewModel.MainPageData.DisplayBoard":
                 userType = (global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlUserType)GetXamlTypeByName("CrossWordPuzzle.ViewModel.MainPageData");
-                xamlMember = new global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlMember(this, "DisplayBoard", "System.Collections.ObjectModel.ObservableCollection`1<System.Collections.ObjectModel.ObservableCollection`1<CrossWordPuzzle.ViewModel.Cell>>");
+                xamlMember = new global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlMember(this, "DisplayBoard", "System.Collections.ObjectModel.ObservableCollection`1<System.Collections.ObjectModel.ObservableCollection`1<CrossWordPuzzle.Model.Cell>>");
                 xamlMember.Getter = get_0_MainPageData_DisplayBoard;
                 xamlMember.Setter = set_0_MainPageData_DisplayBoard;
                 break;
-            case "CrossWordPuzzle.ViewModel.Cell.Letter":
-                userType = (global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlUserType)GetXamlTypeByName("CrossWordPuzzle.ViewModel.Cell");
+            case "CrossWordPuzzle.Model.Cell.Letter":
+                userType = (global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlUserType)GetXamlTypeByName("CrossWordPuzzle.Model.Cell");
                 xamlMember = new global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlMember(this, "Letter", "Char");
                 xamlMember.Getter = get_1_Cell_Letter;
                 xamlMember.Setter = set_1_Cell_Letter;
                 break;
-            case "CrossWordPuzzle.ViewModel.Cell.Colour":
-                userType = (global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlUserType)GetXamlTypeByName("CrossWordPuzzle.ViewModel.Cell");
+            case "CrossWordPuzzle.Model.Cell.Colour":
+                userType = (global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlUserType)GetXamlTypeByName("CrossWordPuzzle.Model.Cell");
                 xamlMember = new global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlMember(this, "Colour", "Windows.UI.Xaml.Media.SolidColorBrush");
                 xamlMember.Getter = get_2_Cell_Colour;
                 xamlMember.Setter = set_2_Cell_Colour;
                 break;
-            case "CrossWordPuzzle.ViewModel.Cell.ReadOnly":
-                userType = (global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlUserType)GetXamlTypeByName("CrossWordPuzzle.ViewModel.Cell");
+            case "CrossWordPuzzle.Model.Cell.ReadOnly":
+                userType = (global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlUserType)GetXamlTypeByName("CrossWordPuzzle.Model.Cell");
                 xamlMember = new global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlMember(this, "ReadOnly", "Boolean");
                 xamlMember.Getter = get_3_Cell_ReadOnly;
                 xamlMember.Setter = set_3_Cell_ReadOnly;
                 break;
-            case "System.Collections.ObjectModel.Collection`1<CrossWordPuzzle.ViewModel.Cell>.Count":
-                userType = (global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlUserType)GetXamlTypeByName("System.Collections.ObjectModel.Collection`1<CrossWordPuzzle.ViewModel.Cell>");
+            case "System.Collections.ObjectModel.Collection`1<CrossWordPuzzle.Model.Cell>.Count":
+                userType = (global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlUserType)GetXamlTypeByName("System.Collections.ObjectModel.Collection`1<CrossWordPuzzle.Model.Cell>");
                 xamlMember = new global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlMember(this, "Count", "Int32");
                 xamlMember.Getter = get_4_Collection_Count;
                 xamlMember.SetIsReadOnly();
                 break;
             case "CrossWordPuzzle.ViewModel.MainPageData.Definitions":
                 userType = (global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlUserType)GetXamlTypeByName("CrossWordPuzzle.ViewModel.MainPageData");
-                xamlMember = new global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlMember(this, "Definitions", "System.Collections.ObjectModel.ObservableCollection`1<CrossWordPuzzle.ViewModel.Definition>");
+                xamlMember = new global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlMember(this, "Definitions", "System.Collections.ObjectModel.ObservableCollection`1<CrossWordPuzzle.Model.Definition>");
                 xamlMember.Getter = get_5_MainPageData_Definitions;
                 xamlMember.Setter = set_5_MainPageData_Definitions;
                 break;
-            case "CrossWordPuzzle.ViewModel.Definition.Phrase":
-                userType = (global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlUserType)GetXamlTypeByName("CrossWordPuzzle.ViewModel.Definition");
+            case "CrossWordPuzzle.Model.Definition.Phrase":
+                userType = (global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlUserType)GetXamlTypeByName("CrossWordPuzzle.Model.Definition");
                 xamlMember = new global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlMember(this, "Phrase", "String");
                 xamlMember.Getter = get_6_Definition_Phrase;
                 xamlMember.Setter = set_6_Definition_Phrase;
                 break;
-            case "CrossWordPuzzle.ViewModel.Definition.FontWeight":
-                userType = (global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlUserType)GetXamlTypeByName("CrossWordPuzzle.ViewModel.Definition");
+            case "CrossWordPuzzle.Model.Definition.FontWeight":
+                userType = (global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlUserType)GetXamlTypeByName("CrossWordPuzzle.Model.Definition");
                 xamlMember = new global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlMember(this, "FontWeight", "String");
                 xamlMember.Getter = get_7_Definition_FontWeight;
                 xamlMember.Setter = set_7_Definition_FontWeight;

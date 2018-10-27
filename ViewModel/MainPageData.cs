@@ -9,7 +9,7 @@ using System.ComponentModel;
 using System.Collections.Specialized;
 using System.Collections.ObjectModel;
 using Windows.UI.Xaml.Media;
-
+using CrossWordPuzzle.Model;
 using Windows.UI;
 using System.Runtime.CompilerServices;
 
@@ -138,90 +138,6 @@ namespace CrossWordPuzzle.ViewModel
         }
     }
 
-    public class Cell : INotifyPropertyChanged
-    {
-        private char _letter;
 
-        public char Letter
-        {
-            get { return _letter; }
-
-            set
-            {
-                _letter = value;
-
-                PropChangedHandler("Letter");
-            }
-        }
-
-        private SolidColorBrush _colour;
-
-        public SolidColorBrush Colour
-        {
-            get { return _colour; }
-
-            set
-            {
-                _colour = value;
-                PropChangedHandler("Colour");
-            }
-
-        }
-
-        private bool _readOnly;
-
-        public bool ReadOnly
-        {
-            get { return _readOnly; }
-            set
-            {
-                _readOnly = value;
-                PropChangedHandler("ReadOnly");
-            }
-        }
-
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void PropChangedHandler (string propName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
-        }
-    }
-
-
-    public class Definition : INotifyPropertyChanged
-    {
-        private string _phrase;
-
-        public string Phrase
-        {
-            get { return _phrase; }
-            set
-            {
-                _phrase = value;
-                PropChangedHandler();
-            }
-        }
-
-        private string _fontWeight;
-
-        public string FontWeight
-        {
-            get { return _fontWeight; }
-            set
-            {
-                _fontWeight = value;
-                PropChangedHandler();
-            }
-
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void PropChangedHandler([CallerMemberName] String propName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
-        }
-    }
+    
 }

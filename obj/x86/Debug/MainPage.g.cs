@@ -134,7 +134,7 @@ namespace CrossWordPuzzle
                     }
                 }
             }
-            private void Update__mainPageData_Definitions(global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.ViewModel.Definition> obj, int phase)
+            private void Update__mainPageData_Definitions(global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.Model.Definition> obj, int phase)
             {
                 this.bindingsTracking.UpdateChildListeners__mainPageData_Definitions(obj);
                 if ((phase & ((1 << 0) | NOT_PHASED | DATA_CHANGED)) != 0)
@@ -143,7 +143,7 @@ namespace CrossWordPuzzle
                     XamlBindingSetters.Set_Windows_UI_Xaml_Controls_ItemsControl_ItemsSource(this.obj9, obj, null);
                 }
             }
-            private void Update__mainPageData_DisplayBoard(global::System.Collections.ObjectModel.ObservableCollection<global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.ViewModel.Cell>> obj, int phase)
+            private void Update__mainPageData_DisplayBoard(global::System.Collections.ObjectModel.ObservableCollection<global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.Model.Cell>> obj, int phase)
             {
                 this.bindingsTracking.UpdateChildListeners__mainPageData_DisplayBoard(obj);
                 if ((phase & ((1 << 0) | NOT_PHASED | DATA_CHANGED)) != 0)
@@ -156,7 +156,7 @@ namespace CrossWordPuzzle
             {
                 if (this.initialized)
                 {
-                    this.dataRoot._mainPageData.DisplayBoard = (global::System.Collections.ObjectModel.ObservableCollection<global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.ViewModel.Cell>>)this.obj11.ItemsSource;
+                    this.dataRoot._mainPageData.DisplayBoard = (global::System.Collections.ObjectModel.ObservableCollection<global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.Model.Cell>>)this.obj11.ItemsSource;
                 }
             }
 
@@ -198,7 +198,7 @@ namespace CrossWordPuzzle
                     if (bindings != null)
                     {
                         string propName = e.PropertyName;
-                        global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.ViewModel.Definition> obj = sender as global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.ViewModel.Definition>;
+                        global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.Model.Definition> obj = sender as global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.Model.Definition>;
                         if (global::System.String.IsNullOrEmpty(propName))
                         {
                         }
@@ -217,11 +217,11 @@ namespace CrossWordPuzzle
                     MainPage_obj1_Bindings bindings = TryGetBindingObject();
                     if (bindings != null)
                     {
-                        global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.ViewModel.Definition> obj = sender as global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.ViewModel.Definition>;
+                        global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.Model.Definition> obj = sender as global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.Model.Definition>;
                     }
                 }
-                private global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.ViewModel.Definition> cache__mainPageData_Definitions = null;
-                public void UpdateChildListeners__mainPageData_Definitions(global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.ViewModel.Definition> obj)
+                private global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.Model.Definition> cache__mainPageData_Definitions = null;
+                public void UpdateChildListeners__mainPageData_Definitions(global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.Model.Definition> obj)
                 {
                     if (obj != cache__mainPageData_Definitions)
                     {
@@ -245,7 +245,7 @@ namespace CrossWordPuzzle
                     if (bindings != null)
                     {
                         string propName = e.PropertyName;
-                        global::System.Collections.ObjectModel.ObservableCollection<global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.ViewModel.Cell>> obj = sender as global::System.Collections.ObjectModel.ObservableCollection<global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.ViewModel.Cell>>;
+                        global::System.Collections.ObjectModel.ObservableCollection<global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.Model.Cell>> obj = sender as global::System.Collections.ObjectModel.ObservableCollection<global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.Model.Cell>>;
                         if (global::System.String.IsNullOrEmpty(propName))
                         {
                         }
@@ -264,11 +264,11 @@ namespace CrossWordPuzzle
                     MainPage_obj1_Bindings bindings = TryGetBindingObject();
                     if (bindings != null)
                     {
-                        global::System.Collections.ObjectModel.ObservableCollection<global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.ViewModel.Cell>> obj = sender as global::System.Collections.ObjectModel.ObservableCollection<global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.ViewModel.Cell>>;
+                        global::System.Collections.ObjectModel.ObservableCollection<global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.Model.Cell>> obj = sender as global::System.Collections.ObjectModel.ObservableCollection<global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.Model.Cell>>;
                     }
                 }
-                private global::System.Collections.ObjectModel.ObservableCollection<global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.ViewModel.Cell>> cache__mainPageData_DisplayBoard = null;
-                public void UpdateChildListeners__mainPageData_DisplayBoard(global::System.Collections.ObjectModel.ObservableCollection<global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.ViewModel.Cell>> obj)
+                private global::System.Collections.ObjectModel.ObservableCollection<global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.Model.Cell>> cache__mainPageData_DisplayBoard = null;
+                public void UpdateChildListeners__mainPageData_DisplayBoard(global::System.Collections.ObjectModel.ObservableCollection<global::System.Collections.ObjectModel.ObservableCollection<global::CrossWordPuzzle.Model.Cell>> obj)
                 {
                     if (obj != cache__mainPageData_DisplayBoard)
                     {
