@@ -329,13 +329,15 @@ namespace CrossWordPuzzle.Game
                     Word = placedWords[i].Word,
                     StartPos = placedWords[i].StartPos,
                     Direction = placedWords[i].Direction,
-                    Definition = i+1 + "  " + definition,
+                    DefinitionIndex = i + 1,
+                    Definition = definition,
                 });
             }
 
             return wordAndDefinitions;
         }
 
+        // Generate board that holds the across and down definition numbers
         public Board GenerateBoardLocations(List<PlacedWord> placedWords)
         {
             var Board = new Board(
@@ -343,12 +345,15 @@ namespace CrossWordPuzzle.Game
                 BoardCrossWord.Instance().CrossWordboard.Height,
                 BoardCrossWord.Instance().CrossWordboard.EmptyChar);
 
-            var horizontalWords = SortPlacedWords(PlacedWords, WordDirection.Horizontal);
-            var verticalWords = SortPlacedWords(PlacedWords, WordDirection.Vertical);
-
             for (var i = 0; i < placedWords.Count; i++)
             {
+                if (placedWords[i].Direction == WordDirection.Horizontal)
+                {
+                    //Board.Layout[]
+                } else
+                {
 
+                }
             }
 
 

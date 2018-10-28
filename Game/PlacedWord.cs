@@ -11,6 +11,7 @@ namespace CrossWordPuzzle.Game
         public Tuple<int, int> StartPos;
         public string Word;
         public WordDirection Direction;
+        public int DefinitionIndex;
         public string Definition;
     }
 }
