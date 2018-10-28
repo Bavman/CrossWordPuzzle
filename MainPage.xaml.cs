@@ -1,7 +1,9 @@
 ﻿using CrossWordPuzzle.Game;
 using CrossWordPuzzle.Model;
 using CrossWordPuzzle.ViewModel;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Reflection;
 using Windows.UI.Xaml;
@@ -36,22 +38,9 @@ namespace CrossWordPuzzle
 
             _mainPageData.DisplayBoard = _mainPageData.GameBoardLettersToDisplayBoard(BoardCrossWord.Instance().CrossWordboard.Layout);
 
+            _mainPageData.Definitions = new ObservableCollection<Definition>(_boardLayout.Definitions);
 
-            for (var i = 0; i < _boardLayout.Definitions.Count; i++)
-            {
-
-                if (_boardLayout.Definitions[i] == "ACROSS" || _boardLayout.Definitions[i] == "DOWN")
-                {
-                    _mainPageData.Definitions.Add(new Definition { Phrase = _boardLayout.Definitions[i], FontWeight = "Bold"});
-                }
-                else
-                {
-                    _mainPageData.Definitions.Add(new Definition { Phrase = _boardLayout.Definitions[i], FontWeight = "Normal" });
-                }
-                
-            }
-            var TextBoxList = new List<TextBox>();
-
+            _boardLayout.AssignDefinitionLocations(_boardLayout.SortedPlacedWords, _mainPageData.DisplayBoard);
             //FindChildren<TextBox>(TextBoxList, this.CrossWordItemsControl);
             //Debug.WriteLine(TextBoxList.Count);
             //Debug.WriteLine(TextBoxList[0].Name);
@@ -59,6 +48,17 @@ namespace CrossWordPuzzle
             //Debug.WriteLine("t "+test);
         }
 
+
+        private void SolveBoard (ObservableCollection<ObservableCollection<Cell>> board)
+        {
+            for (var i = 0; i < board.Count; i++)
+            {
+                for (var j = 0; j < board[i].Count; j++)
+                {
+                    board[i][j].LetterIn = board[i][j].LetterOut;
+                }
+            }
+        }
 
         internal static void FindChildren<T>(List<T> results, DependencyObject startNode)
           where T : DependencyObject
@@ -80,6 +80,7 @@ namespace CrossWordPuzzle
 
         private void ButtonPrintList_Click(object sender, RoutedEventArgs e)
         {
+            Debug.WriteLine("Print Board");
             _mainPageData.PrintBoard(_mainPageData.DisplayBoard);
         }
 
@@ -95,5 +96,23 @@ namespace CrossWordPuzzle
             Debug.WriteLine(originalSource);
 
         }
+
+        private void ButtonSolve_Click(object sender, RoutedEventArgs e)
+        {
+            SolveBoard(_mainPageData.DisplayBoard);
+        }
+
+        private void ButtonTestGetWords_Click(object sender, RoutedEventArgs e)
+        {
+            for (var i = 0; i < 50; i++)
+            {
+                var random = new Random();
+                var word = _boardLayout.RetrieveWord(_testUsedWords, 8);
+                _testUsedWords.Add(word);
+                Debug.WriteLine("Words Placed " + word);
+            }
+        }
+
+        List<string> _testUsedWords = new List<string>();
     }
 }

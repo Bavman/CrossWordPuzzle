@@ -7,7 +7,6 @@ namespace CrossWordPuzzle.Model
     public class Definition : INotifyPropertyChanged
     {
         private string _phrase;
-
         public string Phrase
         {
             get { return _phrase; }
@@ -17,6 +16,18 @@ namespace CrossWordPuzzle.Model
                 PropChangedHandler();
             }
         }
+
+        private string _index;
+        public string Index
+        {
+            get { return _index; }
+            set
+            {
+                _index = value;
+                PropChangedHandler();
+            }
+        }
+
 
         private string _fontWeight;
 

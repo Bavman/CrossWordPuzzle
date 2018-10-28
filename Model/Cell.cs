@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using Windows.UI.Xaml.Media;
 
@@ -21,10 +22,9 @@ namespace CrossWordPuzzle.Model
             }
         }
 
+        private char _letterIn;
 
-        private string _letterIn;
-
-        public string LetterIn
+        public char LetterIn
         {
             get { return _letterIn; }
             set
@@ -34,6 +34,19 @@ namespace CrossWordPuzzle.Model
             }
         }
 
+        private string _definitionLocation;
+
+        public string DefinitionLocation
+        {
+            get { return _definitionLocation; }
+
+            set
+            {
+                _definitionLocation = value;
+
+                PropChangedHandler();
+            }
+        }
 
         private SolidColorBrush _colour;
 

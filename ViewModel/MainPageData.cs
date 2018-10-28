@@ -100,7 +100,7 @@ namespace CrossWordPuzzle.ViewModel
 
                 for (var j = 0; j < board[i].Count; j++)
                 {
-                    row += board[i][j].LetterOut + " ";
+                    row += board[i][j].LetterIn + " ";
                 }
                 Debug.WriteLine(row);
             }

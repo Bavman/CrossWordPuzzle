@@ -473,7 +473,7 @@ namespace CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo
         private void set_2_Cell_LetterIn(object instance, object Value)
         {
             var that = (global::CrossWordPuzzle.Model.Cell)instance;
-            that.LetterIn = (global::System.Char)Value;
+            that.LetterIn = (global::System.String)Value;
         }
         private object get_3_Cell_DefinitionLocation(object instance)
         {
@@ -572,7 +572,7 @@ namespace CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo
                 break;
             case "CrossWordPuzzle.Model.Cell.LetterIn":
                 userType = (global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlUserType)GetXamlTypeByName("CrossWordPuzzle.Model.Cell");
-                xamlMember = new global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlMember(this, "LetterIn", "Char");
+                xamlMember = new global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlMember(this, "LetterIn", "String");
                 xamlMember.Getter = get_2_Cell_LetterIn;
                 xamlMember.Setter = set_2_Cell_LetterIn;
                 break;
