@@ -26,16 +26,15 @@ namespace CrossWordPuzzle
         {
             this.InitializeComponent();
 
-
             //LetterCell.AddHandler(TappedEvent, new TappedEventHandler(LetterCell_Tapped), true);
             
-            BoardControl.Instance().InitializeBoard();
+            BoardCrossWord.Instance().InitializeBoard(12, 12, ' ');
 
             _boardLayout.StartPlaceAllWords();
 
-            BoardControl.Instance().DisplayBoard(BoardControl.Instance().CrossWordboard.Layout);
+            BoardCrossWord.Instance().DisplayBoard(BoardCrossWord.Instance().CrossWordboard.Layout);
 
-            _mainPageData.DisplayBoard = _mainPageData.GameBoardLettersToDisplayBoard(BoardControl.Instance().CrossWordboard.Layout);
+            _mainPageData.DisplayBoard = _mainPageData.GameBoardLettersToDisplayBoard(BoardCrossWord.Instance().CrossWordboard.Layout);
 
 
             for (var i = 0; i < _boardLayout.Definitions.Count; i++)

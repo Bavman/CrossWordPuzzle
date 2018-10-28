@@ -8,21 +8,21 @@ using CrossWordPuzzle.Game;
 
 namespace CrossWordPuzzle.Game
 {
-    public class BoardControl
+    public class BoardCrossWord
     {
         #region Singleton Setup
-        static BoardControl _instance = null;
+        static BoardCrossWord _instance = null;
 
-        private BoardControl()
+        private BoardCrossWord()
         {
 
         }
 
-        public static BoardControl Instance()
+        public static BoardCrossWord Instance()
         {
             if (_instance == null)
             {
-                _instance = new BoardControl();
+                _instance = new BoardCrossWord();
 
             }
 
@@ -31,29 +31,34 @@ namespace CrossWordPuzzle.Game
 
         #endregion
 
-        public char _emptyChar = ' ';
-
-        private int _horizontalCount = 12;
-        private int _verticalCount = 12;
+        private char _emptyChar;
+        public int _width;
+        public int _height;
 
         public Board CrossWordboard;
 
-        public void InitializeBoard()
+        public void InitializeBoard(int width, int height, char emptyChar)
         {
-            CrossWordboard = new Board(_horizontalCount, _verticalCount, _emptyChar); // Array 1 is Row, Array 2 is Column
+
+            CrossWordboard = new Board(width, height, emptyChar); // Array 1 is Row, Array 2 is Column
+
+
+            _width = CrossWordboard.Width;
+            _height = CrossWordboard.Height;
+            _emptyChar = CrossWordboard.EmptyChar;
         }
 
 
         public void ResetBoard()
         {
 
-            var rowLetters = new string(_emptyChar, _verticalCount);
+            var rowLetters = new string(_emptyChar, _height);
 
-            for (var i = 0; i < _horizontalCount; i++)
+            for (var i = 0; i < _width; i++)
             {
-                var row = new char[_horizontalCount];
+                var row = new char[_width];
 
-                for (var j = 0; j < _horizontalCount; j++)
+                for (var j = 0; j < _width; j++)
                 {
                     CrossWordboard.Layout[i, j] = _emptyChar;
                     row[j] = _emptyChar;
@@ -115,7 +120,7 @@ namespace CrossWordPuzzle.Game
                         if (direction == WordDirection.Horizontal)
                         {
                             // Horizontal Check if word is not too long and start of word fits on board
-                            if ((wordLength - charIndex) + j <= _horizontalCount && j - charIndex >= 0)
+                            if ((wordLength - charIndex) + j <= _width && j - charIndex >= 0)
                             {
 
                                 potentialStartPositions.Add(new Tuple<int, int>(j - charIndex, i));
@@ -126,7 +131,7 @@ namespace CrossWordPuzzle.Game
                         if (direction == WordDirection.Vertical)
                         {
                             // Vertical Check if word is not too long and start of word fits on board
-                            if ((wordLength - charIndex) + i <= _verticalCount && i - charIndex >= 0)
+                            if ((wordLength - charIndex) + i <= _height && i - charIndex >= 0)
                             {
 
                                 potentialStartPositions.Add(new Tuple<int, int>(j, i - charIndex));
@@ -175,7 +180,7 @@ namespace CrossWordPuzzle.Game
             {
                 case WordDirection.Horizontal:
 
-                    if (startPos.Item1 + wordLength > _horizontalCount || startPos.Item2 >= _verticalCount)
+                    if (startPos.Item1 + wordLength > _width || startPos.Item2 >= _height)
                     {
                         return false;
                     }
@@ -189,7 +194,7 @@ namespace CrossWordPuzzle.Game
 
                 case WordDirection.Vertical:
 
-                    if (startPos.Item2 + wordLength > _verticalCount || startPos.Item1 >= _horizontalCount)
+                    if (startPos.Item2 + wordLength > _height || startPos.Item1 >= _width)
                     {
                         return false;
                     }
@@ -217,7 +222,7 @@ namespace CrossWordPuzzle.Game
             for (var i = start; i < end; i++)
             {
                 // Ignore if scan hits out of range cells
-                if (i >= 0 && i < _horizontalCount) 
+                if (i >= 0 && i < _width) 
                 {
                     if (CheckHorizontalIntersectionsAndPadding(i, startPos, word))
                     {
@@ -242,7 +247,7 @@ namespace CrossWordPuzzle.Game
             {
 
                 // Ignore if scan hits out of range cells
-                if (i >= 0 && i < _verticalCount)
+                if (i >= 0 && i < _height)
                 {
                     if (CheckVerticalIntersectionsAndPadding(i, startPos, word))
                     {
@@ -308,7 +313,7 @@ namespace CrossWordPuzzle.Game
                     }
 
                     // Check Padding Down
-                    if (startPos.Item2 + 1 < _verticalCount)
+                    if (startPos.Item2 + 1 < _height)
                     {
 
                         if (CrossWordboard.Layout[startPos.Item2 + 1, i] != _emptyChar)
@@ -388,7 +393,7 @@ namespace CrossWordPuzzle.Game
                     }
 
                     // Check Padding Right
-                    if (startPos.Item1 + 1 < _horizontalCount)
+                    if (startPos.Item1 + 1 < _width)
                     {
 
                         if (CrossWordboard.Layout[i, startPos.Item1 + 1] != _emptyChar)
@@ -434,7 +439,7 @@ namespace CrossWordPuzzle.Game
                     }
 
                     // Finish row counting
-                    if (j == _horizontalCount - 1)
+                    if (j == _width - 1)
                     {
 
                         vacantRowCount = 0;
@@ -560,12 +565,12 @@ namespace CrossWordPuzzle.Game
 
         public char[][] ConvertBoardTo2Arrays(char[,] board)
         {
-            var returnBoard = new char[_verticalCount][];
+            var returnBoard = new char[_height][];
 
 
             for (var i = 0; i < board.GetLength(0); i++)
             {
-                returnBoard[i] = new char[_horizontalCount];
+                returnBoard[i] = new char[_width];
 
                 for (var j = 0; j < board.GetLength(1); j++)
                 {
@@ -580,7 +585,7 @@ namespace CrossWordPuzzle.Game
 
         public char[,] ConvertBoardToMultidimensionalArray(char[][] board)
         {
-            var returnBoard = new char[_verticalCount, _horizontalCount];
+            var returnBoard = new char[_height, _width];
 
 
             for (var i = 0; i < board.Length; i++)

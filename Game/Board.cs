@@ -9,10 +9,18 @@ namespace CrossWordPuzzle.Game
     public class Board
     {
 
-        public char[,] Layout;
+        public char[,] Layout { get; set; }
+
+        public int Width { get; set; }
+        public int Height { get; set; }
+        public char EmptyChar { get; set; }
 
         public Board(int width, int height, char emptyChar)
         {
+            Width = width;
+            Height = height;
+            EmptyChar = emptyChar;
+
             Layout = InitializeBoard(width, height, emptyChar);
         }
 
