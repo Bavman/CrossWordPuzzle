@@ -7,19 +7,33 @@ namespace CrossWordPuzzle.Model
 {
     public class Cell : INotifyPropertyChanged
     {
-        private char _letter;
+        private char _letterOut;
 
-        public char Letter
+        public char LetterOut
         {
-            get { return _letter; }
+            get { return _letterOut; }
 
             set
             {
-                _letter = value;
+                _letterOut = value;
 
                 PropChangedHandler();
             }
         }
+
+
+        private string _letterIn;
+
+        public string LetterIn
+        {
+            get { return _letterIn; }
+            set
+            {
+                _letterIn = value;
+                PropChangedHandler();
+            }
+        }
+
 
         private SolidColorBrush _colour;
 

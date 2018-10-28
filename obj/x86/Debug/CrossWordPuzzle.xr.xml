@@ -3,7 +3,8 @@
   <Roots.PropertyPathNames>
     <RootPropertyPathName Name="Phrase" />
     <RootPropertyPathName Name="FontWeight" />
-    <RootPropertyPathName Name="Letter" />
+    <RootPropertyPathName Name="LetterOut" />
+    <RootPropertyPathName Name="LetterIn" />
     <RootPropertyPathName Name="Colour" />
     <RootPropertyPathName Name="ReadOnly" />
   </Roots.PropertyPathNames>
@@ -59,6 +60,7 @@
       <RootProperty Name="Orientation" />
       <RootProperty Name="Background" />
       <RootProperty Name="UseLayoutRounding" />
+      <RootProperty Name="Children" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.TextBlock">
       <RootProperty Name="Text" />
@@ -73,6 +75,8 @@
       <RootProperty Name="MinHeight" />
       <RootProperty Name="Padding" />
       <RootProperty Name="FontWeight" />
+      <RootProperty Name="Height" />
+      <RootProperty Name="Margin" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Grid">
       <RootProperty Name="Background" />
@@ -95,6 +99,13 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ColumnDefinition">
       <RootProperty Name="Width" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.Border">
+      <RootProperty Name="BorderBrush" />
+      <RootProperty Name="BorderThickness" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="Height" />
+      <RootProperty Name="Child" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Button">
       <RootProperty Name="Content" />

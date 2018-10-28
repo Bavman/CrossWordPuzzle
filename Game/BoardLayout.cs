@@ -47,7 +47,8 @@ namespace CrossWordPuzzle.Game
                 // Reset the board and start again if min word count in not met
                 if (!solved)
                 {
-                    Board.Instance().InitializeBoard();
+                    BoardControl.Instance().ResetBoard();
+
                     _wordsPlaced = 0;
                     _usedWords = new List<string>();
                     solved = false;
@@ -136,7 +137,7 @@ namespace CrossWordPuzzle.Game
             Debug.WriteLine("Deets word {0}, pos {1},{2}, count{3}", word, randomStartPos.Item1, randomStartPos.Item2, _count);
 
             // Place first word
-            var placedWord = Board.Instance().PlaceWord(word, randomStartPos, WordDirection.Horizontal);
+            var placedWord = BoardControl.Instance().PlaceWord(word, randomStartPos, WordDirection.Horizontal);
             if (placedWord != null)
             {
                 PlacedWords.Add(placedWord);
@@ -180,7 +181,7 @@ namespace CrossWordPuzzle.Game
 
                             var startPos = startPositions[listIndex];
 
-                            placedWord = Board.Instance().PlaceWord(word, startPos, direction);
+                            placedWord = BoardControl.Instance().PlaceWord(word, startPos, direction);
 
                             if (placedWord != null)
                             {
@@ -241,7 +242,7 @@ namespace CrossWordPuzzle.Game
                 while (wordCharCount < word.Length)
                 {
 
-                    var posList = Board.Instance().ReturnWordStartPositions(word, wordCharCount, direction);
+                    var posList = BoardControl.Instance().ReturnWordStartPositions(word, wordCharCount, direction);
                     starPosList.AddRange(posList);
 
                     wordCharCount ++;
@@ -337,14 +338,19 @@ namespace CrossWordPuzzle.Game
             return wordAndDefinitions;
         }
 
-    }
+        public void GenerateAcrossDownLocations(List<PlacedWord> placedWords)
+        {
 
-    public class WordAndStartPositions
-    {
+            var horizontalWords = SortPlacedWords(PlacedWords, WordDirection.Horizontal);
+            var verticalWords = SortPlacedWords(PlacedWords, WordDirection.Vertical);
 
-        public List<Tuple<int, int>> StartPosList;
-        public string Word;
-        
+            for (var i = 0; i < placedWords.Count; i++)
+            {
+
+            }
+
+        } 
+
     }
 
 }

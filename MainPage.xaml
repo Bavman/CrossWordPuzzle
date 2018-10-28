@@ -17,10 +17,10 @@
             
         </Style>
         <DataTemplate x:Key="Cell">
-
-            <TextBox 
+            <StackPanel>
+                <TextBox 
                 x:Name="LetterCell" 
-                Text="{Binding Letter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                Text="{Binding LetterIn, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                 Background="{Binding Colour, Mode=OneWay}"
                          
                 IsReadOnly="{Binding ReadOnly, Mode=OneWay}"
@@ -36,7 +36,16 @@
                 Tapped="LetterCell_Tapped"
                 PointerEntered="LetterCell_PointerEntered"
                 />
-
+                <TextBlock 
+                    Text="{Binding LetterOut, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    Width="10"
+                    Height="10"
+                    FontSize="8"
+                    Margin="-16,-52,0,0"
+                    />
+            </StackPanel>
+            
+            
         </DataTemplate>
         <DataTemplate x:Key="Definition">
 
@@ -90,10 +99,10 @@
                 <ColumnDefinition Width="12*"/>
             </Grid.ColumnDefinitions>
 
+            <Border BorderBrush="#78a5ed" BorderThickness="2" Grid.Column="1" Grid.Row="1" Width="420" Height="420">
+                <Grid x:Name ="CrossWordGrid" Grid.Column="1" Grid.Row="1" Width="420" Height="420" >
 
-            <Grid x:Name ="CrossWordGrid" Grid.Column="1" Grid.Row="1" Width="420" Height="420" >
-
-                <ItemsControl x:Name="CrossWordItemsControl"
+                    <ItemsControl x:Name="CrossWordItemsControl"
                     
                     UseLayoutRounding="False"
                     ItemsSource="{x:Bind Path=_mainPageData.DisplayBoard, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
@@ -103,10 +112,12 @@
                     RenderTransformOrigin="0.5,0.5"
                     >
 
-                </ItemsControl>
+                    </ItemsControl>
 
 
-            </Grid>
+                </Grid>
+            </Border>
+            
 
             <ItemsControl
                 Grid.Column="2" Grid.Row="1"  

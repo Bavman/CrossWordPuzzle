@@ -18,13 +18,7 @@ namespace CrossWordPuzzle.ViewModel
     public class MainPageData
     {
 
-        private ObservableCollection<ObservableCollection<Cell>> _displayBoard = new ObservableCollection<ObservableCollection<Cell>>
-        {
-            new ObservableCollection<Cell> { new Cell { Letter = ' ' }, new Cell { Letter = 'N' }, new Cell { Letter = 'O' }, new Cell { Letter = 'T' }, new Cell { Letter = 'E' }, new Cell { Letter = ' ' } },
-            new ObservableCollection<Cell> { new Cell { Letter = 'X' }, new Cell { Letter = 'I' }, new Cell { Letter = ' ' }, new Cell { Letter = ' ' }, new Cell { Letter = 'G' }, new Cell { Letter = ' ' } },
-            new ObservableCollection<Cell> { new Cell { Letter = ' ' }, new Cell { Letter = 'C' }, new Cell { Letter = ' ' }, new Cell { Letter = 'E' }, new Cell { Letter = 'G' }, new Cell { Letter = 'O' } },
-            new ObservableCollection<Cell> { new Cell { Letter = ' ' }, new Cell { Letter = 'E' }, new Cell { Letter = ' ' }, new Cell { Letter = ' ' }, new Cell { Letter = ' ' }, new Cell { Letter = ' ' } },
-        };
+        private ObservableCollection<ObservableCollection<Cell>> _displayBoard;
 
         public ObservableCollection<ObservableCollection<Cell>> DisplayBoard
         {
@@ -58,7 +52,7 @@ namespace CrossWordPuzzle.ViewModel
 
                 for (var j = 0; j < board.GetLength(1); j++)
                 {
-                    var cell = new Cell { Letter = board[i, j] };
+                    var cell = new Cell { LetterOut = board[i, j] };
 
                     if (board[i, j] == ' ')
                     {
@@ -106,7 +100,7 @@ namespace CrossWordPuzzle.ViewModel
 
                 for (var j = 0; j < board[i].Count; j++)
                 {
-                    row += board[i][j].Letter + " ";
+                    row += board[i][j].LetterOut + " ";
                 }
                 Debug.WriteLine(row);
             }
@@ -116,7 +110,7 @@ namespace CrossWordPuzzle.ViewModel
         {
             for (var i = 0; i < list.Count; i++)
             {
-                Debug.WriteLine(list[i].Letter);
+                Debug.WriteLine(list[i].LetterOut);
             }
         }
 

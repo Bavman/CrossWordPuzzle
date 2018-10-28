@@ -1,26 +1,13 @@
-﻿using System;
+﻿using CrossWordPuzzle.Game;
+using CrossWordPuzzle.Model;
+using CrossWordPuzzle.ViewModel;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+using System.Diagnostics;
+using System.Reflection;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-using Windows.UI.Popups;
-using System.Threading.Tasks;
-using CrossWordPuzzle.Game;
-using System.Diagnostics;
-using CrossWordPuzzle.ViewModel;
-using System.ComponentModel;
-using System.Collections.ObjectModel;
-using System.Reflection;
-using CrossWordPuzzle.Model;
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
 namespace CrossWordPuzzle
@@ -42,12 +29,14 @@ namespace CrossWordPuzzle
 
             //LetterCell.AddHandler(TappedEvent, new TappedEventHandler(LetterCell_Tapped), true);
             
-            Board.Instance().InitializeBoard();
+            BoardControl.Instance().InitializeBoard();
 
             _boardLayout.StartPlaceAllWords();
 
-            Board.Instance().DisplayBoard(Board.Instance().CrossWordboard);
-            _mainPageData.DisplayBoard = _mainPageData.GameBoardLettersToDisplayBoard(Board.Instance().CrossWordboard);
+            BoardControl.Instance().DisplayBoard(BoardControl.Instance().CrossWordboard.Layout);
+
+            _mainPageData.DisplayBoard = _mainPageData.GameBoardLettersToDisplayBoard(BoardControl.Instance().CrossWordboard.Layout);
+
 
             for (var i = 0; i < _boardLayout.Definitions.Count; i++)
             {
