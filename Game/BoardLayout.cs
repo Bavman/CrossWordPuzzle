@@ -143,11 +143,10 @@ namespace CrossWordPuzzle.Game
 
                 return null;
             }
-
-            return wordArray[random.Next(0, wordArray.Length)]; ;
+            
+            return wordArray[random.Next(wordArray.Length)]; ;
 
         }
-
 
         int _count;
 

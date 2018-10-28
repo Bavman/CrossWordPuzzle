@@ -39,6 +39,7 @@
                 <TextBlock 
                     Text="{Binding DefinitionLocation, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     Width="10"
+                    FontWeight="Bold"
                     Height="10"
                     FontSize="8"
                     Margin="-16,-52,0,0"
