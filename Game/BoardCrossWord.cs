@@ -51,17 +51,14 @@ namespace CrossWordPuzzle.Game
 
         public void ResetBoard()
         {
-
-            var rowLetters = new string(_emptyChar, _height);
-
-            for (var i = 0; i < _width; i++)
+            
+            for (var i = 0; i < _height; i++)
             {
-                var row = new char[_width];
 
                 for (var j = 0; j < _width; j++)
                 {
                     CrossWordboard.Layout[i, j] = _emptyChar;
-                    row[j] = _emptyChar;
+
                 }
 
             }

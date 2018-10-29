@@ -25,24 +25,17 @@ namespace CrossWordPuzzle.Game
         }
 
 
-        private char[,] InitializeBoard(int width, int hieght, char emptyChar)
+        private char[,] InitializeBoard(int width, int height, char emptyChar)
         {
 
-            var crossWordBoard = new char[width, hieght];
+            var crossWordBoard = new char[height, width];
 
-            var rowLetters = new string(emptyChar, hieght);
-
-
-            crossWordBoard = new char[width, hieght];
-
-            for (var i = 0; i < width; i++)
+            for (var i = 0; i < height; i++)
             {
-                var row = new char[width];
 
                 for (var j = 0; j < width; j++)
                 {
                     crossWordBoard[i, j] = emptyChar;
-                    row[j] = emptyChar;
                 }
 
             }

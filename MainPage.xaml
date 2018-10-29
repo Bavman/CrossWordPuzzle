@@ -34,7 +34,7 @@
                     Padding="0"
                     BorderThickness="1"
                     Tapped="LetterCell_Tapped"
-                    PointerEntered="LetterCell_PointerEntered"
+                    TextChanged="LetterCell_TextChanged"
                 />
                 <TextBlock 
                     Text="{Binding DefinitionLocation, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
@@ -132,6 +132,7 @@
             </Border>
 
             <ItemsControl
+                x:Name="Defini"
                 Grid.Column="2" Grid.Row="1"  
                 Width="350"
                 ItemsSource="{x:Bind Path=_mainPageData.Definitions, Mode=OneWay}" HorizontalAlignment="Left" Margin="10,0,0,0"

@@ -34,7 +34,7 @@
       <RootProperty Name="Padding" />
       <RootProperty Name="BorderThickness" />
       <RootEvent Name="Tapped" />
-      <RootEvent Name="PointerEntered" />
+      <RootEvent Name="TextChanged" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.DataTemplate">
       <RootProperty Name="Template" />

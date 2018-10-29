@@ -41,11 +41,14 @@ namespace CrossWordPuzzle
             _mainPageData.Definitions = new ObservableCollection<Definition>(_boardLayout.Definitions);
 
             _boardLayout.AssignDefinitionLocations(_boardLayout.SortedPlacedWords, _mainPageData.DisplayBoard);
-            //FindChildren<TextBox>(TextBoxList, this.CrossWordItemsControl);
-            //Debug.WriteLine(TextBoxList.Count);
-            //Debug.WriteLine(TextBoxList[0].Name);
-            //var test = VisualTreeHelper.GetChildrenCount(this.CrossWordItemsControl);
-            //Debug.WriteLine("t "+test);
+
+            //ContentPresenter contentPresenter = FindVisualChild<ContentPresenter>(this.Definitions);
+
+            //Debug.WriteLine(contentPresenter.Dispatcher);
+            //DataTemplate yourDataTemplate = contentPresenter.ContentTemplate;
+            
+           // Debug.WriteLine(userControl);
+
         }
 
 
@@ -75,6 +78,45 @@ namespace CrossWordPuzzle
                 }
                 FindChildren<T>(results, current);
             }
+        }
+
+        public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj)
+        where T : DependencyObject
+        {
+            if (depObj != null)
+            {
+                for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
+                {
+                    DependencyObject child = VisualTreeHelper.GetChild(depObj, i);
+                    if (child != null && child is T)
+                    {
+                        yield return (T)child;
+                    }
+
+                    foreach (T childOfChild in FindVisualChildren<T>(child))
+                    {
+                        yield return childOfChild;
+                    }
+                }
+            }
+        }
+
+        private childItem FindVisualChild<childItem>(DependencyObject obj)
+            where childItem : DependencyObject
+        {
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(obj); i++)
+            {
+                DependencyObject child = VisualTreeHelper.GetChild(obj, i);
+                if (child != null && child is childItem)
+                    return (childItem)child;
+                else
+                {
+                    childItem childOfChild = FindVisualChild<childItem>(child);
+                    if (childOfChild != null)
+                        return childOfChild;
+                }
+            }
+            return null;
         }
 
 
@@ -114,5 +156,10 @@ namespace CrossWordPuzzle
         }
 
         List<string> _testUsedWords = new List<string>();
+
+        private void LetterCell_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Debug.WriteLine("Orig Source"+e.OriginalSource);
+        }
     }
 }

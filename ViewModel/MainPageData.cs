@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.UI.Xaml.Data;
-using System.Diagnostics;
-using System.ComponentModel;
-using System.Collections.Specialized;
+﻿using CrossWordPuzzle.Model;
+using System;
 using System.Collections.ObjectModel;
-using Windows.UI.Xaml.Media;
-using CrossWordPuzzle.Model;
+using System.Diagnostics;
+using System.Linq;
 using Windows.UI;
-using System.Runtime.CompilerServices;
+using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Media;
 
 namespace CrossWordPuzzle.ViewModel
 {
