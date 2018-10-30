@@ -16,6 +16,8 @@ namespace CrossWordPuzzle.Game
         
         public IEnumerable<Definition> Definitions;
 
+        private Random _random = new Random();
+
         private int[] _wordSizes = 
         {
             10, 9, 8, 8, 7, 7, 7, 6, 6, 5, 5, 5, 4, 4, 4, 4, 3, 3, 3, 3, 3,
@@ -124,8 +126,6 @@ namespace CrossWordPuzzle.Game
                 Except(usedWords).
                 ToArray();
 
-            var random = new Random();
-
             var word = string.Empty;
 
             if (wordArray == null)
@@ -144,7 +144,7 @@ namespace CrossWordPuzzle.Game
                 return null;
             }
             
-            return wordArray[random.Next(wordArray.Length)]; ;
+            return wordArray[_random.Next(wordArray.Length)]; ;
 
         }
 

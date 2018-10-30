@@ -10,6 +10,7 @@ namespace CrossWordPuzzle.Game
 {
     public class BoardCheckWords
     {
+
         public List<string> CheckWord(ObservableCollection<ObservableCollection<Cell>> displayBoard, List<PlacedWord> placedWords, List<string> foundWords)
         {
 

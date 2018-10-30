@@ -19,6 +19,7 @@ namespace CrossWordPuzzle
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        public static event StatusReceiverHandler ReceiveStatusEvent;
 
         BoardLayout _boardLayout = new BoardLayout();
         MainPageData _mainPageData = new MainPageData();
@@ -46,8 +47,8 @@ namespace CrossWordPuzzle
 
             //Debug.WriteLine(contentPresenter.Dispatcher);
             //DataTemplate yourDataTemplate = contentPresenter.ContentTemplate;
-            
-           // Debug.WriteLine(userControl);
+
+            // Debug.WriteLine(userControl);
 
         }
 
@@ -108,12 +109,16 @@ namespace CrossWordPuzzle
             {
                 DependencyObject child = VisualTreeHelper.GetChild(obj, i);
                 if (child != null && child is childItem)
+                {
                     return (childItem)child;
+                }
                 else
                 {
                     childItem childOfChild = FindVisualChild<childItem>(child);
                     if (childOfChild != null)
+                    {
                         return childOfChild;
+                    }
                 }
             }
             return null;
@@ -146,12 +151,12 @@ namespace CrossWordPuzzle
 
         private void ButtonTestGetWords_Click(object sender, RoutedEventArgs e)
         {
+            var random = new Random();
             for (var i = 0; i < 50; i++)
             {
-                var random = new Random();
-                var word = _boardLayout.RetrieveWord(_testUsedWords, 8);
-                _testUsedWords.Add(word);
-                Debug.WriteLine("Words Placed " + word);
+                
+                var randomInt = random.Next(0, 50);
+                Debug.WriteLine("Random Int " + randomInt);
             }
         }
 
@@ -159,7 +164,38 @@ namespace CrossWordPuzzle
 
         private void LetterCell_TextChanged(object sender, TextChangedEventArgs e)
         {
-            Debug.WriteLine("Orig Source"+e.OriginalSource);
+            var changePos = GetUpdatePosition(_mainPageData.DisplayBoard, BoardCrossWord.Instance().CrossWordboardCheck);
+            Debug.WriteLine("changedPos " + changePos);
+        }
+
+
+        private void OnReceiveStatus()
+        {
+            if (ReceiveStatusEvent != null)
+            {
+                ReceiveStatusEvent(this, new StatusReceiverEventArgs());
+            }
+        }
+
+
+        private Tuple<int,int> GetUpdatePosition(ObservableCollection<ObservableCollection<Cell>> displayBoardIn, Board compareBoard)
+        {
+            var updatePos = new Tuple<int, int>(0,0);
+
+
+            for (var i = 0; i < displayBoardIn.Count; i++)
+            {
+                for (var j = 0; j < displayBoardIn[i].Count; j++)
+                {
+                    if (displayBoardIn[i][j].LetterIn != compareBoard.Layout[i, j])
+                    {
+                        updatePos = new Tuple<int,int>(j, i);
+                        compareBoard.Layout[i, j] = displayBoardIn[i][j].LetterIn;
+                    }
+                }
+            }
+
+            return updatePos;
         }
     }
 }

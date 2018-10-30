@@ -9,8 +9,31 @@ using Windows.UI.Xaml.Media;
 
 namespace CrossWordPuzzle.ViewModel
 {
+    public delegate void StatusReceiverHandler(object sender, StatusReceiverEventArgs e);
+
+    public class StatusReceiverEventArgs : EventArgs
+    {
+        public StatusReceiverEventArgs()
+        {
+
+        }
+
+    }
+
     public class MainPageData
     {
+
+
+        public MainPageData()
+        {
+            MainPage.ReceiveStatusEvent += WriteStatus;
+        }
+
+        private void WriteStatus(object status, StatusReceiverEventArgs e)
+        {
+            Debug.WriteLine("EventDelegate "+status.ToString());
+        }
+
 
         private ObservableCollection<ObservableCollection<Cell>> _displayBoard;
 

@@ -3,9 +3,12 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using Windows.UI.Xaml.Media;
+using CrossWordPuzzle.Game;
+using CrossWordPuzzle.ViewModel;
 
 namespace CrossWordPuzzle.Model
 {
+
     public class Cell : INotifyPropertyChanged
     {
         private char _letterOut;
@@ -30,6 +33,7 @@ namespace CrossWordPuzzle.Model
             set
             {
                 _letterIn = value;
+                
                 PropChangedHandler();
             }
         }
@@ -81,5 +85,7 @@ namespace CrossWordPuzzle.Model
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }
+
+        
     }
 }

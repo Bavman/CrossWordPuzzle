@@ -36,18 +36,18 @@ namespace CrossWordPuzzle.Game
         public int _height;
 
         public Board CrossWordboard;
+        public Board CrossWordboardCheck;
 
         public void InitializeBoard(int width, int height, char emptyChar)
         {
 
-            CrossWordboard = new Board(width, height, emptyChar); // Array 1 is Row, Array 2 is Column
-
+            CrossWordboard = new Board(height, width, emptyChar); // Array 1 is Row, Array 2 is Column
+            CrossWordboardCheck = new Board(height, width, '\0'); // Array 1 is Row, Array 2 is Column
 
             _width = CrossWordboard.Width;
             _height = CrossWordboard.Height;
             _emptyChar = CrossWordboard.EmptyChar;
         }
-
 
         public void ResetBoard()
         {
