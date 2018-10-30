@@ -20,8 +20,10 @@
                 <TextBox 
                     x:Name="LetterCell" 
                     Text="{Binding LetterIn, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                    Foreground="{Binding ForegroundColour, Mode=OneWay}"
                     Background="{Binding BackgroundColour, Mode=OneWay}"
-                    IsReadOnly="{Binding ReadOnly, Mode=OneWay}"
+                    IsReadOnly="{Binding IsReadOnly, Mode=OneWay}"
+                    FontWeight="{Binding FontWeight, Mode=OneWay}"
                     MaxLength="1"
                     FontSize="16" 
                     HorizontalAlignment="Center" VerticalAlignment="Center" 

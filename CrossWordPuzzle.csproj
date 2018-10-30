@@ -96,7 +96,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Core\OperationResults.cs" />
-    <Compile Include="Game\BoardCheckWords.cs" />
+    <Compile Include="Game\SolveBoard.cs" />
     <Compile Include="Game\BoardCrossWord.cs" />
     <Compile Include="Game\BoardLayout.cs" />
     <Compile Include="Game\Enums.cs" />

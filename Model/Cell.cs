@@ -62,30 +62,41 @@ namespace CrossWordPuzzle.Model
 
         }
 
-        private SolidColorBrush _fontColour;
-        public SolidColorBrush FontColour
+        private SolidColorBrush _foregroundColour;
+        public SolidColorBrush ForegroundColour
         {
-            get { return _fontColour; }
+            get { return _foregroundColour; }
 
             set
             {
-                _fontColour = value;
+                _foregroundColour = value;
                 PropChangedHandler();
             }
 
         }
 
-        private bool _readOnly;
-        public bool ReadOnly
+        private bool _isReadOnly;
+        public bool IsReadOnly
         {
-            get { return _readOnly; }
+            get { return _isReadOnly; }
             set
             {
-                _readOnly = value;
+                _isReadOnly = value;
                 PropChangedHandler();
             }
         }
 
+        private string _fontWeight;
+        public string FontWeight
+        {
+            get { return _fontWeight; }
+            set
+            {
+                _fontWeight = value;
+                PropChangedHandler();
+            }
+
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

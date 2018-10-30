@@ -23,7 +23,7 @@ namespace CrossWordPuzzle
 
         BoardLayout _boardLayout = new BoardLayout();
         MainPageData _mainPageData = new MainPageData();
-
+        SolveBoard _boardCheckWords = new SolveBoard();
 
         public MainPage()
         {
@@ -149,12 +149,14 @@ namespace CrossWordPuzzle
             SolveBoard(_mainPageData.DisplayBoard);
         }
 
-        List<string> _testUsedWords = new List<string>();
+
+        List<string> _foundWords = new List<string>();
 
         private void LetterCell_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var changePos = GetUpdatePosition(_mainPageData.DisplayBoard, BoardCrossWord.Instance().CrossWordboardCheck);
-            Debug.WriteLine("changedPos " + changePos);
+            var changePos = _boardCheckWords.GetUpdatePosition(_mainPageData.DisplayBoard, BoardCrossWord.Instance().CrossWordboardCheck);
+            Debug.WriteLine("foundWords.Count" + _foundWords.Count);
+            _boardCheckWords.CheckWord(_mainPageData.DisplayBoard, _boardLayout.PlacedWords, _foundWords);
         }
 
 
@@ -167,25 +169,7 @@ namespace CrossWordPuzzle
         }
 
 
-        private Tuple<int,int> GetUpdatePosition(ObservableCollection<ObservableCollection<Cell>> displayBoardIn, Board compareBoard)
-        {
-            var updatePos = new Tuple<int, int>(0,0);
-
-
-            for (var i = 0; i < displayBoardIn.Count; i++)
-            {
-                for (var j = 0; j < displayBoardIn[i].Count; j++)
-                {
-                    if (displayBoardIn[i][j].LetterIn != compareBoard.Layout[i, j])
-                    {
-                        updatePos = new Tuple<int,int>(j, i);
-                        compareBoard.Layout[i, j] = displayBoardIn[i][j].LetterIn;
-                    }
-                }
-            }
-
-            return updatePos;
-        }
+        
 
         private void ButtonRegenBoard_Click(object sender, RoutedEventArgs e)
         {

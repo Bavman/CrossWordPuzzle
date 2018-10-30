@@ -74,12 +74,12 @@ namespace CrossWordPuzzle.ViewModel
                     if (board[i, j] == ' ')
                     {
                         cell.BackgroundColour = new SolidColorBrush(Color.FromArgb(255, 120, 165, 240));
-                        cell.ReadOnly = true;
+                        cell.IsReadOnly = true;
                     }
                     else
                     {
                         cell.BackgroundColour = new SolidColorBrush(Color.FromArgb(255, 240, 240, 240));
-                        cell.ReadOnly = false;
+                        cell.IsReadOnly = false;
                     }
 
                     newRow.Add(cell);

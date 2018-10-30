@@ -12,7 +12,7 @@ namespace CrossWordPuzzle.Game
     {
         public IEnumerable<PlacedWord> SortedPlacedWords;
 
-        private List<PlacedWord> _placedWords = new List<PlacedWord>();
+        public List<PlacedWord> PlacedWords = new List<PlacedWord>();
         
         public IEnumerable<Definition> Definitions;
 
@@ -32,7 +32,7 @@ namespace CrossWordPuzzle.Game
         // Keeps trying to solve board until the _minWordsPlaced count is reached 
         public void StartPlaceAllWords()
         {
-            _placedWords.Clear();
+            PlacedWords.Clear();
             
             _wordsPlaced = 0;
             var solved = false;
@@ -59,7 +59,7 @@ namespace CrossWordPuzzle.Game
             }
 
             // Sort and find definition of placed words then apply formatting
-            SortedPlacedWords = SortPlacedWords(_placedWords);
+            SortedPlacedWords = SortPlacedWords(PlacedWords);
 
             var definitions = ReturnDefinitionArray(SortedPlacedWords);
 
@@ -153,7 +153,7 @@ namespace CrossWordPuzzle.Game
         private void PlaceWords()
         {
             _count++;
-            _placedWords.Clear();
+            PlacedWords.Clear();
             // First Word
             var word = RetrieveWord(new List<string> { }, _wordSizes[0]);
             
@@ -168,7 +168,7 @@ namespace CrossWordPuzzle.Game
             var placedWord = BoardCrossWord.Instance().PlaceWord(word, randomStartPos, WordDirection.Horizontal);
             if (placedWord != null)
             {
-                _placedWords.Add(placedWord);
+                PlacedWords.Add(placedWord);
             }
             else
             {
@@ -225,7 +225,7 @@ namespace CrossWordPuzzle.Game
                                     direction = WordDirection.Horizontal;
                                 }
 
-                                _placedWords.Add(placedWord);
+                                PlacedWords.Add(placedWord);
                                 
                                 _wordsPlaced++;
 
