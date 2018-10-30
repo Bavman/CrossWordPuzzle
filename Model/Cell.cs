@@ -12,7 +12,6 @@ namespace CrossWordPuzzle.Model
     public class Cell : INotifyPropertyChanged
     {
         private char _letterOut;
-
         public char LetterOut
         {
             get { return _letterOut; }
@@ -26,7 +25,6 @@ namespace CrossWordPuzzle.Model
         }
 
         private char _letterIn;
-
         public char LetterIn
         {
             get { return _letterIn; }
@@ -39,7 +37,6 @@ namespace CrossWordPuzzle.Model
         }
 
         private string _definitionLocation;
-
         public string DefinitionLocation
         {
             get { return _definitionLocation; }
@@ -52,22 +49,33 @@ namespace CrossWordPuzzle.Model
             }
         }
 
-        private SolidColorBrush _colour;
-
-        public SolidColorBrush Colour
+        private SolidColorBrush _backgroundColour;
+        public SolidColorBrush BackgroundColour
         {
-            get { return _colour; }
+            get { return _backgroundColour; }
 
             set
             {
-                _colour = value;
+                _backgroundColour = value;
+                PropChangedHandler();
+            }
+
+        }
+
+        private SolidColorBrush _fontColour;
+        public SolidColorBrush FontColour
+        {
+            get { return _fontColour; }
+
+            set
+            {
+                _fontColour = value;
                 PropChangedHandler();
             }
 
         }
 
         private bool _readOnly;
-
         public bool ReadOnly
         {
             get { return _readOnly; }

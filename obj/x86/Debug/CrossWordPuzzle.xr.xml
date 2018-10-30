@@ -6,7 +6,7 @@
     <RootPropertyPathName Name="Index" />
     <RootPropertyPathName Name="DefinitionLocation" />
     <RootPropertyPathName Name="LetterIn" />
-    <RootPropertyPathName Name="Colour" />
+    <RootPropertyPathName Name="BackgroundColour" />
     <RootPropertyPathName Name="ReadOnly" />
   </Roots.PropertyPathNames>
   <Roots.RootTypes>

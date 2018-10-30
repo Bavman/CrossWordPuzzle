@@ -20,7 +20,7 @@
                 <TextBox 
                     x:Name="LetterCell" 
                     Text="{Binding LetterIn, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                    Background="{Binding Colour, Mode=OneWay}"
+                    Background="{Binding BackgroundColour, Mode=OneWay}"
                     IsReadOnly="{Binding ReadOnly, Mode=OneWay}"
                     MaxLength="1"
                     FontSize="16" 
@@ -141,9 +141,10 @@
                 ItemTemplate="{StaticResource Definition}"
                 VerticalAlignment="Stretch"
                 />
+            
             <Button x:Name="ButtonPrintList" Content="Print Cross List" Grid.Column="2" HorizontalAlignment="Left" Margin="380,4,0,0" Grid.Row="1" VerticalAlignment="Top" Click="ButtonPrintList_Click"/>
             <Button x:Name="ButtonSolve" Content="Solve Board" Grid.Column="2" HorizontalAlignment="Left" Margin="380,41,0,0" Grid.Row="1" VerticalAlignment="Top" Click="ButtonSolve_Click"/>
-            <Button x:Name="ButtonTestGetWords" Content="Test Get Words" Grid.Column="2" HorizontalAlignment="Left" Margin="380,92,0,0" Grid.Row="1" VerticalAlignment="Top" Click="ButtonTestGetWords_Click"/>
+            <Button x:Name="ButtonRegenBoard" Content="Regen Board" Grid.Column="2" HorizontalAlignment="Left" Margin="380,92,0,0" Grid.Row="1" VerticalAlignment="Top" Click="ButtonRegenBoard_Click"/>
 
         </Grid>
     </Grid>

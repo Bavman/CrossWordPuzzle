@@ -149,17 +149,6 @@ namespace CrossWordPuzzle
             SolveBoard(_mainPageData.DisplayBoard);
         }
 
-        private void ButtonTestGetWords_Click(object sender, RoutedEventArgs e)
-        {
-            var random = new Random();
-            for (var i = 0; i < 50; i++)
-            {
-                
-                var randomInt = random.Next(0, 50);
-                Debug.WriteLine("Random Int " + randomInt);
-            }
-        }
-
         List<string> _testUsedWords = new List<string>();
 
         private void LetterCell_TextChanged(object sender, TextChangedEventArgs e)
@@ -196,6 +185,11 @@ namespace CrossWordPuzzle
             }
 
             return updatePos;
+        }
+
+        private void ButtonRegenBoard_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

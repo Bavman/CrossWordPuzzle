@@ -20,7 +20,7 @@
                 <TextBox x:ConnectionId='6' 
                     x:Name="LetterCell" 
                     Text="{Binding LetterIn, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                    Background="{Binding Colour, Mode=OneWay}"
+                    Background="{Binding BackgroundColour, Mode=OneWay}"
                     IsReadOnly="{Binding ReadOnly, Mode=OneWay}"
                     MaxLength="1"
                     FontSize="16" 
@@ -141,6 +141,7 @@
                 ItemTemplate="{StaticResource Definition}"
                 VerticalAlignment="Stretch"
                 />
+            
             <Button x:ConnectionId='10' x:Name="ButtonPrintList" Content="Print Cross List" Grid.Column="2" HorizontalAlignment="Left" Margin="380,4,0,0" Grid.Row="1" VerticalAlignment="Top"                              />
             <Button x:ConnectionId='11' x:Name="ButtonSolve" Content="Solve Board" Grid.Column="2" HorizontalAlignment="Left" Margin="380,41,0,0" Grid.Row="1" VerticalAlignment="Top"                          />
             <Button x:ConnectionId='12' x:Name="ButtonTestGetWords" Content="Test Get Words" Grid.Column="2" HorizontalAlignment="Left" Margin="380,92,0,0" Grid.Row="1" VerticalAlignment="Top"                                 />
