@@ -18,6 +18,8 @@ namespace CrossWordPuzzle.Game
 
         private Random _random = new Random();
 
+        int _count;
+
         private int[] _wordSizes = 
         {
             10, 9, 8, 8, 7, 7, 7, 6, 6, 5, 5, 5, 4, 4, 4, 4, 3, 3, 3, 3, 3,
@@ -29,12 +31,14 @@ namespace CrossWordPuzzle.Game
         private int _wordsPlaced;
         private int _minWordsPlaced = 13;
 
+
         // Keeps trying to solve board until the _minWordsPlaced count is reached 
         public void StartPlaceAllWords()
         {
             PlacedWords.Clear();
-            
+            _usedWords.Clear();
             _wordsPlaced = 0;
+
             var solved = false;
 
             while (solved == false)
@@ -50,7 +54,7 @@ namespace CrossWordPuzzle.Game
                 // Reset the board and start again if min word count in not met
                 if (!solved)
                 {
-                    BoardCrossWord.Instance().ResetBoard();
+                    BoardCrossWord.Instance().ResetBoard(BoardCrossWord.Instance().CrossWordboard, ' ');
 
                     _wordsPlaced = 0;
                     _usedWords = new List<string>();
@@ -148,7 +152,6 @@ namespace CrossWordPuzzle.Game
 
         }
 
-        int _count;
 
         private void PlaceWords()
         {

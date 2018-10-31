@@ -58,7 +58,7 @@ namespace CrossWordPuzzle.ViewModel
         }
 
 
-        public ObservableCollection<ObservableCollection<Cell>> GameBoardLettersToDisplayBoard(char[,] board)
+        public ObservableCollection<ObservableCollection<Cell>> GameBoardLettersToDisplayBoard (char [,] board)
         {
             var returnBoard = new ObservableCollection<ObservableCollection<Cell>>();
 

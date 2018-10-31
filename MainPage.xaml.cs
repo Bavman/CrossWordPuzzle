@@ -21,6 +21,8 @@ namespace CrossWordPuzzle
     {
         public static event StatusReceiverHandler ReceiveStatusEvent;
 
+        List<string> _foundWords = new List<string>();
+
         BoardLayout _boardLayout = new BoardLayout();
         MainPageData _mainPageData = new MainPageData();
         SolveBoard _boardCheckWords = new SolveBoard();
@@ -33,6 +35,13 @@ namespace CrossWordPuzzle
             
             BoardCrossWord.Instance().InitializeBoard(12, 12, ' ');
 
+            SetupCrosswordPuzzle();
+        }
+
+
+        private void SetupCrosswordPuzzle()
+        {
+
             _boardLayout.StartPlaceAllWords();
 
             BoardCrossWord.Instance().DisplayBoard(BoardCrossWord.Instance().CrossWordboard.Layout);
@@ -42,16 +51,7 @@ namespace CrossWordPuzzle
             _mainPageData.Definitions = new ObservableCollection<Definition>(_boardLayout.Definitions);
 
             _boardLayout.AssignDefinitionLocations(_boardLayout.SortedPlacedWords, _mainPageData.DisplayBoard);
-
-            //ContentPresenter contentPresenter = FindVisualChild<ContentPresenter>(this.Definitions);
-
-            //Debug.WriteLine(contentPresenter.Dispatcher);
-            //DataTemplate yourDataTemplate = contentPresenter.ContentTemplate;
-
-            // Debug.WriteLine(userControl);
-
         }
-
 
         private void SolveBoard (ObservableCollection<ObservableCollection<Cell>> board)
         {
@@ -64,77 +64,10 @@ namespace CrossWordPuzzle
             }
         }
 
-        internal static void FindChildren<T>(List<T> results, DependencyObject startNode)
-          where T : DependencyObject
-        {
-            int count = VisualTreeHelper.GetChildrenCount(startNode);
-            Debug.WriteLine("count " + count);
-            for (int i = 0; i < count; i++)
-            {
-                DependencyObject current = VisualTreeHelper.GetChild(startNode, i);
-                if ((current.GetType()).Equals(typeof(T)) || (current.GetType().GetTypeInfo().IsSubclassOf(typeof(T))))
-                {
-                    T asType = (T)current;
-                    results.Add(asType);
-                }
-                FindChildren<T>(results, current);
-            }
-        }
-
-        public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj)
-        where T : DependencyObject
-        {
-            if (depObj != null)
-            {
-                for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
-                {
-                    DependencyObject child = VisualTreeHelper.GetChild(depObj, i);
-                    if (child != null && child is T)
-                    {
-                        yield return (T)child;
-                    }
-
-                    foreach (T childOfChild in FindVisualChildren<T>(child))
-                    {
-                        yield return childOfChild;
-                    }
-                }
-            }
-        }
-
-        private childItem FindVisualChild<childItem>(DependencyObject obj)
-            where childItem : DependencyObject
-        {
-            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(obj); i++)
-            {
-                DependencyObject child = VisualTreeHelper.GetChild(obj, i);
-                if (child != null && child is childItem)
-                {
-                    return (childItem)child;
-                }
-                else
-                {
-                    childItem childOfChild = FindVisualChild<childItem>(child);
-                    if (childOfChild != null)
-                    {
-                        return childOfChild;
-                    }
-                }
-            }
-            return null;
-        }
-
-
         private void ButtonPrintList_Click(object sender, RoutedEventArgs e)
         {
             Debug.WriteLine("Print Board");
             _mainPageData.PrintBoard(_mainPageData.DisplayBoard);
-        }
-
-        private void LetterCell_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            Debug.WriteLine(e.OriginalSource);
-            Debug.WriteLine("TEST");
         }
 
         private void LetterCell_PointerEntered(object sender, PointerRoutedEventArgs e)
@@ -149,13 +82,9 @@ namespace CrossWordPuzzle
             SolveBoard(_mainPageData.DisplayBoard);
         }
 
-
-        List<string> _foundWords = new List<string>();
-
         private void LetterCell_TextChanged(object sender, TextChangedEventArgs e)
         {
             var changePos = _boardCheckWords.GetUpdatePosition(_mainPageData.DisplayBoard, BoardCrossWord.Instance().CrossWordboardCheck);
-            Debug.WriteLine("foundWords.Count" + _foundWords.Count);
             _boardCheckWords.CheckWord(_mainPageData.DisplayBoard, _boardLayout.PlacedWords, _foundWords);
         }
 
@@ -169,11 +98,12 @@ namespace CrossWordPuzzle
         }
 
 
-        
-
         private void ButtonRegenBoard_Click(object sender, RoutedEventArgs e)
         {
-
+            _foundWords.Clear();
+            BoardCrossWord.Instance().ResetBoard(BoardCrossWord.Instance().CrossWordboard, ' ');
+            //BoardCrossWord.Instance().ResetBoard(_mainPageData.DisplayBoard, '\0');
+            SetupCrosswordPuzzle();
         }
     }
 }
