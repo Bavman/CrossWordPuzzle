@@ -6,6 +6,8 @@ using System.Linq;
 using Windows.UI;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Media;
+using CrossWordPuzzle.Game;
+using System.Collections.Generic;
 
 namespace CrossWordPuzzle.ViewModel
 {
@@ -26,7 +28,7 @@ namespace CrossWordPuzzle.ViewModel
 
         public MainPageData()
         {
-            MainPage.ReceiveStatusEvent += WriteStatus;
+            // MainPage.ReceiveStatusEvent += WriteStatus;
         }
 
         private void WriteStatus(object status, StatusReceiverEventArgs e)
@@ -58,54 +60,75 @@ namespace CrossWordPuzzle.ViewModel
         }
 
 
-        public ObservableCollection<ObservableCollection<Cell>> GameBoardLettersToDisplayBoard (char [,] board)
+        // Initializes definition list
+        public void AssignDefinitionList (IEnumerable<Definition> definitions)
         {
-            var returnBoard = new ObservableCollection<ObservableCollection<Cell>>();
 
-            for (var i = 0; i < board.GetLength(0); i++)
+            Definitions.Clear();
+
+            var definitionArray = definitions.ToArray();
+
+            for (var i = 0; i < definitionArray.Length; i++)
             {
-
-                var newRow = new ObservableCollection<Cell>();
-
-                for (var j = 0; j < board.GetLength(1); j++)
-                {
-                    var cell = new Cell { LetterOut = board[i, j] };
-
-                    if (board[i, j] == ' ')
-                    {
-                        cell.BackgroundColour = new SolidColorBrush(Color.FromArgb(255, 120, 165, 240));
-                        cell.IsReadOnly = true;
-                    }
-                    else
-                    {
-                        cell.BackgroundColour = new SolidColorBrush(Color.FromArgb(255, 240, 240, 240));
-                        cell.IsReadOnly = false;
-                    }
-
-                    newRow.Add(cell);
-                }
-
-                returnBoard.Add(newRow);
+                Definitions.Add(definitionArray[i]);
             }
-
-            return returnBoard;
 
         }
 
 
-        public void PrintBoard(ObservableCollection<ObservableCollection<char>> board)
+        // Initializes display board
+        public void InitializeDisplayBoard (int width, int height)
         {
-            for (var i = 0; i < board.Count; i++)
+            var board = new ObservableCollection<ObservableCollection<Cell>>();
+
+            for (var i = 0; i < height; i++)
             {
 
-                var row = String.Empty;
+                var newRow = new ObservableCollection<Cell>();
 
-                for (var j = 0; j < board[i].Count; j++)
+                for (var j = 0; j < width; j++)
                 {
-                    row += board[i][j]+" ";
+                    var cell = new Cell { };
+
+                    newRow.Add(cell);
                 }
-                Debug.WriteLine(row);
+
+                board.Add(newRow);
             }
+
+            DisplayBoard = board;
+        }
+
+        // Assigs generated words from 
+        public void AssignCrosswordDisplayBoard (Board board)
+        {
+
+            for (var i = 0; i < board.Layout.GetLength(0); i++)
+            {
+
+                for (var j = 0; j < board.Layout.GetLength(1); j++)
+                {
+                    DisplayBoard[i][j].LetterOut = board.Layout[i, j];
+                    DisplayBoard[i][j].LetterIn = '\0';
+                    DisplayBoard[i][j].DefinitionLocation = String.Empty;
+                    DisplayBoard[i][j].FontWeight = "Normal";
+                    
+
+                    if (board.Layout[i, j] == ' ')
+                    {
+                        DisplayBoard[i][j].BackgroundColour = new SolidColorBrush(Color.FromArgb(255, 120, 165, 240));
+                        DisplayBoard[i][j].IsReadOnly = true;
+                    }
+                    else
+                    {
+                        DisplayBoard[i][j].BackgroundColour = new SolidColorBrush(Color.FromArgb(255, 240, 240, 240));
+                        DisplayBoard[i][j].IsReadOnly = false;
+                    }
+
+                }
+
+            }
+
         }
 
 

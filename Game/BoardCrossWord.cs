@@ -69,26 +69,6 @@ namespace CrossWordPuzzle.Game
 
         }
 
-        public void ResetBoard(ObservableCollection<ObservableCollection<Cell>> board, char emptyChar)
-        {
-
-            for (var i = 0; i < Height; i++)
-            {
-
-                for (var j = 0; j < Width; j++)
-                {
-                    board[i][j].LetterIn = emptyChar;
-                    board[i][j].LetterOut = emptyChar;
-                    board[i][j].BackgroundColour = new SolidColorBrush(Color.FromArgb(255, 120, 165, 240)); ;
-                    board[i][j].DefinitionLocation = String.Empty;
-                    board[i][j].IsReadOnly = false;
-                    board[i][j].FontWeight = "Normal";
-
-                }
-
-            }
-
-        }
 
         // Is used to place word in grid arrays after checks have been done
         public void ForcePlaceWord(string word, Tuple<int, int> startPos, WordDirection direction)
@@ -552,20 +532,20 @@ namespace CrossWordPuzzle.Game
         }
 
 
-
-        public void DisplayBoard(char[,] board)
+        // Print board to console
+        public void DubugWriteLineBoard(Board board)
         {
             Debug.WriteLine("    0 1 2 3 4 5 6 7 8 9 1 2\n");
-            for (var i = 0; i < board.GetLength(0); i++)
+            for (var i = 0; i < board.Layout.GetLength(0); i++)
             {
 
                 //var rowString = new string(_board[i]);
 
                 var rowString = String.Empty;
 
-                for (var j = 0; j < board.GetLength(1); j++)
+                for (var j = 0; j < board.Layout.GetLength(1); j++)
                 {
-                    rowString += board[i, j] + " ";
+                    rowString += board.Layout[i, j] + " ";
                 }
 
                 var rowCount = "";

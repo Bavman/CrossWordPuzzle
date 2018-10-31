@@ -713,7 +713,7 @@ namespace CrossWordPuzzle.Game
             "USURY",
             "UTTERMOST",
             "VAGABOND",
-            "VAIL, VEIL",
+            "VAIL",
             "VALE",
             "VALOUR",
             "VARIABLENESS",
@@ -763,7 +763,6 @@ namespace CrossWordPuzzle.Game
             "YOKEFELLOW",
             "YONDER"
         };
-
 
         public List<WordAndDefinition> WordAndDefinitions = new List<WordAndDefinition>
         {
@@ -1451,7 +1450,7 @@ namespace CrossWordPuzzle.Game
             new WordAndDefinition { Word = "USURY", Definition = "interest on money (Exo 22:25; Luk 19:23)" },
             new WordAndDefinition { Word = "UTTERMOST", Definition = "outermost; last (Exo 26:4; Mat 5:26)" },
             new WordAndDefinition { Word = "VAGABOND", Definition = "fugitive, wanderer (Gen 4:12; Act 19:13)" },
-            new WordAndDefinition { Word = "VAIL, VEIL", Definition = "curtain; divider (Exo 26:31; Mat 27:51)" },
+            new WordAndDefinition { Word = "VAIL", Definition = "curtain; divider (Exo 26:31; Mat 27:51)" },
             new WordAndDefinition { Word = "VALE", Definition = "a valley (Gen 14:3; 2Ch 1:15; Jer 33:13)" },
             new WordAndDefinition { Word = "VALOUR", Definition = "importance, boldness, or determination (Jdg 3:29; Neh 11:14)" },
             new WordAndDefinition { Word = "VARIABLENESS", Definition = "changeable (Jam 1:17)" },

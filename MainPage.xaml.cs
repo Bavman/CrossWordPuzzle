@@ -34,6 +34,7 @@ namespace CrossWordPuzzle
             //LetterCell.AddHandler(TappedEvent, new TappedEventHandler(LetterCell_Tapped), true);
             
             BoardCrossWord.Instance().InitializeBoard(12, 12, ' ');
+            _mainPageData.InitializeDisplayBoard(12, 12);
 
             SetupCrosswordPuzzle();
         }
@@ -44,11 +45,11 @@ namespace CrossWordPuzzle
 
             _boardLayout.StartPlaceAllWords();
 
-            BoardCrossWord.Instance().DisplayBoard(BoardCrossWord.Instance().CrossWordboard.Layout);
+            BoardCrossWord.Instance().DubugWriteLineBoard(BoardCrossWord.Instance().CrossWordboard);
 
-            _mainPageData.DisplayBoard = _mainPageData.GameBoardLettersToDisplayBoard(BoardCrossWord.Instance().CrossWordboard.Layout);
+            _mainPageData.AssignCrosswordDisplayBoard(BoardCrossWord.Instance().CrossWordboard);
 
-            _mainPageData.Definitions = new ObservableCollection<Definition>(_boardLayout.Definitions);
+            _mainPageData.AssignDefinitionList(_boardLayout.Definitions);
 
             _boardLayout.AssignDefinitionLocations(_boardLayout.SortedPlacedWords, _mainPageData.DisplayBoard);
         }
