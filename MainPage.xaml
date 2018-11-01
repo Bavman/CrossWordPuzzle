@@ -142,6 +142,10 @@
                 ItemTemplate="{StaticResource Definition}"
                 VerticalAlignment="Stretch"
                 />
+            <RelativePanel  Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+                <TextBlock x:Name="CompletedWords" Text="Completed Words :" MinWidth="100" ></TextBlock>
+                <TextBlock Text="{x:Bind Path=_mainPageData.DisplayScore.Value, Mode=OneWay}" RelativePanel.RightOf="CompletedWords" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            </RelativePanel>
             
             <Button x:Name="ButtonPrintList" Content="Print Cross List" Grid.Column="2" HorizontalAlignment="Left" Margin="380,4,0,0" Grid.Row="1" VerticalAlignment="Top" Click="ButtonPrintList_Click"/>
             <Button x:Name="ButtonSolve" Content="Solve Board" Grid.Column="2" HorizontalAlignment="Left" Margin="380,41,0,0" Grid.Row="1" VerticalAlignment="Top" Click="ButtonSolve_Click"/>

@@ -44,6 +44,7 @@ namespace CrossWordPuzzle.Game
                             displayBoard[startPos.Item2][j].ForegroundColour = new SolidColorBrush(Color.FromArgb(255, 120, 165, 240));
                             displayBoard[startPos.Item2][j].IsReadOnly = true;
                             displayBoard[startPos.Item2][j].FontWeight = "Bold";
+
                         }
 
                         foundWords.Add(remaingPlacedWords[i].Word);

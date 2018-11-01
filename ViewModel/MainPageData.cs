@@ -37,6 +37,8 @@ namespace CrossWordPuzzle.ViewModel
         }
 
 
+        public Score DisplayScore = new Score();
+
         private ObservableCollection<ObservableCollection<Cell>> _displayBoard;
 
         public ObservableCollection<ObservableCollection<Cell>> DisplayBoard

@@ -109,6 +109,13 @@
       <RootProperty Name="Height" />
       <RootProperty Name="Child" />
     </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.RelativePanel">
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Children" />
+      <RootMethod Name="GetRightOf" />
+      <RootMethod Name="SetRightOf" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Button">
       <RootProperty Name="Content" />
       <RootProperty Name="HorizontalAlignment" />

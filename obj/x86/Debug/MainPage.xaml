@@ -116,9 +116,9 @@
             </Grid.ColumnDefinitions>
 
             <Border BorderBrush="#78a5ed" BorderThickness="2" Grid.Column="1" Grid.Row="1" Width="420" Height="420">
-                <Grid x:ConnectionId='13' x:Name ="CrossWordGrid" Grid.Column="1" Grid.Row="1" Width="420" Height="420" >
+                <Grid x:ConnectionId='15' x:Name ="CrossWordGrid" Grid.Column="1" Grid.Row="1" Width="420" Height="420" >
 
-                    <ItemsControl x:ConnectionId='14' 
+                    <ItemsControl x:ConnectionId='16' 
                         x:Name="CrossWordItemsControl"
                         UseLayoutRounding="False"
                                                                                                                                 
@@ -142,6 +142,10 @@
                 ItemTemplate="{StaticResource Definition}"
                 VerticalAlignment="Stretch"
                 />
+            <RelativePanel  Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+                <TextBlock x:ConnectionId='13' x:Name="CompletedWords" Text="Completed Words :" MinWidth="100" ></TextBlock>
+                <TextBlock x:ConnectionId='14'                                                                    RelativePanel.RightOf="CompletedWords" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            </RelativePanel>
             
             <Button x:ConnectionId='10' x:Name="ButtonPrintList" Content="Print Cross List" Grid.Column="2" HorizontalAlignment="Left" Margin="380,4,0,0" Grid.Row="1" VerticalAlignment="Top"                              />
             <Button x:ConnectionId='11' x:Name="ButtonSolve" Content="Solve Board" Grid.Column="2" HorizontalAlignment="Left" Margin="380,41,0,0" Grid.Row="1" VerticalAlignment="Top"                          />

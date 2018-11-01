@@ -86,7 +86,9 @@ namespace CrossWordPuzzle
         private void LetterCell_TextChanged(object sender, TextChangedEventArgs e)
         {
             var changePos = _boardCheckWords.GetUpdatePosition(_mainPageData.DisplayBoard, BoardCrossWord.Instance().CrossWordboardCheck);
-            _boardCheckWords.CheckWord(_mainPageData.DisplayBoard, _boardLayout.PlacedWords, _foundWords);
+            _foundWords = _boardCheckWords.CheckWord(_mainPageData.DisplayBoard, _boardLayout.PlacedWords, _foundWords);
+            Debug.WriteLine(_foundWords.Count);
+            _mainPageData.DisplayScore.Value = _foundWords.Count;
         }
 
 
@@ -103,6 +105,7 @@ namespace CrossWordPuzzle
         {
             _foundWords.Clear();
             BoardCrossWord.Instance().ResetBoard(BoardCrossWord.Instance().CrossWordboard, ' ');
+            _mainPageData.DisplayScore.Value = 0;
             //BoardCrossWord.Instance().ResetBoard(_mainPageData.DisplayBoard, '\0');
             SetupCrosswordPuzzle();
         }
