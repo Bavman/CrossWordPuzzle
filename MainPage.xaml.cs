@@ -51,7 +51,7 @@ namespace CrossWordPuzzle
 
             _mainPageData.AssignDefinitionList(_boardLayout.Definitions);
 
-            _boardLayout.AssignDefinitionLocations(_boardLayout.SortedPlacedWords, _mainPageData.DisplayBoard);
+            _boardLayout.ApplyDefinitionLocationsToDisplayBoard(_boardLayout.GroupedWords, _mainPageData.DisplayBoard);
         }
 
         private void SolveBoard (ObservableCollection<ObservableCollection<Cell>> board)

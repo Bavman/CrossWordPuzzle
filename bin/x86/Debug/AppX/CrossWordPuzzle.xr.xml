@@ -36,7 +36,6 @@
       <RootProperty Name="MinHeight" />
       <RootProperty Name="Padding" />
       <RootProperty Name="BorderThickness" />
-      <RootEvent Name="Tapped" />
       <RootEvent Name="TextChanged" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.DataTemplate">

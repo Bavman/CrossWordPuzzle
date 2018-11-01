@@ -10,7 +10,7 @@ namespace CrossWordPuzzle.Game
 {
     public class BoardLayout
     {
-        public IEnumerable<PlacedWord> SortedPlacedWords;
+        public IEnumerable<PlacedWord> GroupedWords;
 
         public List<PlacedWord> PlacedWords = new List<PlacedWord>();
         
@@ -22,14 +22,14 @@ namespace CrossWordPuzzle.Game
 
         private int[] _wordSizes = 
         {
-            10, 9, 8, 8, 7, 7, 7, 6, 6, 5, 5, 5, 4, 4, 4, 4, 3, 3, 3, 3, 3,
-            9, 9, 8, 8, 7, 7, 7, 6, 6, 5, 5, 5, 4, 4, 4, 4, 3, 3, 3, 3, 3
+            9, 7, 7, 7, 7, 7, 6, 6, 6, 5, 5, 5, 4, 4, 4, 4, 3, 3, 3, 3, 3,
+            6, 6, 5, 5, 5, 5, 5, 6, 6, 5, 5, 5, 4, 4, 4, 4, 3, 3, 3, 3, 3
         };
 
         private List<string> _usedWords = new List<string>();
 
         private int _wordsPlaced;
-        private int _minWordsPlaced = 13;
+        private int _minWordsPlaced = 15;
 
 
         // Keeps trying to solve board until the _minWordsPlaced count is reached 
@@ -63,9 +63,11 @@ namespace CrossWordPuzzle.Game
             }
 
             // Sort and find definition of placed words then apply formatting
-            SortedPlacedWords = SortPlacedWords(PlacedWords);
+            var SortedPlacedWords = SortPlacedWordsByPosition(PlacedWords);
 
-            var definitions = ReturnDefinitionArray(SortedPlacedWords);
+            GroupedWords = GroupPlacedWords(SortedPlacedWords);
+
+            var definitions = ReturnDefinitionArray(GroupedWords);
 
             Definitions = ApplyDefinitionsFormatting(definitions);
 
@@ -75,21 +77,19 @@ namespace CrossWordPuzzle.Game
 
 
         // Sort and find definition of placed words
-        private IEnumerable<PlacedWord> SortPlacedWords(List<PlacedWord> placedWords)
+        private IEnumerable<PlacedWord> GroupPlacedWords(List<PlacedWord> placedWords)
         {
-            var sortedHorizontalPlacedWords = SortPlacedWords(placedWords, WordDirection.Horizontal);
-            var sortedVerticalPlacedWords = SortPlacedWords(placedWords, WordDirection.Vertical);
+            var sortedHorizontalPlacedWords = SortPlacedWordsByAxis(placedWords, WordDirection.Horizontal);
+            var sortedVerticalPlacedWords = SortPlacedWordsByAxis(placedWords, WordDirection.Vertical);
 
-            var HorizontalWordAndDefinitionList = FindDefinitions(sortedHorizontalPlacedWords);
-            var VerticalWordAndDefinitionList = FindDefinitions(sortedVerticalPlacedWords);
+            sortedHorizontalPlacedWords.Insert(0, (new PlacedWord { Definition = "ACROSS" }));
+            sortedVerticalPlacedWords.Insert (0 , (new PlacedWord { Definition = "DOWN" }));
 
-            HorizontalWordAndDefinitionList.Insert(0, (new PlacedWord { Definition = "ACROSS" }));
-            VerticalWordAndDefinitionList.Insert (0 , (new PlacedWord { Definition = "DOWN" }));
-
-            var joinedLists = HorizontalWordAndDefinitionList.Concat(VerticalWordAndDefinitionList);
+            var joinedLists = sortedHorizontalPlacedWords.Concat(sortedVerticalPlacedWords);
 
             return joinedLists;
         }
+
 
         private IEnumerable<Definition> ReturnDefinitionArray(IEnumerable<PlacedWord> placedWords)
         {
@@ -97,6 +97,7 @@ namespace CrossWordPuzzle.Game
 
             return definitions;
         }
+
 
         private IEnumerable<Definition> ApplyDefinitionsFormatting(IEnumerable<Definition> definitions)
         {
@@ -108,7 +109,6 @@ namespace CrossWordPuzzle.Game
                 if (def[i].Phrase == "ACROSS" || def[i].Phrase == "DOWN")
                 {
                     def[i].FontWeight = "Bold";
-                    //definitions[i].Index = "";
                 }
                 else
                 {
@@ -119,6 +119,77 @@ namespace CrossWordPuzzle.Game
             return def;
         }
 
+        // Sort placed words based on start postions.
+        public List<PlacedWord> SortPlacedWordsByAxis(List<PlacedWord> placedWords, WordDirection direction)
+        {
+
+            var placedWordsSorted = new List<PlacedWord>();
+            // Sorted Horizontal or vertical
+            if (direction == WordDirection.Horizontal)
+            {
+                placedWordsSorted = placedWords.Where(w => w.Direction == direction)
+                    .OrderBy(w => Convert.ToInt32(w.DefinitionIndex)).ToList();
+            }
+            if (direction == WordDirection.Vertical)
+            {
+                placedWordsSorted = placedWords.Where(w => w.Direction == direction)
+                    .OrderBy(w => Convert.ToInt32(w.DefinitionIndex)).ToList();
+            }
+
+            
+            return placedWordsSorted;
+        }
+
+        // Sort placed words into horizontal order and assign definition and index to placedWord
+        public List<PlacedWord> SortPlacedWordsByPosition(List<PlacedWord> placedWords)
+        {
+            var placedWordsSorted = new List<PlacedWord>();
+
+            // Sort in ascending
+            placedWordsSorted = placedWords.OrderBy(w => w.StartPos.Item2).ThenBy(w => w.StartPos.Item1).ToList();
+
+            return FindDefinitionsAndAssignLocationIndex(placedWordsSorted);
+        }
+
+
+        public List<PlacedWord> FindDefinitionsAndAssignLocationIndex(List<PlacedWord> placedWords)
+        {
+            var placedWordWithDeets = new List<PlacedWord>();
+
+            var previousStartPos = new Tuple<int,int>(-1,-1);
+
+            var count = 0;
+
+            for (var i = 0; i < placedWords.Count; i++)
+            {
+                var definitionArray = WordList.Instance().WordAndDefinitions.Where(d => d.Word == placedWords[i].Word).ToArray();
+
+                if (definitionArray == null)
+                {
+                    return null;
+                }
+                var definition = definitionArray[0].Definition;
+
+                if (!previousStartPos.Equals(placedWords[i].StartPos))
+                {
+                    count++;
+                }
+
+
+                placedWordWithDeets.Add(new PlacedWord
+                {
+                    Word = placedWords[i].Word,
+                    StartPos = placedWords[i].StartPos,
+                    Direction = placedWords[i].Direction,
+                    DefinitionIndex = (count).ToString(),
+                    Definition = definition,
+                });
+
+                previousStartPos = placedWords[i].StartPos;
+            }
+
+            return placedWordWithDeets;
+        }
 
         // Get new word from WordList Words
         public string RetrieveWord(List<string> usedWords, int letterCount)
@@ -323,55 +394,9 @@ namespace CrossWordPuzzle.Game
             return result;
         }
 
-        public List<PlacedWord> SortPlacedWords(List<PlacedWord> placedWords, WordDirection direction)
-        {
-            
-            var placedWordsSorted = new List<PlacedWord>();
-            // Sorted Horizontal or vertical
-            if (direction == WordDirection.Horizontal)
-            {
-                placedWordsSorted = placedWords.Where(w => w.Direction == direction)
-                    .OrderBy(w => w.StartPos.Item2).ThenBy(w => w.StartPos.Item1).ToList();
-            }
-            if (direction == WordDirection.Vertical)
-            {
-                placedWordsSorted = placedWords.Where(w => w.Direction == direction)
-                    .OrderBy(w => w.StartPos.Item1).ThenBy(w => w.StartPos.Item2).ToList();
-            }
-
-            // Sort in ascending
-            return placedWordsSorted;
-        }
-
-        public List<PlacedWord> FindDefinitions (List<PlacedWord> placedWords)
-        {
-            var wordAndDefinitions = new List<PlacedWord>();
-
-            for (var i = 0; i < placedWords.Count; i++)
-            {
-                var definitionArray = WordList.Instance().WordAndDefinitions.Where(d => d.Word == placedWords[i].Word).ToArray();
-
-                if (definitionArray == null)
-                {
-                    return null;
-                }
-                var definition = definitionArray[0].Definition;
-
-                wordAndDefinitions.Add(new PlacedWord
-                {
-                    Word = placedWords[i].Word,
-                    StartPos = placedWords[i].StartPos,
-                    Direction = placedWords[i].Direction,
-                    DefinitionIndex = (i + 1).ToString(),
-                    Definition = definition,
-                });
-            }
-
-            return wordAndDefinitions;
-        }
 
         // Generate board that holds the across and down definition numbers
-        public void AssignDefinitionLocations(IEnumerable<PlacedWord> placedWords, ObservableCollection<ObservableCollection<Cell>> displayBoard)
+        public void ApplyDefinitionLocationsToDisplayBoard(IEnumerable<PlacedWord> placedWords, ObservableCollection<ObservableCollection<Cell>> displayBoard)
         {
             foreach (var placedWord in placedWords)
             {
@@ -380,12 +405,11 @@ namespace CrossWordPuzzle.Game
                 {
                     displayBoard[placedWord.StartPos.Item2][placedWord.StartPos.Item1].DefinitionLocation = placedWord.DefinitionIndex;
                 }
-                
+
             }
-            
 
-        } 
 
+        }
     }
 
 }
