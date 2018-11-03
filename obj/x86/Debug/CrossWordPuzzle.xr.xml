@@ -2,6 +2,7 @@
 <Roots >
   <Roots.PropertyPathNames>
     <RootPropertyPathName Name="Phrase" />
+    <RootPropertyPathName Name="TextDecoration" />
     <RootPropertyPathName Name="ForegroundColour" />
     <RootPropertyPathName Name="FontWeight" />
     <RootPropertyPathName Name="Index" />
@@ -68,6 +69,7 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.TextBlock">
       <RootProperty Name="Text" />
+      <RootProperty Name="TextDecorations" />
       <RootProperty Name="Foreground" />
       <RootProperty Name="FontSize" />
       <RootProperty Name="HorizontalAlignment" />

@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Windows.UI.Xaml.Media;
+using CrossWordPuzzle.Game;
 
 namespace CrossWordPuzzle.Model
 {
@@ -54,6 +55,21 @@ namespace CrossWordPuzzle.Model
             }
 
         }
+
+        private string _textDecoration;
+        public string TextDecoration
+        {
+            get { return _textDecoration; }
+
+            set
+            {
+                _textDecoration = value;
+                PropChangedHandler();
+            }
+
+        }
+
+        public WordDirection Direction { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

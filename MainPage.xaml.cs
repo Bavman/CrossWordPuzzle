@@ -85,15 +85,13 @@ namespace CrossWordPuzzle
         private void LetterCell_TextChanged(object sender, TextChangedEventArgs e)
         {
             var changePos = _solveBoard.GetUpdatePosition(_mainPageData.DisplayBoard, CrossWordBoard.Instance().CrossWordboardCheck);
-            var foundWordListAndFoundWord = _solveBoard.CheckWord(_mainPageData.DisplayBoard, _boardLayout.PlacedWords, _foundWords);
+            var foundWordListAndFoundWord = _solveBoard.CheckWordOnCharUpdate(_mainPageData.DisplayBoard, _boardLayout.PlacedWords, _foundWords);
             _foundWords = foundWordListAndFoundWord.Item1;
 
             // Change definition font colour
             var foundWord = foundWordListAndFoundWord.Item2;
-            Debug.WriteLine("Index "+foundWord.DefinitionIndex);
-            _solveBoard.DefinitionFontColour(_mainPageData.Definitions, foundWord);
+            _solveBoard.StyleDefinition(_mainPageData.Definitions, foundWord);
 
-            Debug.WriteLine(_foundWords.Count);
             _mainPageData.DisplayScore.Value = _foundWords.Count;
         }
 

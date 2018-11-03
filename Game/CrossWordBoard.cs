@@ -412,6 +412,7 @@ namespace CrossWordPuzzle.Game
             return false;
         }
 
+        // Print board to console
         public void PrintBoard(Board board)
         {
             for (var i = 0; i < board.Layout.GetLength(0); i++)

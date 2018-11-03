@@ -92,7 +92,7 @@ namespace CrossWordPuzzle.Game
         // Asign definition from placedWords to definition class
         private IEnumerable<Definition> ReturnDefinitionArray(IEnumerable<PlacedWord> placedWords)
         {
-            var definitions = placedWords.Select(d => new Definition { Phrase = d.Definition, Index = d.DefinitionIndex });
+            var definitions = placedWords.Select(d => new Definition { Phrase = d.Definition, Index = d.DefinitionIndex, Direction = d.Direction });
 
             return definitions;
         }

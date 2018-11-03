@@ -428,7 +428,6 @@ namespace CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo
                 userType.AddMemberName("Phrase");
                 userType.AddMemberName("Index");
                 userType.AddMemberName("FontWeight");
-                userType.AddMemberName("ForegroundColour");
                 userType.AddMemberName("TextDecoration");
                 userType.AddMemberName("Direction");
                 userType.SetIsLocalType();
@@ -593,32 +592,22 @@ namespace CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo
             var that = (global::CrossWordPuzzle.Model.Definition)instance;
             that.FontWeight = (global::System.String)Value;
         }
-        private object get_13_Definition_ForegroundColour(object instance)
-        {
-            var that = (global::CrossWordPuzzle.Model.Definition)instance;
-            return that.ForegroundColour;
-        }
-        private void set_13_Definition_ForegroundColour(object instance, object Value)
-        {
-            var that = (global::CrossWordPuzzle.Model.Definition)instance;
-            that.ForegroundColour = (global::Windows.UI.Xaml.Media.SolidColorBrush)Value;
-        }
-        private object get_14_Definition_TextDecoration(object instance)
+        private object get_13_Definition_TextDecoration(object instance)
         {
             var that = (global::CrossWordPuzzle.Model.Definition)instance;
             return that.TextDecoration;
         }
-        private void set_14_Definition_TextDecoration(object instance, object Value)
+        private void set_13_Definition_TextDecoration(object instance, object Value)
         {
             var that = (global::CrossWordPuzzle.Model.Definition)instance;
             that.TextDecoration = (global::System.String)Value;
         }
-        private object get_15_Definition_Direction(object instance)
+        private object get_14_Definition_Direction(object instance)
         {
             var that = (global::CrossWordPuzzle.Model.Definition)instance;
             return that.Direction;
         }
-        private void set_15_Definition_Direction(object instance, object Value)
+        private void set_14_Definition_Direction(object instance, object Value)
         {
             var that = (global::CrossWordPuzzle.Model.Definition)instance;
             that.Direction = (global::CrossWordPuzzle.Game.WordDirection)Value;
@@ -709,23 +698,17 @@ namespace CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo
                 xamlMember.Getter = get_12_Definition_FontWeight;
                 xamlMember.Setter = set_12_Definition_FontWeight;
                 break;
-            case "CrossWordPuzzle.Model.Definition.ForegroundColour":
-                userType = (global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlUserType)GetXamlTypeByName("CrossWordPuzzle.Model.Definition");
-                xamlMember = new global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlMember(this, "ForegroundColour", "Windows.UI.Xaml.Media.SolidColorBrush");
-                xamlMember.Getter = get_13_Definition_ForegroundColour;
-                xamlMember.Setter = set_13_Definition_ForegroundColour;
-                break;
             case "CrossWordPuzzle.Model.Definition.TextDecoration":
                 userType = (global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlUserType)GetXamlTypeByName("CrossWordPuzzle.Model.Definition");
                 xamlMember = new global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlMember(this, "TextDecoration", "String");
-                xamlMember.Getter = get_14_Definition_TextDecoration;
-                xamlMember.Setter = set_14_Definition_TextDecoration;
+                xamlMember.Getter = get_13_Definition_TextDecoration;
+                xamlMember.Setter = set_13_Definition_TextDecoration;
                 break;
             case "CrossWordPuzzle.Model.Definition.Direction":
                 userType = (global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlUserType)GetXamlTypeByName("CrossWordPuzzle.Model.Definition");
                 xamlMember = new global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlMember(this, "Direction", "CrossWordPuzzle.Game.WordDirection");
-                xamlMember.Getter = get_15_Definition_Direction;
-                xamlMember.Setter = set_15_Definition_Direction;
+                xamlMember.Getter = get_14_Definition_Direction;
+                xamlMember.Setter = set_14_Definition_Direction;
                 break;
             }
             return xamlMember;

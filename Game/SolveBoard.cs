@@ -16,7 +16,7 @@ namespace CrossWordPuzzle.Game
         // Returns a list of words that have been placed each time a character is entered into the board. 
         // It considers the existing placed words and removes from calculation
         // Confirms the word is correct and adjusts colour to suit. Also used to count the score.
-        public Tuple<List<PlacedWord>, PlacedWord> CheckWord(ObservableCollection<ObservableCollection<Cell>> displayBoard, List<PlacedWord> placedWords, List<PlacedWord> foundWords)
+        public Tuple<List<PlacedWord>, PlacedWord> CheckWordOnCharUpdate(ObservableCollection<ObservableCollection<Cell>> displayBoard, List<PlacedWord> placedWords, List<PlacedWord> foundWords)
         {
             var remaingPlacedWords = placedWords.Where(w => !foundWords.Select( x => x.Word).Contains(w.Word)).ToList();
 
@@ -97,11 +97,20 @@ namespace CrossWordPuzzle.Game
         }
 
         // Change definition font colour if word found
-        public void DefinitionFontColour(ObservableCollection<Definition> definitions, PlacedWord foundWord)
+        public void StyleDefinition(ObservableCollection<Definition> definitions, PlacedWord foundWord)
         {
-            var definition = definitions.Where(d => d.Index == foundWord.DefinitionIndex).ToArray()[0];
+            // Remove items that whose definition.Phrase == ACROSS and DOWN
+            var definitionsAcrossDownRemoved = definitions.Where(d => d.Phrase != "ACROSS").Where(d => d.Phrase != "DOWN");
 
-            definition.ForegroundColour = new SolidColorBrush(Color.FromArgb(155, 255, 255, 255));
+            var definition = definitionsAcrossDownRemoved.Where(d => d.Index == foundWord.DefinitionIndex)
+                .Where(d => d.Direction == foundWord.Direction).ToArray();
+
+            if (definition.Length != 0)
+            {
+                definition[0].TextDecoration = "Strikethrough";
+                definition[0].ForegroundColour = new SolidColorBrush(Color.FromArgb(255, 120, 165, 240));
+            }
+            
         }
 
         // Calculates updated array position based on previous board and recenelty updated char

@@ -53,6 +53,7 @@
                 <TextBlock
                     x:Name="Index"
                     Text="{Binding Index, Mode=OneWay}" 
+                    TextDecorations="{Binding TextDecoration, Mode=OneWay}"
                     Foreground="{Binding ForegroundColour, Mode=OneWay}"
                     FontSize="14" 
                     HorizontalAlignment="Left" VerticalAlignment="Top" 
@@ -66,6 +67,7 @@
                 <TextBlock
                     x:Name="Definition"
                     Text="{Binding Phrase, Mode=OneWay}"
+                    TextDecorations="{Binding TextDecoration, Mode=OneWay}"
                     Foreground="{Binding ForegroundColour, Mode=OneWay}"
                     FontSize="14" 
                     HorizontalAlignment="Left" VerticalAlignment="Top" 
