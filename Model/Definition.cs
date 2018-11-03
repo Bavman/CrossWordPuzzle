@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Windows.UI.Xaml.Media;
 
 namespace CrossWordPuzzle.Model
 {
@@ -28,7 +29,6 @@ namespace CrossWordPuzzle.Model
             }
         }
 
-
         private string _fontWeight;
 
         public string FontWeight
@@ -37,6 +37,19 @@ namespace CrossWordPuzzle.Model
             set
             {
                 _fontWeight = value;
+                PropChangedHandler();
+            }
+
+        }
+
+        private SolidColorBrush _foregroundColour;
+        public SolidColorBrush ForegroundColour
+        {
+            get { return _foregroundColour; }
+
+            set
+            {
+                _foregroundColour = value;
                 PropChangedHandler();
             }
 

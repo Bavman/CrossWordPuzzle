@@ -2,11 +2,11 @@
 <Roots >
   <Roots.PropertyPathNames>
     <RootPropertyPathName Name="Phrase" />
+    <RootPropertyPathName Name="ForegroundColour" />
     <RootPropertyPathName Name="FontWeight" />
     <RootPropertyPathName Name="Index" />
     <RootPropertyPathName Name="DefinitionLocation" />
     <RootPropertyPathName Name="LetterIn" />
-    <RootPropertyPathName Name="ForegroundColour" />
     <RootPropertyPathName Name="BackgroundColour" />
     <RootPropertyPathName Name="IsReadOnly" />
   </Roots.PropertyPathNames>
@@ -68,6 +68,7 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.TextBlock">
       <RootProperty Name="Text" />
+      <RootProperty Name="Foreground" />
       <RootProperty Name="FontSize" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="VerticalAlignment" />

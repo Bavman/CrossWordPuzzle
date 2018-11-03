@@ -424,6 +424,7 @@ namespace CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo
                 userType.AddMemberName("Phrase");
                 userType.AddMemberName("Index");
                 userType.AddMemberName("FontWeight");
+                userType.AddMemberName("ForegroundColour");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -572,6 +573,16 @@ namespace CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo
             var that = (global::CrossWordPuzzle.Model.Definition)instance;
             that.FontWeight = (global::System.String)Value;
         }
+        private object get_13_Definition_ForegroundColour(object instance)
+        {
+            var that = (global::CrossWordPuzzle.Model.Definition)instance;
+            return that.ForegroundColour;
+        }
+        private void set_13_Definition_ForegroundColour(object instance, object Value)
+        {
+            var that = (global::CrossWordPuzzle.Model.Definition)instance;
+            that.ForegroundColour = (global::Windows.UI.Xaml.Media.SolidColorBrush)Value;
+        }
 
         private global::Windows.UI.Xaml.Markup.IXamlMember CreateXamlMember(string longMemberName)
         {
@@ -657,6 +668,12 @@ namespace CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo
                 xamlMember = new global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlMember(this, "FontWeight", "String");
                 xamlMember.Getter = get_12_Definition_FontWeight;
                 xamlMember.Setter = set_12_Definition_FontWeight;
+                break;
+            case "CrossWordPuzzle.Model.Definition.ForegroundColour":
+                userType = (global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlUserType)GetXamlTypeByName("CrossWordPuzzle.Model.Definition");
+                xamlMember = new global::CrossWordPuzzle.CrossWordPuzzle_XamlTypeInfo.XamlMember(this, "ForegroundColour", "Windows.UI.Xaml.Media.SolidColorBrush");
+                xamlMember.Getter = get_13_Definition_ForegroundColour;
+                xamlMember.Setter = set_13_Definition_ForegroundColour;
                 break;
             }
             return xamlMember;

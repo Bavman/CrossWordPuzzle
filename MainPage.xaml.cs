@@ -21,11 +21,11 @@ namespace CrossWordPuzzle
     {
         public static event StatusReceiverHandler ReceiveStatusEvent;
 
-        List<string> _foundWords = new List<string>();
+        List<PlacedWord> _foundWords = new List<PlacedWord>();
 
         BoardLayout _boardLayout = new BoardLayout();
         MainPageData _mainPageData = new MainPageData();
-        SolveBoard _boardCheckWords = new SolveBoard();
+        SolveBoard _solveBoard = new SolveBoard();
 
         public MainPage()
         {
@@ -42,7 +42,6 @@ namespace CrossWordPuzzle
 
         private void SetupCrosswordPuzzle()
         {
-
             _boardLayout.StartPlaceAllWords();
 
             CrossWordBoard.Instance().DubugWriteLineBoard(CrossWordBoard.Instance().CrossWordboard);
@@ -51,7 +50,7 @@ namespace CrossWordPuzzle
 
             _mainPageData.AssignDefinitionList(_boardLayout.Definitions);
 
-            _boardLayout.ApplyDefinitionLocationsToDisplayBoard(_boardLayout.GroupedWords, _mainPageData.DisplayBoard);
+            _boardLayout.ApplyDefinitionNumbersToDisplayBoard(_boardLayout.GroupedWords, _mainPageData.DisplayBoard);
         }
 
         private void SolveBoard (ObservableCollection<ObservableCollection<Cell>> board)
@@ -85,8 +84,15 @@ namespace CrossWordPuzzle
 
         private void LetterCell_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var changePos = _boardCheckWords.GetUpdatePosition(_mainPageData.DisplayBoard, CrossWordBoard.Instance().CrossWordboardCheck);
-            _foundWords = _boardCheckWords.CheckWord(_mainPageData.DisplayBoard, _boardLayout.PlacedWords, _foundWords);
+            var changePos = _solveBoard.GetUpdatePosition(_mainPageData.DisplayBoard, CrossWordBoard.Instance().CrossWordboardCheck);
+            var foundWordListAndFoundWord = _solveBoard.CheckWord(_mainPageData.DisplayBoard, _boardLayout.PlacedWords, _foundWords);
+            _foundWords = foundWordListAndFoundWord.Item1;
+
+            // Change definition font colour
+            var foundWord = foundWordListAndFoundWord.Item2;
+            Debug.WriteLine("Index "+foundWord.DefinitionIndex);
+            _solveBoard.DefinitionFontColour(_mainPageData.Definitions, foundWord);
+
             Debug.WriteLine(_foundWords.Count);
             _mainPageData.DisplayScore.Value = _foundWords.Count;
         }

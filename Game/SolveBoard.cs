@@ -16,13 +16,15 @@ namespace CrossWordPuzzle.Game
         // Returns a list of words that have been placed each time a character is entered into the board. 
         // It considers the existing placed words and removes from calculation
         // Confirms the word is correct and adjusts colour to suit. Also used to count the score.
-        public List<string> CheckWord(ObservableCollection<ObservableCollection<Cell>> displayBoard, List<PlacedWord> placedWords, List<string> foundWords)
+        public Tuple<List<PlacedWord>, PlacedWord> CheckWord(ObservableCollection<ObservableCollection<Cell>> displayBoard, List<PlacedWord> placedWords, List<PlacedWord> foundWords)
         {
-            var remaingPlacedWords = placedWords.Where(w => !foundWords.Contains(w.Word)).ToList();
+            var remaingPlacedWords = placedWords.Where(w => !foundWords.Select( x => x.Word).Contains(w.Word)).ToList();
+
+            var solvedWord = new PlacedWord();
 
             for (var i = 0; i < remaingPlacedWords.Count; i++)
             {
-                
+
                 if (remaingPlacedWords[i].Direction == WordDirection.Horizontal)
                 {
                     var startPos = remaingPlacedWords[i].StartPos;
@@ -47,7 +49,8 @@ namespace CrossWordPuzzle.Game
                             FormatTextBox(displayBoard, startPos.Item2, j);
                         }
 
-                        foundWords.Add(remaingPlacedWords[i].Word);
+                        solvedWord = remaingPlacedWords[i];
+                        foundWords.Add(solvedWord);
                     }
 
                 }
@@ -74,15 +77,15 @@ namespace CrossWordPuzzle.Game
                             FormatTextBox(displayBoard, j, startPos.Item1);
                         }
 
-                        foundWords.Add(remaingPlacedWords[i].Word);
+                        solvedWord = remaingPlacedWords[i];
+                        foundWords.Add(solvedWord);
                     }
 
                 }
 
-
             }
 
-            return foundWords;
+            return new Tuple<List<PlacedWord>, PlacedWord>(foundWords, solvedWord);
         }
 
         // Formats XAML TextBox for found words
@@ -91,6 +94,14 @@ namespace CrossWordPuzzle.Game
             displayBoard[array1Index][array2Index].ForegroundColour = new SolidColorBrush(Color.FromArgb(255, 120, 165, 240));
             displayBoard[array1Index][array2Index].IsReadOnly = true;
             displayBoard[array1Index][array2Index].FontWeight = "Bold";
+        }
+
+        // Change definition font colour if word found
+        public void DefinitionFontColour(ObservableCollection<Definition> definitions, PlacedWord foundWord)
+        {
+            var definition = definitions.Where(d => d.Index == foundWord.DefinitionIndex).ToArray()[0];
+
+            definition.ForegroundColour = new SolidColorBrush(Color.FromArgb(155, 255, 255, 255));
         }
 
         // Calculates updated array position based on previous board and recenelty updated char

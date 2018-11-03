@@ -75,8 +75,6 @@ namespace CrossWordPuzzle.Game
             Debug.WriteLine("Words Placed " + _wordsPlaced);
         }
 
-
-
         // Sort and find definition of placed words
         private IEnumerable<PlacedWord> GroupPlacedWords(List<PlacedWord> placedWords)
         {
@@ -181,9 +179,12 @@ namespace CrossWordPuzzle.Game
                     Word = placedWords[i].Word,
                     StartPos = placedWords[i].StartPos,
                     Direction = placedWords[i].Direction,
-                    DefinitionIndex = (count).ToString(),
+                    DefinitionIndex = count.ToString(),
                     Definition = definition,
                 });
+
+                // Assign Definition index to placedWord
+                placedWords[i].DefinitionIndex = count.ToString();
 
                 previousStartPos = placedWords[i].StartPos;
             }
@@ -399,7 +400,7 @@ namespace CrossWordPuzzle.Game
 
 
         // Generate board that holds the across and down definition numbers
-        public void ApplyDefinitionLocationsToDisplayBoard(IEnumerable<PlacedWord> placedWords, ObservableCollection<ObservableCollection<Cell>> displayBoard)
+        public void ApplyDefinitionNumbersToDisplayBoard(IEnumerable<PlacedWord> placedWords, ObservableCollection<ObservableCollection<Cell>> displayBoard)
         {
             foreach (var placedWord in placedWords)
             {

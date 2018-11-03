@@ -53,6 +53,7 @@ namespace CrossWordPuzzle.Game
             _emptyChar = CrossWordboard.EmptyChar;
         }
 
+        // Resets the board applying the emptyChar to all array items
         public void ResetBoard(Board board, char emptyChar)
         {
             
@@ -68,7 +69,6 @@ namespace CrossWordPuzzle.Game
             }
 
         }
-
 
         // Is used to place word in grid arrays after checks have been done
         public void ForcePlaceWord(string word, Tuple<int, int> startPos, WordDirection direction)
@@ -263,7 +263,6 @@ namespace CrossWordPuzzle.Game
             return false;
         }
 
-
         // Checks Horizontal Intersections
         private bool CheckHorizontalIntersectionsAndPadding(int i, Tuple<int, int> startPos, string word)
         {
@@ -335,7 +334,6 @@ namespace CrossWordPuzzle.Game
             return false;
         }
 
-        
         // Checks Vertical Intersections
         private bool CheckVerticalIntersectionsAndPadding(int i, Tuple<int, int> startPos, string word)
         {
