@@ -33,7 +33,7 @@ namespace CrossWordPuzzle
 
             //LetterCell.AddHandler(TappedEvent, new TappedEventHandler(LetterCell_Tapped), true);
             
-            BoardCrossWord.Instance().InitializeBoard(12, 12, ' ');
+            CrossWordBoard.Instance().InitializeBoard(12, 12, ' ');
             _mainPageData.InitializeDisplayBoard(12, 12);
 
             SetupCrosswordPuzzle();
@@ -45,9 +45,9 @@ namespace CrossWordPuzzle
 
             _boardLayout.StartPlaceAllWords();
 
-            BoardCrossWord.Instance().DubugWriteLineBoard(BoardCrossWord.Instance().CrossWordboard);
+            CrossWordBoard.Instance().DubugWriteLineBoard(CrossWordBoard.Instance().CrossWordboard);
 
-            _mainPageData.AssignCrosswordDisplayBoard(BoardCrossWord.Instance().CrossWordboard);
+            _mainPageData.AssignCrosswordDisplayBoard(CrossWordBoard.Instance().CrossWordboard);
 
             _mainPageData.AssignDefinitionList(_boardLayout.Definitions);
 
@@ -85,7 +85,7 @@ namespace CrossWordPuzzle
 
         private void LetterCell_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var changePos = _boardCheckWords.GetUpdatePosition(_mainPageData.DisplayBoard, BoardCrossWord.Instance().CrossWordboardCheck);
+            var changePos = _boardCheckWords.GetUpdatePosition(_mainPageData.DisplayBoard, CrossWordBoard.Instance().CrossWordboardCheck);
             _foundWords = _boardCheckWords.CheckWord(_mainPageData.DisplayBoard, _boardLayout.PlacedWords, _foundWords);
             Debug.WriteLine(_foundWords.Count);
             _mainPageData.DisplayScore.Value = _foundWords.Count;
@@ -104,7 +104,7 @@ namespace CrossWordPuzzle
         private void ButtonRegenBoard_Click(object sender, RoutedEventArgs e)
         {
             _foundWords.Clear();
-            BoardCrossWord.Instance().ResetBoard(BoardCrossWord.Instance().CrossWordboard, ' ');
+            CrossWordBoard.Instance().ResetBoard(CrossWordBoard.Instance().CrossWordboard, ' ');
             _mainPageData.DisplayScore.Value = 0;
             //BoardCrossWord.Instance().ResetBoard(_mainPageData.DisplayBoard, '\0');
             SetupCrosswordPuzzle();

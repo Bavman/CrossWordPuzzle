@@ -12,21 +12,21 @@ using Windows.UI.Xaml.Media;
 
 namespace CrossWordPuzzle.Game
 {
-    public class BoardCrossWord
+    public class CrossWordBoard
     {
         #region Singleton Setup
-        static BoardCrossWord _instance = null;
+        static CrossWordBoard _instance = null;
 
-        private BoardCrossWord()
+        private CrossWordBoard()
         {
 
         }
 
-        public static BoardCrossWord Instance()
+        public static CrossWordBoard Instance()
         {
             if (_instance == null)
             {
-                _instance = new BoardCrossWord();
+                _instance = new CrossWordBoard();
 
             }
 
@@ -166,7 +166,7 @@ namespace CrossWordPuzzle.Game
             }
         }
 
-        // Check if word can be placed by doing horizontal and vertical 
+        // Check if word can be placed by doing horizontal and vertical checks
         public bool CanWordBePlaced(string word, Tuple<int, int> startPos, WordDirection direction)
         {
 
@@ -363,7 +363,6 @@ namespace CrossWordPuzzle.Game
                     if (word[i - startPos.Item2] != CrossWordboard.Layout[i, startPos.Item1])
                     {
                         //Debug.WriteLine("HitPos {0},{1}", (i), startPos.Item1);
-                        //Debug.WriteLine("Pinged During Word");
                         return true;
                     }
                     
@@ -371,7 +370,6 @@ namespace CrossWordPuzzle.Game
                 else
                 {
                     //Debug.WriteLine("HitPos {0},{1}", (i), startPos.Item1);
-                    //Debug.WriteLine("Pinged During Word");
                     return true;
                 }
                 
@@ -414,6 +412,23 @@ namespace CrossWordPuzzle.Game
             //_board[i][startPos.Item1] = '*';
             return false;
         }
+
+        public void PrintBoard(Board board)
+        {
+            for (var i = 0; i < board.Layout.GetLength(0); i++)
+            {
+                var row = String.Empty;
+
+                for (var j = 0; j < board.Layout.GetLength(1); j++)
+                {
+                    row += board.Layout[i,j] + " ";
+                }
+                Debug.WriteLine(row);
+            }
+        }
+
+        // @ Zac to implement vacant space searching to assist with word placement
+        #region VacantSpace
 
         public void CheckForVacantSpace()
         {
@@ -511,6 +526,7 @@ namespace CrossWordPuzzle.Game
         }
 
 
+        // Compare two int array and return ...
         private int[] CompareIntArrays(int[] intArray1, int[] intArray2)
         {
             var returnArray = new List<int>();
@@ -565,53 +581,15 @@ namespace CrossWordPuzzle.Game
         }
 
 
-        public char[][] ConvertBoardTo2Arrays(char[,] board)
-        {
-            var returnBoard = new char[Height][];
-
-
-            for (var i = 0; i < board.GetLength(0); i++)
-            {
-                returnBoard[i] = new char[Width];
-
-                for (var j = 0; j < board.GetLength(1); j++)
-                {
-                    returnBoard[i][j] = board[i, j];
-                }
-
-            }
-
-            return returnBoard;
-
-        }
-
-        public char[,] ConvertBoardToMultidimensionalArray(char[][] board)
-        {
-            var returnBoard = new char[Height, Width];
-
-
-            for (var i = 0; i < board.Length; i++)
-            {
-
-                for (var j = 0; j < board[i].Length; j++)
-                {
-                    returnBoard[i,j] = board[i][j];
-                }
-
-            }
-
-            return returnBoard;
-
-        }
     }
 
-
+    // @ Zac to implement vacant space searching
     public class VacantSpace
     {
         public Tuple<int, int> VacantStart { get; set; }
         public Tuple<int, int> VacantEnd { get; set; }
     }
-
+    #endregion
 }
 
 

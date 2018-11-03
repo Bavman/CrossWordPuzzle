@@ -24,7 +24,7 @@ namespace CrossWordPuzzle.Game
             Layout = InitializeBoard(width, height, emptyChar);
         }
 
-
+        // Initializes board
         private char[,] InitializeBoard(int width, int height, char emptyChar)
         {
 

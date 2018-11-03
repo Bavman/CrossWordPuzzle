@@ -38,6 +38,7 @@ namespace CrossWordPuzzle.Game
             PlacedWords.Clear();
             _usedWords.Clear();
             _wordsPlaced = 0;
+            _count = 0;
 
             var solved = false;
 
@@ -54,7 +55,7 @@ namespace CrossWordPuzzle.Game
                 // Reset the board and start again if min word count in not met
                 if (!solved)
                 {
-                    BoardCrossWord.Instance().ResetBoard(BoardCrossWord.Instance().CrossWordboard, ' ');
+                    CrossWordBoard.Instance().ResetBoard(CrossWordBoard.Instance().CrossWordboard, ' ');
 
                     _wordsPlaced = 0;
                     _usedWords = new List<string>();
@@ -90,7 +91,7 @@ namespace CrossWordPuzzle.Game
             return joinedLists;
         }
 
-
+        // Asign definition from placedWords to definition class
         private IEnumerable<Definition> ReturnDefinitionArray(IEnumerable<PlacedWord> placedWords)
         {
             var definitions = placedWords.Select(d => new Definition { Phrase = d.Definition, Index = d.DefinitionIndex });
@@ -98,7 +99,7 @@ namespace CrossWordPuzzle.Game
             return definitions;
         }
 
-
+        // Apply bold on definitions that are "ACROSS" and "BOLD"
         private IEnumerable<Definition> ApplyDefinitionsFormatting(IEnumerable<Definition> definitions)
         {
 
@@ -151,7 +152,7 @@ namespace CrossWordPuzzle.Game
             return FindDefinitionsAndAssignLocationIndex(placedWordsSorted);
         }
 
-
+        // After words are placed and sorted, this method looks up the placed word definition
         public List<PlacedWord> FindDefinitionsAndAssignLocationIndex(List<PlacedWord> placedWords)
         {
             var placedWordWithDeets = new List<PlacedWord>();
@@ -175,7 +176,6 @@ namespace CrossWordPuzzle.Game
                     count++;
                 }
 
-
                 placedWordWithDeets.Add(new PlacedWord
                 {
                     Word = placedWords[i].Word,
@@ -191,11 +191,11 @@ namespace CrossWordPuzzle.Game
             return placedWordWithDeets;
         }
 
-        // Get new word from WordList Words
+        // Get new word from WordList Words based no letter count
         public string RetrieveWord(List<string> usedWords, int letterCount)
         {
 
-            var wordList = WordList.Instance().Words.ToArray();
+            var wordList = WordList.Instance().WordAndDefinitions.Select(w => w.Word).ToArray();
 
             var wordArray = wordList.Where(w => w.Length == letterCount).
                 Except(usedWords).
@@ -223,33 +223,16 @@ namespace CrossWordPuzzle.Game
 
         }
 
-
+        // Try placing all words on board itterating through _wordSizes array for word sizes
         private void PlaceWords()
         {
             _count++;
             PlacedWords.Clear();
+
             // First Word
-            var word = RetrieveWord(new List<string> { }, _wordSizes[0]);
-            
-            var random = new Random();
-            var horizontalPos = random.Next(0, 1);
-            var vertiacalPos = random.Next(4, 6);
-            var randomStartPos = new Tuple<int, int>(horizontalPos, vertiacalPos);
+            PlaceWords_FirstWord();
 
-            Debug.WriteLine("Deets word {0}, pos {1},{2}, count {3} ", word, randomStartPos.Item1, randomStartPos.Item2, _count);
-
-            // Place first word
-            var placedWord = BoardCrossWord.Instance().PlaceWord(word, randomStartPos, WordDirection.Horizontal);
-            if (placedWord != null)
-            {
-                PlacedWords.Add(placedWord);
-            }
-            else
-            {
-                Debug.WriteLine("IsNull");
-            }
-            
-            _usedWords.Add(word);
+            Debug.WriteLine("count {0} ", _count);
 
             // Rest of board
             var direction = WordDirection.Vertical;
@@ -265,7 +248,7 @@ namespace CrossWordPuzzle.Game
 
                     var startPositions = new List<Tuple<int, int>>(wordAndPosList.StartPosList);
 
-                    word = wordAndPosList.Word;
+                    var word = wordAndPosList.Word;
 
                     var usedCharsIndex = new List<int> { };
 
@@ -283,7 +266,7 @@ namespace CrossWordPuzzle.Game
 
                             var startPos = startPositions[listIndex];
 
-                            placedWord = BoardCrossWord.Instance().PlaceWord(word, startPos, direction);
+                            var placedWord = CrossWordBoard.Instance().PlaceWord(word, startPos, direction);
 
                             if (placedWord != null)
                             {
@@ -300,7 +283,7 @@ namespace CrossWordPuzzle.Game
                                 }
 
                                 PlacedWords.Add(placedWord);
-                                
+
                                 _wordsPlaced++;
 
                                 // Break from while if wordcount reached
@@ -312,18 +295,41 @@ namespace CrossWordPuzzle.Game
                                 break;
                             }
 
-                            whileCount ++;
-                        }   
+                            whileCount++;
+                        }
 
                     }
 
                 }
-                
+
             }
 
         }
 
+        // Place first word on board
+        private void PlaceWords_FirstWord()
+        {
+            var word = RetrieveWord(new List<string> { }, _wordSizes[0]);
 
+            var random = new Random();
+            var horizontalPos = random.Next(0, 1);
+            var vertiacalPos = random.Next(4, 6);
+            var randomStartPos = new Tuple<int, int>(horizontalPos, vertiacalPos);
+
+            // Place first word
+            var placedWord = CrossWordBoard.Instance().PlaceWord(word, randomStartPos, WordDirection.Horizontal);
+            if (placedWord != null)
+            {
+                PlacedWords.Add(placedWord);
+            }
+            else
+            {
+                Debug.WriteLine("IsNull");
+            }
+            _usedWords.Add(word);
+        }
+
+        // Itterates through board looking for potential letters where words can intersect
         private WordAndStartPositions FindWordAndPositions(int wordLength, WordDirection direction)
         {
             var startPosAttempts = 0;
@@ -331,7 +337,6 @@ namespace CrossWordPuzzle.Game
             var usedWords = new List<string>(_usedWords);
             var starPosList = new List<Tuple<int, int>> {};
             var maxCounts = 25;
-
 
             // Attempt to find start positions
             while (startPosAttempts < maxCounts)
@@ -344,7 +349,7 @@ namespace CrossWordPuzzle.Game
                 while (wordCharCount < word.Length)
                 {
 
-                    var posList = BoardCrossWord.Instance().ReturnWordStartPositions(word, wordCharCount, direction);
+                    var posList = CrossWordBoard.Instance().ReturnWordStartPositions(word, wordCharCount, direction);
                     starPosList.AddRange(posList);
 
                     wordCharCount ++;
@@ -374,9 +379,7 @@ namespace CrossWordPuzzle.Game
                 Word = word
             };
 
-
             return wordAndPosList;
-
         }
 
         // Returns a random number from a int List considering the used numbers
