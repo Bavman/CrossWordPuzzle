@@ -24,18 +24,10 @@ namespace CrossWordPuzzle.ViewModel
 
     public class MainPageData
     {
-
-
         public MainPageData()
         {
             // MainPage.ReceiveStatusEvent += WriteStatus;
         }
-
-        private void WriteStatus(object status, StatusReceiverEventArgs e)
-        {
-            Debug.WriteLine("EventDelegate "+status.ToString());
-        }
-
 
         public Score DisplayScore = new Score();
 
@@ -61,7 +53,6 @@ namespace CrossWordPuzzle.ViewModel
             set { _definitions = value; }
         }
 
-
         // Initializes definition list
         public void AssignDefinitionList (IEnumerable<Definition> definitions)
         {
@@ -76,7 +67,6 @@ namespace CrossWordPuzzle.ViewModel
             }
 
         }
-
 
         // Initializes display board
         public void InitializeDisplayBoard (int width, int height)
@@ -133,7 +123,7 @@ namespace CrossWordPuzzle.ViewModel
 
         }
 
-
+        // Print Display Board to console
         public void PrintBoard(ObservableCollection<ObservableCollection<Cell>> board)
         {
             for (var i = 0; i < board.Count; i++)
@@ -148,6 +138,7 @@ namespace CrossWordPuzzle.ViewModel
             }
         }
 
+        // Print list to console
         public void PrintList(ObservableCollection<Cell> list)
         {
             for (var i = 0; i < list.Count; i++)
@@ -156,6 +147,11 @@ namespace CrossWordPuzzle.ViewModel
             }
         }
 
+        // Test method for events
+        private void WriteStatus(object status, StatusReceiverEventArgs e)
+        {
+            Debug.WriteLine("EventDelegate " + status.ToString());
+        }
     }
 
     public class ArrayConverter : IValueConverter

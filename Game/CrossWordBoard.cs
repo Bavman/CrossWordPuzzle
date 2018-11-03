@@ -214,7 +214,7 @@ namespace CrossWordPuzzle.Game
             return true;
         }
 
-        // Scan cells horizontally and returns true if any cells are not empty, excludes the ignore cell
+        // Scan individual cells horizontally and returns true if any cells are not empty, excludes the ignore cell
         private bool HorizontalWordScan(Tuple<int, int> startPos, int length, string word, WordDirection direction)
         {
             
@@ -268,15 +268,16 @@ namespace CrossWordPuzzle.Game
         private bool CheckHorizontalIntersectionsAndPadding(int i, Tuple<int, int> startPos, string word)
         {
             // Check letter before word
-            if (i - 1 > 0)
+            if (i - 1 >= 0)
             {
                 if (i == startPos.Item1)
                 {
+
                     if (CrossWordboard.Layout[startPos.Item2, i - 1] != _emptyChar)
                     {
                         return true;
                     }
-                    //_board[startPos.Item2][i - 1] = '*';
+                    //CrossWordboard.Layout[startPos.Item2,i - 1] = '*';
                 }
             }
 
@@ -340,7 +341,7 @@ namespace CrossWordPuzzle.Game
         {
 
             // Check letter before word
-            if (i - 1 > 0)
+            if (i - 1 >= 0)
             {
                 if (i == startPos.Item2)
                 {
